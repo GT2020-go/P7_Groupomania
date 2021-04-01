@@ -10,35 +10,16 @@ const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 
 // const saucesRoutes = require("./routes/sauces");
-const userRoutes = require("./routes/user");
+// const userRoutes = require("./routes/user");
 
 // const path = require("path");
 
 //connection to DB:
-
-// const mongoose = require("mongoose");
-// mongoose
-//   .connect(
-//     "mongodb+srv://User1:D57BZ36m77Wia3p@cluster0.xlqdt.mongodb.net/sopekocko?retryWrites=true&w=majority",
-//     { useNewUrlParser: true, useUnifiedTopology: true }
-//   )
-//   .then(() => console.log("Connexion à MongoDB réussie !"))
-//   .catch(() => console.log("Connexion à MongoDB échouée !"));
-
-const mysql = require("mysql");
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PWD,
-});
-
-connection.connect((err) => {
-  if (err) {
-    console.error("error connecting: " + err.stack);
-    return;
-  }
-  console.log("connected as id " + connection.threadId);
-});
+const sequelize = require("./models/sequelize");
+sequelize
+  .authenticate()
+  .then((res) => console.log("connected"))
+  .catch((err) => console.error("error connecting: " + err.stack));
 
 const app = express();
 
@@ -68,6 +49,6 @@ app.use(limiter);
 // app.use("/images", express.static(path.join(__dirname, "images")));
 
 // app.use("/api", saucesRoutes);
-app.use("/api/auth", userRoutes);
+// app.use("/api/auth", userRoutes);
 
 module.exports = app;
