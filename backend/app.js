@@ -3,6 +3,9 @@ const express = require("express");
 //Adding the dotenv security to hide critical info
 require("dotenv").config();
 
+//sequelize
+require("sequelize");
+
 const bodyParser = require("body-parser");
 
 //security:
@@ -10,12 +13,12 @@ const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 
 // const saucesRoutes = require("./routes/sauces");
-// const userRoutes = require("./routes/user");
+const userRoutes = require("./routes/user");
 
-// const path = require("path");
+const path = require("path");
 
 //connection to DB:
-const sequelize = require("./models/sequelize");
+const sequelize = require("./sequelize");
 sequelize
   .authenticate()
   .then((res) => console.log("connected"))
@@ -49,6 +52,6 @@ app.use(limiter);
 // app.use("/images", express.static(path.join(__dirname, "images")));
 
 // app.use("/api", saucesRoutes);
-// app.use("/api/auth", userRoutes);
+app.use("/api/auth", userRoutes);
 
 module.exports = app;
