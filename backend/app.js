@@ -17,12 +17,10 @@ const userRoutes = require("./routes/user");
 
 const path = require("path");
 
-//connection to DB:
-const sequelize = require("./sequelize");
-sequelize
-  .authenticate()
-  .then((res) => console.log("connected"))
-  .catch((err) => console.error("error connecting: " + err.stack));
+const db = require("./models");
+db.sequelize.sync({
+  force: false,
+});
 
 const app = express();
 

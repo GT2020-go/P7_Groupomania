@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   User.init(
     {
-      email: DataTypes.STRING,
+      email: { type: DataTypes.STRING, allowNull: false, unique: true },
       password: DataTypes.STRING,
     },
     {
@@ -25,37 +25,3 @@ module.exports = (sequelize, DataTypes) => {
   console.log(User === sequelize.models.User); // true
   return User;
 };
-
-// below code with DEFINE
-
-// const { Sequelize, DataTypes } = require("sequelize");
-// const sequelize = new Sequelize(
-//   "databasegroupomania",
-//   process.env.DB_USER,
-//   process.env.DB_PWD,
-//   {
-//     host: process.env.DB_HOST,
-//     dialect: "mysql",
-//   }
-// );
-
-// const User = sequelize.define(
-//   "User",
-//   {
-//     // Model attributes are defined here
-//     email: {
-//       type: DataTypes.STRING,
-//       allowNull: false,
-//     },
-//     password: {
-//       type: DataTypes.STRING,
-//       // allowNull defaults to true
-//     },
-//   },
-//   {
-//     // Other model options go here
-//   }
-// );
-
-// // `sequelize.define` also returns the model
-// console.log(User === sequelize.models.User); // true
