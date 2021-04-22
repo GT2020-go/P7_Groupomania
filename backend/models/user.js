@@ -9,12 +9,23 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      User.hasMany(models.Article, {
+        foreignKey: "articles",
+        targetKey: "id",
+      });
     }
   }
   User.init(
     {
-      email: { type: DataTypes.STRING, allowNull: false, unique: true },
-      password: DataTypes.STRING,
+      name: DataTypes.STRING,
+      email: {
+        type: DataTypes.STRING(255),
+        allowNull: false,
+        unique: true,
+        isEmail: true,
+      },
+      password: { type: DataTypes.STRING, allowNull: false },
+      // articles: DataTypes.INTEGER,
     },
     {
       sequelize,
@@ -22,6 +33,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   // the defined model is the class itself
-  console.log(User === sequelize.models.User); // true
+  console.log("User: " + (User === sequelize.models.User)); // true
   return User;
 };
