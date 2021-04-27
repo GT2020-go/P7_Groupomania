@@ -53,7 +53,21 @@ exports.getOneArticle = (req, res, next) => {
 };
 
 //modify one article
-exports.modifyOneArticle = (req, res, next) => {};
+exports.modifyOneArticle = (req, res, next) => {
+  const article = req.file
+    ? {
+        ...JSON.parse(req.body.article),
+      }
+    : { ...req.body };
+  Article.update(
+    { ...article, id: req.params.id },
+    { where: { id: req.params.id } }
+  )
+    .then(() =>
+      res.status(200).json({ message: "Article modifie avec succes !" })
+    )
+    .catch((error) => res.status(400).json({ error }));
+};
 
 //delete one article
 exports.deleteOneArticle = (req, res, next) => {
