@@ -17,7 +17,7 @@ exports.getarticles = (req, res, next) => {
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving tutorials.",
+          err.message || "Some error occurred while retrieving articles.",
       });
     });
 };
@@ -43,4 +43,23 @@ exports.createArticle = (req, res, next) => {
           err.message || "Some error occurred while creating the Article.",
       });
     });
+};
+
+//get one article
+exports.getOneArticle = (req, res, next) => {
+  Article.findOne({ where: { id: req.params.id } })
+    .then((data) => res.status(200).json(data))
+    .catch((error) => res.status(400).json({ error }));
+};
+
+//modify one article
+exports.modifyOneArticle = (req, res, next) => {};
+
+//delete one article
+exports.deleteOneArticle = (req, res, next) => {
+  Article.destroy({ where: { id: req.params.id } })
+    .then(() =>
+      res.status(200).json({ message: "Article supprime avec succes" })
+    )
+    .catch((error) => res.status(400).json({ error }));
 };

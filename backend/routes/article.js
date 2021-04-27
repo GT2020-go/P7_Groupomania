@@ -6,10 +6,10 @@ const auth = require("../middleware/auth");
 
 router.get("/articles", auth, articleCtrl.getarticles);
 router.post("/articles", auth, articleCtrl.createArticle);
-// router.get("/articles/:id", auth, articlesCtrl.getOneArticle);
-// router.put("/articles/:id", auth, multer, articlesCtrl.modifyOneArticle);
-// router.delete("/articles/:id", auth, multer, articlesCtrl.deleteOneArticle);
+router.get("/articles/:id", auth, articleCtrl.getOneArticle);
+router.put("/articles/:id", auth, articleCtrl.modifyOneArticle);
+router.delete("/articles/:id", auth, articleCtrl.deleteOneArticle);
 
-// router.post("/articles/:id/like", auth, articlesCtrl.likes);
+// router.post("/articles/:id/like", auth, articleCtrl.likes);
 
 module.exports = router;

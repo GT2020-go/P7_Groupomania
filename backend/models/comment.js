@@ -9,14 +9,41 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Comment.belongsToMany(Article, {
-        trough: "User",
+      Comment.belongsTo(Article, {
+        onDelete: "SET NULL",
+        onUpdate: "CASCADE",
+        foreignKey: "articleId",
+        TargetKey: "id",
+      });
+      Comment.belongsTo(User, {
+        onDelete: "SET NULL",
+        onUpdate: "CASCADE",
+        foreignKey: "userId",
+        TargetKey: "id",
       });
     }
   }
   Comment.init(
     {
       comment: DataTypes.TEXT,
+      articleId: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        field: "articleId",
+        references: {
+          model: "Articles",
+          key: "id",
+        },
+      },
+      userId: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        field: "userId",
+        references: {
+          model: "Users",
+          key: "id",
+        },
+      },
     },
     {
       sequelize,
