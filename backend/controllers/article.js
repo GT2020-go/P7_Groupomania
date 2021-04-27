@@ -5,12 +5,12 @@ const jwt = require("jsonwebtoken");
 const sequelize = require("sequelize");
 const { articles } = require("../models");
 const db = require("../models");
-const user = require("../models/user");
-const Articles = db.articles;
+// const user = require("../models/user");
+const Article = db.articles;
 
 //display all articles:
 exports.getarticles = (req, res, next) => {
-  Articles.findAll()
+  Article.findAll()
     .then((data) => {
       res.status(200).send(data);
     })
@@ -30,13 +30,17 @@ exports.createArticle = (req, res, next) => {
     image: req.body.image,
     userId: req.body.userId,
   };
-  Articles.create(article)
+
+  console.log("article.userId: " + article.userId);
+
+  Article.create(article)
     .then((data) => {
       res.status(201).send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occurred while creating the User.",
+        message:
+          err.message || "Some error occurred while creating the Article.",
       });
     });
 };

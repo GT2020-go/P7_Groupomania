@@ -9,10 +9,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Article.belongsTo(models.User, {
+      Article.belongsTo(User, {
+        onDelete: "SET NULL",
+        onUpdate: "CASCADE",
         foreignKey: "userId",
-        // as: "userId",
+        TargetKey: "id",
       });
+      Article.hasMany(Comment, { foreignKey: "articleId" });
     }
   }
   Article.init(
@@ -22,12 +25,12 @@ module.exports = (sequelize, DataTypes) => {
       image: DataTypes.BLOB,
       userId: {
         allowNull: false,
+        type: DataTypes.INTEGER,
         field: "userId",
         references: {
           model: "Users",
           key: "id",
         },
-        type: DataTypes.INTEGER,
       },
     },
     {
