@@ -7,6 +7,7 @@ const { articles } = require("../models");
 const db = require("../models");
 // const user = require("../models/user");
 const Article = db.articles;
+const Comment = db.comments;
 
 //display all articles:
 exports.getarticles = (req, res, next) => {
@@ -76,4 +77,24 @@ exports.deleteOneArticle = (req, res, next) => {
       res.status(200).json({ message: "Article supprime avec succes" })
     )
     .catch((error) => res.status(400).json({ error }));
+};
+
+//create comment on article
+exports.createComment = (req, res, next) => {
+  const comment = {
+    comment: req.body.comment,
+    articleId: req.params.id,
+    userId: req.body.userId,
+  };
+
+  Comment.create(comment)
+    .then((data) => {
+      res.status(201).send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the Comment.",
+      });
+    });
 };
