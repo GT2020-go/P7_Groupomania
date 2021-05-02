@@ -26,6 +26,22 @@ db.users = require("./user")(sequelize, Sequelize);
 db.articles = require("./article")(sequelize, Sequelize);
 db.comments = require("./comment")(sequelize, Sequelize);
 db.likes = require("./like")(sequelize, Sequelize);
-db.admins = require("./admin")(sequelize, Sequelize);
+
+//db associations:
+db.articles.belongsTo(db.users, {
+  constraints: false,
+  allowNull: true,
+  defaultValue: null,
+  onDelete: "SET NULL",
+  onUpdate: "CASCADE",
+});
+db.users.hasMany(db.articles, {
+  as: "articles",
+  constraints: false,
+  allowNull: true,
+  defaultValue: null,
+  onDelete: "SET NULL",
+  onUpdate: "CASCADE",
+});
 
 module.exports = db;

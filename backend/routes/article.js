@@ -12,8 +12,15 @@ router.put("/articles/:id", auth, articleCtrl.modifyOneArticle);
 router.delete("/articles/:id", auth, articleCtrl.deleteOneArticle);
 
 //comments
-router.post("/articles/:id/comments", auth, articleCtrl.createComment);
-// router.delete("/articles/:id/comments", auth, articleCtrl.deleteComment);
+router.get("/comments/:id", auth, articleCtrl.getComments);
+
+router.post("/articles/:id/comments", auth, articleCtrl.createComment); //pas article
+
+router.delete(
+  "/articles/:id/comments/:commentId",
+  auth,
+  articleCtrl.deleteOneComment
+);
 
 //likes
 // router.post("/articles/:id/like", auth, articleCtrl.likes);

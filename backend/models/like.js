@@ -17,10 +17,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Like",
+      modelName: "like",
     }
   );
   // the defined model is the class itself
-  console.log("Like: " + (Like === sequelize.models.Like)); // true
+  console.log("Like: " + (Like === sequelize.models.like)); // true
   return Like;
 };

@@ -1,5 +1,6 @@
 "use strict";
 const { Model } = require("sequelize");
+const user = require("./user");
 module.exports = (sequelize, DataTypes) => {
   class Article extends Model {
     /**
@@ -9,13 +10,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Article.belongsTo(User, {
-        onDelete: "SET NULL",
-        onUpdate: "CASCADE",
-        foreignKey: "userId",
-        TargetKey: "id",
-      });
-      Article.hasMany(Comment, { foreignKey: "articleId" });
     }
   }
   Article.init(
@@ -23,29 +17,13 @@ module.exports = (sequelize, DataTypes) => {
       title: DataTypes.STRING,
       content: DataTypes.TEXT,
       image: DataTypes.BLOB,
-      userId: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
-        field: "userId",
-        references: {
-          model: "Users",
-          key: "id",
-        },
-      },
-      comments: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: "Articles",
-          key: "id",
-        },
-      },
     },
     {
       sequelize,
-      modelName: "Article",
+      modelName: "article",
     }
   );
   // the defined model is the class itself
-  console.log("Article: " + (Article === sequelize.models.Article)); // true
+  console.log("Article: " + (Article === sequelize.models.article)); // true
   return Article;
 };

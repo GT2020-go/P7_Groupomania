@@ -9,48 +9,36 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Comment.belongsTo(Article, {
-        onDelete: "SET NULL",
-        onUpdate: "CASCADE",
-        foreignKey: "articleId",
-        TargetKey: "id",
-      });
-      Comment.belongsTo(User, {
-        onDelete: "SET NULL",
-        onUpdate: "CASCADE",
-        foreignKey: "userId",
-        TargetKey: "id",
-      });
     }
   }
   Comment.init(
     {
       comment: DataTypes.TEXT,
-      articleId: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
-        field: "articleId",
-        references: {
-          model: "Articles",
-          key: "id",
-        },
-      },
-      userId: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
-        field: "userId",
-        references: {
-          model: "Users",
-          key: "id",
-        },
-      },
+      // articleId: {
+      //   allowNull: false,
+      //   type: DataTypes.INTEGER,
+      //   field: "articleId",
+      //   references: {
+      //     model: "Articles",
+      //     key: "id",
+      //   },
+      // },
+      // userId: {
+      //   allowNull: false,
+      //   type: DataTypes.INTEGER,
+      //   field: "userId",
+      //   references: {
+      //     model: "Users",
+      //     key: "id",
+      //   },
+      // },
     },
     {
       sequelize,
-      modelName: "Comment",
+      modelName: "comment",
     }
   );
   // the defined model is the class itself
-  console.log("Comment: " + (Comment === sequelize.models.Comment)); // true
+  console.log("Comment: " + (Comment === sequelize.models.comment)); // true
   return Comment;
 };
