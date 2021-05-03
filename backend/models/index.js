@@ -28,6 +28,8 @@ db.comments = require("./comment")(sequelize, Sequelize);
 db.likes = require("./like")(sequelize, Sequelize);
 
 //db associations:
+
+//-----articles associations
 db.articles.belongsTo(db.users, {
   constraints: false,
   allowNull: true,
@@ -43,5 +45,53 @@ db.users.hasMany(db.articles, {
   onDelete: "SET NULL",
   onUpdate: "CASCADE",
 });
+
+//-----comments associations
+db.comments.belongsTo(db.users, {
+  constraints: false,
+  allowNull: true,
+  defaultValue: null,
+  onDelete: "SET NULL",
+  onUpdate: "CASCADE",
+});
+db.comments.belongsTo(db.articles, {
+  // as: "comments",
+  constraints: false,
+  allowNull: true,
+  defaultValue: null,
+  onDelete: "SET NULL",
+  onUpdate: "CASCADE",
+});
+db.articles.hasMany(db.comments, {
+  constraints: false,
+  allowNull: true,
+  defaultValue: null,
+  onDelete: "SET NULL",
+  onUpdate: "CASCADE",
+});
+
+//-----likes associations
+// db.likes.belongsTo(db.users, {
+//   constraints: false,
+//   allowNull: true,
+//   defaultValue: null,
+//   onDelete: "SET NULL",
+//   onUpdate: "CASCADE",
+// });
+// db.likes.belongsTo(db.articles, {
+//   constraints: false,
+//   allowNull: true,
+//   defaultValue: null,
+//   onDelete: "SET NULL",
+//   onUpdate: "CASCADE",
+// });
+// db.articles.hasMany(db.likes, {
+//   as: "likes",
+//   constraints: false,
+//   allowNull: true,
+//   defaultValue: null,
+//   onDelete: "SET NULL",
+//   onUpdate: "CASCADE",
+// });
 
 module.exports = db;
