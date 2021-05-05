@@ -16,6 +16,7 @@ const rateLimit = require("express-rate-limit");
 const userRoutes = require("./routes/user");
 const articleRoutes = require("./routes/article");
 const commentRoutes = require("./routes/comment");
+const likeRoutes = require("./routes/like");
 
 // const path = require("path");
 
@@ -54,5 +55,6 @@ app.use(limiter);
 app.use("/api", commentRoutes);
 app.use("/api", articleRoutes);
 app.use("/api/auth", userRoutes);
+app.use("/api", likeRoutes);
 
 module.exports = app;

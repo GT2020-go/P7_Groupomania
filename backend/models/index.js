@@ -55,7 +55,6 @@ db.comments.belongsTo(db.users, {
   onUpdate: "CASCADE",
 });
 db.comments.belongsTo(db.articles, {
-  // as: "comments",
   constraints: false,
   allowNull: true,
   defaultValue: null,
@@ -70,28 +69,28 @@ db.articles.hasMany(db.comments, {
   onUpdate: "CASCADE",
 });
 
-//-----likes associations
-// db.likes.belongsTo(db.users, {
-//   constraints: false,
-//   allowNull: true,
-//   defaultValue: null,
-//   onDelete: "SET NULL",
-//   onUpdate: "CASCADE",
-// });
-// db.likes.belongsTo(db.articles, {
-//   constraints: false,
-//   allowNull: true,
-//   defaultValue: null,
-//   onDelete: "SET NULL",
-//   onUpdate: "CASCADE",
-// });
-// db.articles.hasMany(db.likes, {
-//   as: "likes",
-//   constraints: false,
-//   allowNull: true,
-//   defaultValue: null,
-//   onDelete: "SET NULL",
-//   onUpdate: "CASCADE",
-// });
+// -----likes associations
+db.likes.belongsTo(db.users, {
+  constraints: false,
+  allowNull: true,
+  defaultValue: null,
+  onDelete: "SET NULL",
+  onUpdate: "CASCADE",
+});
+db.likes.belongsTo(db.articles, {
+  constraints: false,
+  allowNull: true,
+  defaultValue: null,
+  onDelete: "SET NULL",
+  onUpdate: "CASCADE",
+});
+db.articles.hasMany(db.likes, {
+  as: "likes",
+  constraints: false,
+  allowNull: true,
+  defaultValue: null,
+  onDelete: "SET NULL",
+  onUpdate: "CASCADE",
+});
 
 module.exports = db;

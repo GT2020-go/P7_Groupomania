@@ -21,6 +21,10 @@ exports.getArticles = (req, res, next) => {
         model: db.comments,
         as: "comments", //alias needed
       },
+      {
+        model: db.likes, //we want to see all the likes associated to the article
+        as: "likes", //alias needed
+      },
     ],
   })
     .then((data) => {
@@ -55,6 +59,10 @@ exports.createArticle = (req, res, next) => {
         model: db.comments,
         as: "comments", //alias needed
       },
+      {
+        model: db.likes, //we want to see all the likes associated to the article
+        as: "likes", //alias needed
+      },
     ],
   })
     .then((data) => {
@@ -71,22 +79,24 @@ exports.createArticle = (req, res, next) => {
 //get one article
 exports.getOneArticle = (req, res, next) => {
   Article.findOne({
-    where: { id: req.params.id },
+    where: { id: req.params.id }, //we want only the article corresponding to the id in parameter
     include: [
       {
-        model: db.users,
-        // as: "userName", //no need for alias
+        model: db.users, // useless??
       },
       {
-        model: db.comments,
+        model: db.comments, //we want to see all the comments associated to the article
         as: "comments", //alias needed
+      },
+      {
+        model: db.likes, //we want to see all the likes associated to the article
+        as: "likes", //alias needed
       },
     ],
   })
     .then((data) => res.status(200).json(data))
     .catch((error) => res.status(400).json({ error }));
 };
-//check include to get all comments from the article
 
 //modify one article
 exports.modifyOneArticle = (req, res, next) => {

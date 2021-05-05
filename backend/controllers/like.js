@@ -3,29 +3,26 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const sequelize = require("sequelize");
-const { comments } = require("../models");
+const { likes } = require("../models");
 const db = require("../models");
 
-const Comment = db.comments;
+const Like = db.likes;
 
-//create comment on article
-exports.createComment = (req, res, next) => {
-  const comment = {
-    comment: req.body.comment,
-    // articleId: req.params.id,
+//create like on article
+exports.createLike = (req, res, next) => {
+  const like = {
+    like: req.body.like,
     userId: req.body.userId,
     articleId: req.body.articleId,
   };
 
-  Comment.create(comment, {
+  Like.create(like, {
     include: [
       {
         model: db.articles,
-        // as: "articleId",
       },
       {
         model: db.users,
-        // as: "userName",
       },
     ],
   })
@@ -40,13 +37,14 @@ exports.createComment = (req, res, next) => {
     });
 };
 
-//delete one comment
-exports.deleteOneComment = (req, res, next) => {
-  Comment.destroy({
-    where: { id: req.params.id },
-  })
-    .then(() =>
-      res.status(200).json({ message: "Article supprime avec succes" })
-    )
+//modify one like
+exports.modifyLike = (req, res, next) => {
+  const like = req.file
+    ? {
+        ...JSON.parse(req.body.like),
+      }
+    : { ...req.body };
+  Like.update({ ...like, id: req.params.id }, { where: { id: req.params.id } })
+    .then(() => res.status(200).json({ message: "Like modifie avec succes !" }))
     .catch((error) => res.status(400).json({ error }));
 };
