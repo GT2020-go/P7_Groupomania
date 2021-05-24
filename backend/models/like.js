@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Like.init(
     {
-      like: DataTypes.INTEGER,
+      like: { type: DataTypes.BOOLEAN, defaultValue: false },
     },
     {
       sequelize,

@@ -6,6 +6,9 @@ const sequelize = require("sequelize");
 const { articles } = require("../models");
 const db = require("../models");
 
+//import the imageupload file
+const upload = require("../middleware/ImageUpload");
+
 // const user = require("../models/user");
 const Article = db.articles;
 
@@ -53,7 +56,6 @@ exports.createArticle = (req, res, next) => {
     include: [
       {
         model: db.users,
-        // as: "userName", //no need for alias
       },
       {
         model: db.comments,

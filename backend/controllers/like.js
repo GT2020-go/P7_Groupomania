@@ -37,14 +37,9 @@ exports.createLike = (req, res, next) => {
     });
 };
 
-//modify one like
-exports.modifyLike = (req, res, next) => {
-  const like = req.file
-    ? {
-        ...JSON.parse(req.body.like),
-      }
-    : { ...req.body };
-  Like.update({ ...like, id: req.params.id }, { where: { id: req.params.id } })
-    .then(() => res.status(200).json({ message: "Like modifie avec succes !" }))
+//delete one like
+exports.deleteLike = (req, res, next) => {
+  Like.destroy({ where: { id: req.params.id } })
+    .then(() => res.status(200).json({ message: "Like supprime avec succes" }))
     .catch((error) => res.status(400).json({ error }));
 };

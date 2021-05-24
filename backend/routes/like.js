@@ -6,6 +6,6 @@ const auth = require("../middleware/auth");
 
 //likes
 router.post("/likes", auth, likeCtrl.createLike);
-router.put("/likes/:id", auth, likeCtrl.modifyLike);
+router.delete("/likes/:id", auth, likeCtrl.deleteLike);
 
 module.exports = router;

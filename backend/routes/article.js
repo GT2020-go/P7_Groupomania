@@ -3,10 +3,11 @@ const router = express.Router();
 
 const articleCtrl = require("../controllers/article");
 const auth = require("../middleware/auth");
+const imageUpload = require("../middleware/imageUpload");
 
 //articles
 router.get("/articles", auth, articleCtrl.getArticles);
-router.post("/articles", auth, articleCtrl.createArticle);
+router.post("/articles", auth, imageUpload, articleCtrl.createArticle);
 router.get("/articles/:id", auth, articleCtrl.getOneArticle);
 router.put("/articles/:id", auth, articleCtrl.modifyOneArticle);
 router.delete("/articles/:id", auth, articleCtrl.deleteOneArticle);
