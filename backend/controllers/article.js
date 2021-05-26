@@ -6,8 +6,11 @@ const sequelize = require("sequelize");
 const { articles } = require("../models");
 const db = require("../models");
 
-//import the imageupload file
+//dowload to S3
 const upload = require("../middleware/ImageUpload");
+
+// //delete from S3
+// const deleteFromBucket = require("../middleware/ImageDelete");
 
 // const user = require("../models/user");
 const Article = db.articles;
@@ -49,6 +52,8 @@ exports.createArticle = (req, res, next) => {
     image: req.file.location,
     userId: req.body.userId,
   };
+
+  //here we are missing an important thing: image gets uploaded to AWS even when createArticle is returning an error
 
   console.log("article.userId: " + article.userId);
 

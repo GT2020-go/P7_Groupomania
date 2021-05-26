@@ -8,6 +8,8 @@ const db = require("../models");
 
 const Like = db.likes;
 
+const { Op } = require("sequelize");
+
 //create like on article
 exports.createLike = (req, res, next) => {
   const like = {
@@ -16,25 +18,36 @@ exports.createLike = (req, res, next) => {
     articleId: req.body.articleId,
   };
 
-  Like.create(like, {
-    include: [
-      {
-        model: db.articles,
-      },
-      {
-        model: db.users,
-      },
-    ],
+  Like.destroy({
+    where: {
+      [Op.and]: [
+        { userId: req.body.userId },
+        { articleId: req.body.articleId },
+      ],
+    },
   })
-    .then((data) => {
-      res.status(201).send(data);
+    .then(() => {
+      Like.create(like, {
+        include: [
+          {
+            model: db.articles,
+          },
+          {
+            model: db.users,
+          },
+        ],
+      })
+        .then((data) => {
+          res.status(201).send(data);
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message:
+              err.message || "Some error occurred while creating the Like.",
+          });
+        });
     })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Comment.",
-      });
-    });
+    .catch((error) => res.status(400).json({ error }));
 };
 
 //delete one like
