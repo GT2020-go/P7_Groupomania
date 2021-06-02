@@ -1,7 +1,13 @@
 //Adding the dotenv security to hide critical info
 require("dotenv").config();
 
+const sequelize = require("sequelize");
+const { articles } = require("../models");
+const db = require("../models");
+const Article = db.articles;
+
 const aws = require("aws-sdk");
+const article = require("../models/article");
 
 const s3 = new aws.S3({
   secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
@@ -9,20 +15,27 @@ const s3 = new aws.S3({
   region: "us-east-1",
 });
 
-const fileName = "picture";
-
-const imageDelete = () => {
-  const params = {
-    Bucket: "groupomania-files-storage", // pass your bucket name
-    Key: fileName, // file will be saved as testBucket/contacts.csv
-  };
-  s3.deleteObject(params, (err, data) => {
-    if (err) {
-      reject(err);
-    } else {
-      resolve(data);
-    }
-  });
+const imageDelete = (req, res, next) => {
+  Article.findOne({
+    where: { id: req.params.id },
+  })
+    .then((article) => {
+      const params = {
+        Bucket: "groupomania-files-storage",
+        Key: article.image.split("/").slice(-1)[0],
+      };
+      res.status(200).json(params);
+      s3.deleteObject(params, (err, data) => {
+        if (err) {
+          res
+            .status(500)
+            .send({ message: err.message || "some error occured" });
+        } else {
+          next();
+        }
+      });
+    })
+    .catch((error) => res.status(400).json({ error }));
 };
 
 module.exports = imageDelete;

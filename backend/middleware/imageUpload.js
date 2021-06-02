@@ -14,8 +14,18 @@ aws.config.update({
   region: "us-east-1",
 });
 
+const MIME_TYPES = {
+  "image/jpg": "jpg",
+  "image/jpeg": "jpg",
+  "image/png": "png",
+};
+
 const fileFilter = (req, file, cb) => {
-  if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
+  if (
+    file.mimetype === "image/jpg" ||
+    file.mimetype === "image/jpeg" ||
+    file.mimetype === "image/png"
+  ) {
     cb(null, true);
   } else {
     cb(new Error("Invalid file type, only JPEG and PNG is allowed!"), false);
@@ -32,7 +42,9 @@ const upload = multer({
       cb(null, { fieldName: "TESTING_METADATA" });
     },
     key: function (req, file, cb) {
-      cb(null, "picture");
+      const name = file.originalname.split(" ").join("_");
+      const extension = MIME_TYPES[file.mimetype];
+      cb(null, name + Date.now() + "." + extension);
     },
   }),
 });

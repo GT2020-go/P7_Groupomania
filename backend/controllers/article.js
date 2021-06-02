@@ -5,15 +5,11 @@ const jwt = require("jsonwebtoken");
 const sequelize = require("sequelize");
 const { articles } = require("../models");
 const db = require("../models");
+const Article = db.articles;
 
 //dowload to S3
 const upload = require("../middleware/ImageUpload");
-
-// //delete from S3
-// const deleteFromBucket = require("../middleware/ImageDelete");
-
-// const user = require("../models/user");
-const Article = db.articles;
+const imageDelete = require("../middleware/imageDelete");
 
 //display all articles:
 exports.getArticles = (req, res, next) => {
@@ -124,9 +120,19 @@ exports.modifyOneArticle = (req, res, next) => {
 
 //delete one article
 exports.deleteOneArticle = (req, res, next) => {
-  Article.destroy({ where: { id: req.params.id } })
-    .then(() =>
-      res.status(200).json({ message: "Article supprime avec succes" })
-    )
+  Article.findOne({
+    where: { id: req.params.id }, //we want only the article corresponding to the id in parameter
+  })
+    .then((article) => {
+      const fileName = article.image.split("/").slice(-1)[0];
+      imageDelete,
+        () => {
+          Article.destroy({ where: { id: req.params.id } })
+            .then(() =>
+              res.status(200).json({ message: "Article supprime avec succes" })
+            )
+            .catch((error) => res.status(400).json({ error }));
+        };
+    })
     .catch((error) => res.status(400).json({ error }));
 };
