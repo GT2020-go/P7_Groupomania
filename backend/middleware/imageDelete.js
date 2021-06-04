@@ -24,7 +24,6 @@ const imageDelete = (req, res, next) => {
         Bucket: "groupomania-files-storage",
         Key: article.image.split("/").slice(-1)[0],
       };
-      res.status(200).json(params);
       s3.deleteObject(params, (err, data) => {
         if (err) {
           res
