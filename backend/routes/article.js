@@ -20,6 +20,7 @@ router.delete(
   imageDelete,
   articleCtrl.deleteImage
 );
+router.post("/articles/:id/image", auth, imageUpload, articleCtrl.addImage);
 
 router.delete("/articles/:id", auth, imageDelete, articleCtrl.deleteOneArticle);
 
