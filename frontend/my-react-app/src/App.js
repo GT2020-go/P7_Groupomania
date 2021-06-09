@@ -1,9 +1,6 @@
-import React from "react";
 import "./App.css";
-import { Switch, Route, Link } from "react-router-dom";
-
-import loginUser from "./components/loginUser";
-import signupUser from "./components/signupUser";
+import React from "react";
+import SignUpPage from "./pages/signup";
 
 function App() {
   const getGreetingMessage = (name) => {
@@ -12,6 +9,7 @@ function App() {
   return (
     <div>
       <h1>{getGreetingMessage("Gaetan")}</h1>
+      <div>{SignUpPage()}</div>
     </div>
   );
 }
