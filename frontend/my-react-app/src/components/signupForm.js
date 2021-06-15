@@ -7,7 +7,7 @@ const SignUpForm = () => {
   const [password, setPassword] = useState("");
 
   const signUpUser = () => {
-    Axios.post("/api/auth/signup", {
+    Axios.post("/auth/signup", {
       name: name,
       email: email,
       password: password,
