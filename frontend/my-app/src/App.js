@@ -109,6 +109,7 @@ import {
 // import { Navbar } from "./app/Navbar";
 
 import { SignupUser } from "./features/users/SignupUser";
+import { AddUserForm } from "./features/users/AddUserForm";
 
 function App() {
   return (
@@ -121,6 +122,7 @@ function App() {
             path="/"
             render={() => (
               <React.Fragment>
+                <AddUserForm />
                 <SignupUser />
               </React.Fragment>
             )}
