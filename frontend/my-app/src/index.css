@@ -41,6 +41,9 @@ nav{
 main{
   min-height: 80vh;
 }
+#root > nav {
+  background-color: lightcoral;
+}
 footer{
   height: 10vh;
   background-color: aquamarine;

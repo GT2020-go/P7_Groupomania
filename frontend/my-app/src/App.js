@@ -106,15 +106,16 @@ import {
   Redirect,
 } from "react-router-dom";
 
-// import { Navbar } from "./app/Navbar";
+import { Navbar } from "./app/Navbar";
 
-import { SignupUser } from "./features/users/SignupUser";
-import { AddUserForm } from "./features/users/AddUserForm";
+import { PostsList } from "./features/posts/PostsList";
+import { AddPostForm } from "./features/posts/AddPostForm";
+import { SinglePostPage } from "./features/posts/SinglePostPage";
 
 function App() {
   return (
     <Router>
-      {/* <Navbar /> */}
+      <Navbar />
       <div className="App">
         <Switch>
           <Route
@@ -122,11 +123,12 @@ function App() {
             path="/"
             render={() => (
               <React.Fragment>
-                <AddUserForm />
-                <SignupUser />
+                <AddPostForm />
+                <PostsList />
               </React.Fragment>
             )}
           />
+          <Route exact path="/posts/:postId" component={SinglePostPage} />
           <Redirect to="/" />
         </Switch>
       </div>
