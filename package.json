@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "date-fns": "^2.22.1"
+  },
+  "devDependencies": {
+    "miragejs": "^0.1.41"
   }
 }
