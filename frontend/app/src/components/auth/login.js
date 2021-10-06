@@ -12,7 +12,7 @@ import { isEmail } from "validator";
 // import { register } from "../actions/auth";
 
 // import Groupomania's logo:
-import LogoSolo from "../../Groupomania_Logos+(3)/icon.svg";
+import LogoSolo from "../../Groupomania_Logos/icon.svg";
 
 const email = (value) => {
   if (!isEmail(value)) {
@@ -24,18 +24,24 @@ const email = (value) => {
   }
 };
 
-class SignupForm extends React.Component {
+class LoginForm extends React.Component {
   render() {
     return (
-      <form className="form-signup">
+      <form className="form-login">
         <img
-          className="mb-4 centered"
+          className="mb-4 mx-auto d-block"
           src={LogoSolo}
           alt="Logo of Groupomania"
           width={72}
           height={72}
         />
-        <h3 className="mb-3 font-weight-normal">Please sign up</h3>
+        <h3 className="mb-3 font-weight-normal text-center">
+          Welcome <br />
+          Please sign in
+        </h3>
+        <p className="text-center">
+          Not registered yet ? <a href="#">Signup</a> here
+        </p>
         <label htmlFor="inputEmail" className="sr-only">
           Email address
         </label>
@@ -57,13 +63,16 @@ class SignupForm extends React.Component {
           placeholder="*****"
           required
         />
-        <button className="btn btn-lg btn-primary btn-block" type="submit">
-          Sign in
+        <button
+          className="btn btn-lg btn-primary btn-block mx-auto d-block"
+          type="submit"
+        >
+          Login
         </button>
-        <p className="mt-5 mb-3 text-muted">© 2017-2018</p>
+        <p className="mt-5 mb-3 text-muted text-center">© 2021</p>
       </form>
     );
   }
 }
 
-export default SignupForm;
+export default LoginForm;

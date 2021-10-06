@@ -1,1 +1,3 @@
-export const API_URI = "http://localhost:3000/api";
+const API_URL = "http://localhost:3000/api/auth";
+
+export default API_URL;

@@ -1,22 +1,20 @@
-// import logo from "./logo.svg";
+import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.scss";
 
 //componens from Layout:
-import SignupForm from "./components/user/signup";
+import Signup from "./components/auth/signup";
 import Header from "./components/layout/header";
 
-// single bootstrap elements:
-// import Container from "react-bootstrap/Container";
-// import Row from "react-bootstrap/Row";
-// import Col from "react-bootstrap/Col";
-
-const App = () => {
-  return (
-    <div>
-      <Header />
-      <SignupForm />
-    </div>
-  );
-};
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Header />
+        {Signup}
+      </div>
+    );
+  }
+}
 
 export default App;
