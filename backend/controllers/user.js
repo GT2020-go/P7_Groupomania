@@ -27,8 +27,8 @@ exports.signup = (req, res) => {
 
   // Save User in the database
   User.create(user)
-    .then((data) => {
-      res.status(201).send(data);
+    .then(() => {
+      res.status(201).send("User created"); //here we do not send the data because password could be hacked
     })
     .catch((err) => {
       res.status(500).send({
