@@ -50,7 +50,7 @@ const SignUp = () => {
         className="form-control"
         placeholder="John"
         required
-        autofocus
+        autoFocus
         value={user.name}
         onChange={(e) => setUser({ ...user, name: e.target.value })}
       />
@@ -63,7 +63,7 @@ const SignUp = () => {
         className="form-control"
         placeholder="@"
         required
-        autofocus
+        autoFocus
         value={user.email}
         onChange={(e) => setUser({ ...user, email: e.target.value })}
       />

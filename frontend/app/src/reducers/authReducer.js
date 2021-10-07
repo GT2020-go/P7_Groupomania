@@ -1,5 +1,5 @@
 import jwtDecode from "jwt-decode";
-import { SIGN_UP, LOG_IN } from "../constants/userActionType";
+import { SIGN_UP, LOG_IN, LOG_OUT } from "../constants/userActionType";
 const initialState = {
   token: localStorage.getItem("token"),
   name: null,
@@ -28,6 +28,15 @@ const authReducer = (state = initialState, action) => {
         name: user.name,
         email: user.email,
         id: user.id,
+      };
+    case LOG_OUT:
+      localStorage.removeItem("token");
+      console.log("User logged out");
+      return {
+        token: null,
+        name: null,
+        email: null,
+        id: null,
       };
     default:
       return state;

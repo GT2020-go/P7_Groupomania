@@ -1,6 +1,6 @@
 import axios from "axios";
 import API_URL from "../constants/APIConfig";
-import { SIGN_UP, LOG_IN } from "../constants/userActionType";
+import { SIGN_UP, LOG_IN, LOG_OUT } from "../constants/userActionType";
 
 export const signup = (user) => {
   return (dispatch) => {
@@ -23,15 +23,24 @@ export const login = (data) => {
   return (dispatch) => {
     axios
       .post(API_URL + "login", data)
-      .then((token) => {
-        localStorage.setItem("token", token.data);
+      .then((response) => {
+        localStorage.setItem("response", response.data);
+        console.log(JSON.stringify(response.data.token)); //token from the login answer from the backend
         dispatch({
           type: LOG_IN,
-          token: token.data,
+          token: response.data.token,
         });
       })
       .catch((error) => {
         console.log(error.response);
       });
+  };
+};
+
+export const logout = () => {
+  return (dispatch) => {
+    dispatch({
+      type: LOG_OUT,
+    });
   };
 };

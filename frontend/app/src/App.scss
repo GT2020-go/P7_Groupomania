@@ -32,6 +32,7 @@
 //   from {
 //     transform: rotate(0deg);
 //   }
+
 //   to {
 //     transform: rotate(360deg);
 //   }
@@ -39,21 +40,34 @@
 
 // Override default variables before the import
 * {
-  color: red;
-}
+    color: red;
+  }
 
-.form-signup {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
-}
+  .form-signup {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+  }
 
-.form-signup input {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
+  .form-signup input {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .form-login {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+  }
+
+  .form-login input {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
 
 body {
   min-height: 75rem;
