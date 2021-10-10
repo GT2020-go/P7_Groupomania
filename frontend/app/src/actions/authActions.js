@@ -37,6 +37,18 @@ export const login = (data) => {
   };
 };
 
+export const loadUser = () => {
+  return (dispatch, getState) => {
+    const token = getState().auth.token;
+    if (token) {
+      dispatch({
+        type: "USER_LOADED",
+        token,
+      });
+    } else return null;
+  };
+};
+
 export const logout = () => {
   return (dispatch) => {
     dispatch({

@@ -1,0 +1,1 @@
+{"version":3,"sourceRoot":"","sources":["../../src/sass/base/_reset.scss","../../src/sass/components/_article.scss","../../src/sass/components/_formSignup.scss","../../src/sass/components/_formLogin.scss"],"names":[],"mappings":"AACA;EACI;EACA;;;ACHJ;EACI;;;ACDJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;ACVJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA","file":"main.css.map"}

@@ -1,5 +1,10 @@
-* {
-  color: red;
+body {
+  min-height: 75rem;
+  padding-top: 4.5rem;
+}
+
+#articleId {
+  color: green;
 }
 
 .form-signup {
@@ -26,10 +31,4 @@
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-}
-
-body {
-  min-height: 75rem;
-  padding-top: 4.5rem;
-}
-/*# sourceMappingURL=App.css.map */
+}/*# sourceMappingURL=main.css.map */

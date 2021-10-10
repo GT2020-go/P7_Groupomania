@@ -1,6 +1,7 @@
 import jwtDecode from "jwt-decode";
 import { SIGN_UP, LOG_IN, LOG_OUT } from "../constants/userActionType";
 const initialState = {
+  loggedIn: false,
   token: localStorage.getItem("token"),
   name: null,
   email: null,
@@ -12,18 +13,18 @@ const authReducer = (state = initialState, action) => {
       console.log("Welcome...");
       console.log(user);
       return {
-        ...initialState,
-        token: action.token,
-        name: user.name,
-        email: user.email,
-        id: user.id,
+        ...state,
+        loggedIn: false,
+        token: null,
       };
     case LOG_IN:
+    case "USERLOADED":
       console.log("User logged in");
       const user = jwtDecode(action.token);
-      console.log(user);
+      console.log(JSON.stringify(user));
       return {
-        ...initialState,
+        ...state,
+        loggedIn: true,
         token: action.token,
         name: user.name,
         email: user.email,
