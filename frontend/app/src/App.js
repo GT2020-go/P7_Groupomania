@@ -9,8 +9,8 @@ import Nav from "./components/layout/Nav";
 import SignUp from "./components/auth/Signup";
 import LogIn from "./components/auth/Login";
 import Profile from "./components/user/profile";
-import ArticlesList from "./components/articles/ArticlesList";
 import { loadUser } from "./actions/authActions";
+import Articles from "./components/articles/Articles";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ function App() {
           <Route path="/signup" component={SignUp} />
           <Route path="/login" component={LogIn} />
           <Route path="/profile" component={Profile} />
-          <Route path="/articles" component={ArticlesList} />
+          <Route path="/articles" component={Articles} />
         </Switch>
       </BrowserRouter>
     </>

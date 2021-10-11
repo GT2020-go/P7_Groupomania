@@ -2,17 +2,25 @@ import React from "react";
 
 import Logo from "../../Groupomania_Logos/icon-left-font_no bg.svg";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
-class Nav extends React.Component {
-  render() {
-    return (
+const Nav = () => {
+  const history = useHistory();
+  const handleSignOut = () => {
+    //Signout the user
+
+    // then send him back to login page
+    history.push("/login");
+  };
+  return (
+    <>
       <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div className="container-fluid">
           <Link to="/articles" className="navbar-brand">
             <img
               src={Logo}
-              width={240}
+              width={180}
               className="d-inline-block"
               alt="Groupomania"
             />
@@ -48,12 +56,18 @@ class Nav extends React.Component {
                   Log In
                 </Link>
               </li>
+              <li className="nav-item">
+                <Button onClick={() => handleSignOut()} className="nav-link ">
+                  Sign out
+                </Button>
+              </li>
             </ul>
+            <div className="nav-item navbar-text text-secondary">Username</div>
           </div>
         </div>
       </nav>
-    );
-  }
-}
+    </>
+  );
+};
 
 export default Nav;
