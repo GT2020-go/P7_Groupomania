@@ -9,7 +9,7 @@ const Nav = () => {
   const history = useHistory();
   const handleSignOut = () => {
     //Signout the user
-
+    localStorage.removeItem("auth");
     // then send him back to login page
     history.push("/login");
   };

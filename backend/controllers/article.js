@@ -155,8 +155,6 @@ exports.addImage = (req, res, next) => {
       where: { id: req.params.id },
     }
   )
-    .then(() =>
-      res.status(200).json({ message: "Image supprimee avec succes" })
-    )
+    .then(() => res.status(200).json({ message: "Image ajoutee avec succes" }))
     .catch((error) => res.status(400).json({ error }));
 };
