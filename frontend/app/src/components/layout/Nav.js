@@ -5,12 +5,14 @@ import Logo from "../../Groupomania_Logos/icon-left-font_no bg.svg";
 import { Link, useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
+import { logout } from "../../actions/authActions";
+
 const Nav = () => {
   const history = useHistory();
   const handleSignOut = () => {
-    //Signout the user
-    localStorage.removeItem("auth");
-    // then send him back to login page
+    //Signout the user:
+    logout();
+    // then send him back to login page:
     history.push("/login");
   };
   return (

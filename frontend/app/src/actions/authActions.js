@@ -6,11 +6,10 @@ export const signup = (user) => {
   return (dispatch) => {
     axios
       .post(API_URL + "auth/signup", user)
-      .then((token) => {
-        localStorage.setItem("token", token.data);
+      .then((auth) => {
         dispatch({
           type: SIGN_UP,
-          token: token.data,
+          auth: auth.data,
         });
       })
       .catch((error) => {
@@ -24,10 +23,12 @@ export const login = (data) => {
     axios
       .post(API_URL + "auth/login", data)
       .then((response) => {
-        localStorage.setItem("auth", response.data.token); //token from the login answer from the backend
+        localStorage.setItem("auth", response.data.token);
+        localStorage.setItem("userId", response.data.userId); //data from the login answer from the backend
         dispatch({
           type: LOG_IN,
-          token: response.data.token,
+          auth: response.data.token,
+          userId: response.data.userId,
         });
       })
       .catch((error) => {
@@ -38,19 +39,19 @@ export const login = (data) => {
 
 export const loadUser = () => {
   return (dispatch, getState) => {
-    const auth = getState().auth.auth;
-    if (auth) {
+    const token = getState().auth.token;
+    if (token) {
       dispatch({
         type: "USER_LOADED",
-        auth,
+        token,
       });
     } else return null;
   };
 };
 
 export const logout = () => {
+  localStorage.clear();
   return (dispatch) => {
-    localStorage.removeItem("auth");
     dispatch({
       type: LOG_OUT,
     });

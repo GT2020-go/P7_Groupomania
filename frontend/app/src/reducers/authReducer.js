@@ -2,7 +2,7 @@ import jwtDecode from "jwt-decode";
 import { SIGN_UP, LOG_IN, LOG_OUT } from "../constants/userActionType";
 const initialState = {
   loggedIn: false,
-  token: localStorage.getItem("token"),
+  token: localStorage.getItem("auth"),
   name: null,
   email: null,
   id: null,
@@ -10,18 +10,15 @@ const initialState = {
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case SIGN_UP:
-      console.log("Welcome...");
-      console.log(user);
+      console.log("User signed up");
       return {
         ...state,
         loggedIn: false,
         token: null,
       };
     case LOG_IN:
-    case "USERLOADED":
       console.log("User logged in");
       const user = jwtDecode(action.token);
-      console.log(JSON.stringify(user));
       return {
         ...state,
         loggedIn: true,
@@ -30,6 +27,18 @@ const authReducer = (state = initialState, action) => {
         email: user.email,
         id: user.id,
       };
+    // case "USER_LOADED":
+    //   console.log("User logged in");
+    //   const user = jwtDecode(action.token);
+    //   console.log(JSON.stringify(user));
+    //   return {
+    //     ...state,
+    //     loggedIn: true,
+    //     token: action.token,
+    //     name: user.name,
+    //     email: user.email,
+    //     id: user.id,
+    //   };
     case LOG_OUT:
       localStorage.removeItem("token");
       console.log("User logged out");

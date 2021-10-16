@@ -8,7 +8,7 @@ export const addArticle = (article) => {
     axios
       .post(API_URL + "articles", article, {
         headers: {
-          Authorization: "Bearer",
+          Authorization: "Bearer " + localStorage.getItem("auth"),
         },
       })
       .then((article) => {

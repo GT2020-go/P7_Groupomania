@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { login } from "../../actions/authActions";
 
+import { useHistory } from "react-router-dom";
+
 //import logos:
 import LogoSolo from "../../Groupomania_Logos/icon.svg";
 
@@ -17,11 +19,12 @@ const LogIn = () => {
   const state = useSelector((state) => state);
   console.log(state);
   const [data, setData] = useState(dataInitialState);
-
+  const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault(); // prevent browser from refreshing
     dispatch(login(data));
     setData(dataInitialState);
+    history.push("/");
   };
 
   return (

@@ -4,30 +4,29 @@ import { useDispatch } from "react-redux";
 import { addArticle } from "../../actions/articleActions";
 
 // Define the article - initial state:
-const articleInitialState = {
-  title: "",
-  content: "",
-  image: "",
-  userId: 1, //to get from the store
-};
+// const articleInitialState = {
+//   title: "",
+//   content: "",
+//   image: null,
+//   userId: "", //to get from the store
+// };
 
 const AddArticle = () => {
-  const [article, setArticle] = useState(articleInitialState);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [image, setImage] = useState(null);
+
+  const article = new FormData();
+  article.append("title", title);
+  article.append("content", content);
+  article.append("image", image);
+  article.append("userId", localStorage.getItem("userId"));
 
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     dispatch(addArticle(article));
-    setArticle(articleInitialState);
-  };
-
-  const handleFile = (e) => {
-    e.preventDefault();
-    let image = e.target.files[0];
-    console.log(image);
-    return image;
   };
 
   return (
@@ -51,9 +50,8 @@ const AddArticle = () => {
                   name="title"
                   placeholder="Give your post a title..."
                   className="form-control articleTitle"
-                  onChange={(e) =>
-                    setArticle({ ...article, title: e.target.value })
-                  }
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
                   autoFocus
                 />
                 <textarea
@@ -61,10 +59,8 @@ const AddArticle = () => {
                   name="content"
                   placeholder="Share something with your colleagues..."
                   className="form-control articleContent"
-                  value={article.content}
-                  onChange={(e) =>
-                    setArticle({ ...article, content: e.target.value })
-                  }
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
                 />
                 <div className="actions">
                   <div className="btn-group d-flex justify-content-between">
@@ -76,13 +72,11 @@ const AddArticle = () => {
                         data-original-title="AddImage"
                       >
                         <input
-                          id="file"
-                          name="file"
+                          id="image"
+                          name="image"
                           type="file"
-                          // value={article.image}
-                          onChange={(e) =>
-                            setArticle({ ...article, image: handleFile(e) })
-                          }
+                          // value={image}
+                          onChange={(e) => setImage(e.target.files[0])}
                         />
                         <span className="material-icons-outlined">image</span>
                       </button>
