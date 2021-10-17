@@ -46,7 +46,7 @@ exports.createArticle = (req, res, next) => {
   const article = {
     title: req.body.title,
     content: req.body.content,
-    image: req.file.location,
+    image: req.file ? req.file.location : null,
     userId: req.body.userId,
   };
 

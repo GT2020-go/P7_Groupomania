@@ -19,6 +19,7 @@ const authReducer = (state = initialState, action) => {
     case LOG_IN:
       console.log("User logged in");
       const user = jwtDecode(action.token);
+      console.log(user);
       return {
         ...state,
         loggedIn: true,

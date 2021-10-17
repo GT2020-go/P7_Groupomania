@@ -1,9 +1,8 @@
 import axios from "axios";
 import API_URL from "../constants/APIConfig";
-import { ADD_ARTICLE } from "../constants/articleActionType";
+import { ADD_ARTICLE, GET_ARTICLES } from "../constants/articleActionType";
 
 export const addArticle = (article) => {
-  console.log(article.image);
   return (dispatch, getState) => {
     axios
       .post(API_URL + "articles", article, {
@@ -15,6 +14,26 @@ export const addArticle = (article) => {
         dispatch({
           type: ADD_ARTICLE,
           article,
+        });
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
+};
+
+export const getArticles = () => {
+  return (dispatch) => {
+    axios
+      .get(API_URL + "articles", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("auth"),
+        },
+      })
+      .then((articles) => {
+        dispatch({
+          type: GET_ARTICLES,
+          articles,
         });
       })
       .catch((error) => {

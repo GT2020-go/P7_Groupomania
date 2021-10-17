@@ -3,14 +3,6 @@ import { useDispatch } from "react-redux";
 
 import { addArticle } from "../../actions/articleActions";
 
-// Define the article - initial state:
-// const articleInitialState = {
-//   title: "",
-//   content: "",
-//   image: null,
-//   userId: "", //to get from the store
-// };
-
 const AddArticle = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -20,13 +12,16 @@ const AddArticle = () => {
   article.append("title", title);
   article.append("content", content);
   article.append("image", image);
-  article.append("userId", localStorage.getItem("userId"));
+  article.append("userId", localStorage.getItem("userId")); // get userId from store
 
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     dispatch(addArticle(article));
+    // setTitle("");
+    // setContent("");
+    // setImage(null);
   };
 
   return (
