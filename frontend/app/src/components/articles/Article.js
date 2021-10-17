@@ -1,5 +1,8 @@
 import React from "react";
 
+//moment is a package that provides date formats
+import moment from "moment";
+
 const Article = ({ article }) => {
   return (
     <>
@@ -16,20 +19,28 @@ const Article = ({ article }) => {
                     className="rounded-circle"
                   />
                   <div className="d-flex flex-column ml-2">
-                    <span className="font-weight-bold">{article.title}</span>
-                    <small className="text-primary">Collegues</small>
+                    <span className="font-weight-bold">
+                      {article.user.name}
+                    </span>
+                    <a
+                      href={`mailto:${article.user.email}`}
+                      className="text-primary"
+                      target="_blank"
+                    >
+                      {article.user.email}
+                    </a>
                   </div>
                 </div>
                 <div className="d-flex flex-row mt-1 ellipsis">
-                  <small className="mr-2">20 mins</small>
+                  <small className="mr-2">
+                    {moment(article.updatedAt).fromNow()}
+                  </small>
                   <i className="fa fa-ellipsis-h" />
                 </div>
               </div>
-              <img
-                src="https://i.imgur.com/xhzhaGA.jpg"
-                className="img-fluid"
-              />
+              <img src={article.image} className="img-fluid" />
               <div className="p-2">
+                <h4>{article.title}</h4>
                 <p className="text-justify">{article.content}</p>
                 <hr />
                 <div className="d-flex justify-content-between align-items-center">
