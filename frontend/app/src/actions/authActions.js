@@ -24,7 +24,9 @@ export const login = (data) => {
       .post(API_URL + "auth/login", data)
       .then((response) => {
         localStorage.setItem("auth", response.data.token);
-        localStorage.setItem("userId", response.data.userId); //data from the login answer from the backend
+        localStorage.setItem("userId", response.data.userId);
+        console.log(localStorage.getItem("auth"));
+        //data from the login answer from the backend
         dispatch({
           type: LOG_IN,
           auth: response.data.token,

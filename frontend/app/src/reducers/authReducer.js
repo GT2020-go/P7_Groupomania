@@ -18,15 +18,11 @@ const authReducer = (state = initialState, action) => {
       };
     case LOG_IN:
       console.log("User logged in");
-      const user = jwtDecode(action.token);
-      console.log(user);
+      console.log(localStorage.getItem("auth"));
       return {
         ...state,
         loggedIn: true,
         token: action.token,
-        name: user.name,
-        email: user.email,
-        id: user.id,
       };
     // case "USER_LOADED":
     //   console.log("User logged in");

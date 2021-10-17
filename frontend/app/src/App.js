@@ -27,6 +27,8 @@ function App() {
           <Route path="/signup" component={SignUp} />
           <Route path="/login" component={LogIn} />
           <Route path="/profile" component={Profile} />
+        </Switch>
+        <Switch>
           <Route path="/articles" component={Articles} />
           <Route path="/" component={Articles} />
         </Switch>
