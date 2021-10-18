@@ -24,7 +24,6 @@ export const login = (data) => {
       .post(API_URL + "auth/login", data)
       .then((response) => {
         localStorage.setItem("auth", response.data.token);
-        localStorage.setItem("userId", response.data.userId);
         console.log(localStorage.getItem("auth"));
         //data from the login answer from the backend
         dispatch({
@@ -39,13 +38,15 @@ export const login = (data) => {
   };
 };
 
-export const loadUser = () => {
+export const connectedUser = () => {
   return (dispatch, getState) => {
-    const token = getState().auth.token;
-    if (token) {
+    const currentUser = getState().auth;
+    const auth = localStorage.getItem("auth");
+    if (auth) {
       dispatch({
-        type: "USER_LOADED",
-        token,
+        type: "USER_CONNECTED",
+        token: currentUser.token,
+        id: currentUser.id,
       });
     } else return null;
   };

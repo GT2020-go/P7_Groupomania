@@ -1,4 +1,4 @@
-import React, { component, useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { signup } from "../../actions/authActions";
@@ -12,6 +12,7 @@ const userInitialState = {
   name: "",
   email: "",
   password: "",
+  id: "",
 };
 
 const SignUp = () => {

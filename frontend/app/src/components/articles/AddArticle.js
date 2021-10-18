@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { addArticle } from "../../actions/articleActions";
 
@@ -8,12 +8,13 @@ const AddArticle = () => {
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
 
+  const userId = useSelector((state) => state.auth.id); // get userId from store
+
   const article = new FormData();
   article.append("title", title);
   article.append("content", content);
   article.append("image", image);
-  article.append("userId", localStorage.getItem("userId")); // get userId from store
-
+  article.append("userId", userId);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {

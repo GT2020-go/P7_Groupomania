@@ -17,6 +17,7 @@ const Article = ({ article }) => {
                     src="https://i.imgur.com/UXdKE3o.jpg"
                     width={50}
                     className="rounded-circle"
+                    alt="profile_picture"
                   />
                   <div className="d-flex flex-column ml-2">
                     <span className="font-weight-bold">
@@ -26,6 +27,7 @@ const Article = ({ article }) => {
                       href={`mailto:${article.user.email}`}
                       className="text-primary"
                       target="_blank"
+                      rel="noreferrer"
                     >
                       {article.user.email}
                     </a>
@@ -38,7 +40,11 @@ const Article = ({ article }) => {
                   <i className="fa fa-ellipsis-h" />
                 </div>
               </div>
-              <img src={article.image} className="img-fluid" />
+              <img
+                src={article.image}
+                className="img-fluid"
+                alt={article.image}
+              />
               <div className="p-2">
                 <h4>{article.title}</h4>
                 <p className="text-justify">{article.content}</p>
@@ -59,6 +65,7 @@ const Article = ({ article }) => {
                       src="https://i.imgur.com/9AZ2QX1.jpg"
                       width={40}
                       className="rounded-image"
+                      alt="default_img"
                     />
                     <div className="d-flex flex-column ml-2">
                       <span className="name">Daniel Frozer</span>
@@ -76,6 +83,7 @@ const Article = ({ article }) => {
                       src="https://i.imgur.com/1YrCKa1.jpg"
                       width={40}
                       className="rounded-image"
+                      alt="default_img"
                     />
                     <div className="d-flex flex-column ml-2">
                       <span className="name">Elizabeth goodmen</span>

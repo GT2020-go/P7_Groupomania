@@ -1,4 +1,4 @@
-import React, { component, useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { login } from "../../actions/authActions";
@@ -17,7 +17,6 @@ const dataInitialState = {
 const LogIn = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
-  console.log(state);
   const [data, setData] = useState(dataInitialState);
   const history = useHistory();
   const handleSubmit = (e) => {

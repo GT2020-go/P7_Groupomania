@@ -9,14 +9,14 @@ import Nav from "./components/layout/Nav";
 import SignUp from "./components/auth/Signup";
 import LogIn from "./components/auth/Login";
 import Profile from "./components/user/profile";
-import { loadUser } from "./actions/authActions";
+import { connectedUser } from "./actions/authActions";
 import Articles from "./components/articles/Articles";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadUser());
+    dispatch(connectedUser());
   }, [dispatch]);
 
   return (
