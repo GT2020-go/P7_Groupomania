@@ -12,7 +12,7 @@ import Profile from "./components/user/profile";
 import { connectedUser } from "./actions/authActions";
 import Articles from "./components/articles/Articles";
 
-function App() {
+const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,10 +31,11 @@ function App() {
         <Switch>
           <Route path="/articles" component={Articles} />
           <Route path="/" component={Articles} />
+          <Route path="" component={Articles} />
         </Switch>
       </BrowserRouter>
     </>
   );
-}
+};
 
 export default App;

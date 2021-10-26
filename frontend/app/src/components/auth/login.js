@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { login } from "../../actions/authActions";
 
@@ -16,11 +16,12 @@ const dataInitialState = {
 
 const LogIn = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
+  // const state = useSelector((state) => state);
   const [data, setData] = useState(dataInitialState);
   const history = useHistory();
   const handleSubmit = (e) => {
-    e.preventDefault(); // prevent browser from refreshing
+    // e.preventDefault(); // prevent browser from refreshing
+    console.log(login(data));
     dispatch(login(data));
     setData(dataInitialState);
     history.push("/");

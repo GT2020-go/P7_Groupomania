@@ -3,15 +3,16 @@ import React from "react";
 //moment is a package that provides date formats
 import moment from "moment";
 
+import Comments from "../comments/Comments";
+
 const Article = ({ article }) => {
   return (
     <>
-      <h4>Article (1) component</h4>
-      <div className="container mt-5 mb-5" id="article">
+      <div className="container mt-5 mb-5" id={article.id}>
         <div className="row d-flex align-items-center justify-content-center">
           <div className="col-md-6">
             <div className="card">
-              <div className="d-flex justify-content-between p-2 px-3">
+              <div className="d-flex justify-content-between">
                 <div className="d-flex flex-row align-items-center">
                   <img
                     src="https://i.imgur.com/UXdKE3o.jpg"
@@ -59,50 +60,7 @@ const Article = ({ article }) => {
                   </div>
                 </div>
                 <hr />
-                <div className="comments">
-                  <div className="d-flex flex-row mb-2">
-                    <img
-                      src="https://i.imgur.com/9AZ2QX1.jpg"
-                      width={40}
-                      className="rounded-image"
-                      alt="default_img"
-                    />
-                    <div className="d-flex flex-column ml-2">
-                      <span className="name">Daniel Frozer</span>
-                      <small className="comment-text">
-                        I like this alot! thanks alot
-                      </small>
-                      <div className="d-flex flex-row align-items-center status">
-                        <small>Like</small> <small>Reply</small>
-                        <small>Translate</small> <small>18 mins</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="d-flex flex-row mb-2">
-                    <img
-                      src="https://i.imgur.com/1YrCKa1.jpg"
-                      width={40}
-                      className="rounded-image"
-                      alt="default_img"
-                    />
-                    <div className="d-flex flex-column ml-2">
-                      <span className="name">Elizabeth goodmen</span>
-                      <small className="comment-text">
-                        Thanks for sharing!
-                      </small>
-                      <div className="d-flex flex-row align-items-center status">
-                        <small>Like</small> <small>Reply</small>
-                        <small>Translate</small> <small>8 mins</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="comment-input">
-                    <input type="text" className="form-control" />
-                    <div className="fonts">
-                      <i className="fa fa-camera" />
-                    </div>
-                  </div>
-                </div>
+                <Comments articleId={article.id} />
               </div>
             </div>
           </div>

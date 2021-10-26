@@ -1,5 +1,7 @@
-import jwtDecode from "jwt-decode";
 import { SIGN_UP, LOG_IN, LOG_OUT } from "../constants/userActionType";
+
+import jwtDecode from "jwt-decode";
+
 const initialState = {
   token: localStorage.getItem("auth") ? localStorage.getItem("auth") : null,
   name: null,
@@ -22,10 +24,11 @@ const authReducer = (state = initialState, action) => {
         id: action.userId,
       };
     case "USER_CONNECTED":
+      const user = jwtDecode(action.token);
       return {
         ...state,
-        token: action.auth,
-        id: action.userId,
+        token: action.token,
+        id: user.userId,
       };
     case LOG_OUT:
       localStorage.clear();

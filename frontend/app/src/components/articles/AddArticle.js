@@ -20,9 +20,6 @@ const AddArticle = () => {
   const handleSubmit = (e) => {
     // e.preventDefault();
     dispatch(addArticle(article));
-    // setTitle("");
-    // setContent("");
-    // setImage(null);
   };
 
   return (
@@ -71,7 +68,6 @@ const AddArticle = () => {
                           id="image"
                           name="image"
                           type="file"
-                          // value={image}
                           onChange={(e) => setImage(e.target.files[0])}
                         />
                         <span className="material-icons-outlined">image</span>
@@ -97,11 +93,3 @@ const AddArticle = () => {
 };
 
 export default AddArticle;
-
-// const formData = new FormData();
-//       if (this.file !== null) {
-//         formData.append("userId", this.$store.state.user.userId);
-//         formData.append("title", this.title);
-//         formData.append("content", this.content);
-//         formData.append("imageUrl", this.selectedFile);
-//       }

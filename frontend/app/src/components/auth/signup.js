@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { signup } from "../../actions/authActions";
 
@@ -17,7 +17,7 @@ const userInitialState = {
 
 const SignUp = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
+  // const state = useSelector((state) => state);
   const [user, setUser] = useState(userInitialState);
 
   const history = useHistory();

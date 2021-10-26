@@ -2,6 +2,8 @@ import axios from "axios";
 import API_URL from "../constants/APIConfig";
 import { SIGN_UP, LOG_IN, LOG_OUT } from "../constants/userActionType";
 
+import jwtDecode from "jwt-decode";
+
 export const signup = (user) => {
   return (dispatch) => {
     axios
@@ -40,13 +42,11 @@ export const login = (data) => {
 
 export const connectedUser = () => {
   return (dispatch, getState) => {
-    const currentUser = getState().auth;
-    const auth = localStorage.getItem("auth");
-    if (auth) {
+    const token = getState().auth.token;
+    if (token) {
       dispatch({
         type: "USER_CONNECTED",
-        token: currentUser.token,
-        id: currentUser.id,
+        token,
       });
     } else return null;
   };
