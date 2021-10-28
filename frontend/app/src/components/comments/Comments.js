@@ -2,12 +2,12 @@ import React from "react";
 import AddComment from "./AddComment";
 import ListComments from "./ListComments";
 
-const Comments = ({ articleId }) => {
+const Comments = ({ articleId, comments }) => {
   return (
     <>
       <h1>Comments component</h1>
       <AddComment articleId={articleId} />
-      <ListComments />
+      <ListComments comments={comments} />
     </>
   );
 };

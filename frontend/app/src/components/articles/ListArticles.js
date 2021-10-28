@@ -19,7 +19,13 @@ const ListArticles = () => {
       <h3>articles listed here below:</h3>
       {articles &&
         articles.map((article) => {
-          return <Article article={article} key={article.id} />;
+          return (
+            <Article
+              article={article}
+              key={article.id}
+              comments={article.comments}
+            />
+          );
         })}
     </>
   );

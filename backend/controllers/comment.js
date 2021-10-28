@@ -17,6 +17,8 @@ exports.createComment = (req, res, next) => {
     articleId: req.body.articleId,
   };
 
+  console.log(req.body);
+
   Comment.create(comment, {
     include: [
       {

@@ -21,9 +21,12 @@ const likeRoutes = require("./routes/like");
 // const path = require("path");
 
 const db = require("./models");
-db.sequelize.sync({
-  force: true,
-});
+
+//running the code below will execute DROP TABLE IF EXISTS everytime we restart the server:
+
+// db.sequelize.sync({
+//   force: true,
+// });
 
 const app = express();
 

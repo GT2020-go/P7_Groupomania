@@ -60,7 +60,7 @@ const Article = ({ article }) => {
                   </div>
                 </div>
                 <hr />
-                <Comments articleId={article.id} />
+                <Comments articleId={article.id} comments={article.comments} />
               </div>
             </div>
           </div>

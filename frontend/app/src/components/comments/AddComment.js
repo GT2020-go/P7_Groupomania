@@ -7,24 +7,29 @@ const AddComment = ({ articleId }) => {
   const [comment, setComment] = useState("");
   const userId = useSelector((state) => state.auth.id); // get userId from store
 
-  const commentData = new FormData();
-  commentData.append("comment", comment);
-  commentData.append("userId", userId);
-  commentData.append("articleId", articleId);
+  const commentData = { comment, userId, articleId };
+
+  console.log(comment);
+
   const dispatch = useDispatch();
 
   const id = articleId;
 
   //--------------------- to update below
   const handleSubmit = (e) => {
-    // e.preventDefault();
-    dispatch(addComment(comment));
+    e.preventDefault();
+    console.log(commentData);
+    dispatch(addComment(commentData));
   };
 
   return (
     <>
-      <form className="comment-input" onSubmit={handleSubmit} id={id}>
-        <div class="d-flex flex-row">
+      <form
+        className="comment-input addComment"
+        onSubmit={handleSubmit}
+        id={id}
+      >
+        <div className="d-flex flex-row">
           <input
             type="text"
             className="form-control"
