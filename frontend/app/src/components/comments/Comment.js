@@ -1,13 +1,12 @@
 import React from "react";
 
+//moment is a package that provides date formats
+import moment from "moment";
+
 const Comment = ({ comment }) => {
-  // console.log(commentData);
-  // let comm = commentData.map((data) => data);
-  // console.log(comm);
-  // console.log(comm.map((data) => data.comment));
   return (
     <>
-      <div className="comments">
+      <div className="comments" id={comment.id}>
         <div className="d-flex flex-row mb-2">
           <img
             src="https://i.imgur.com/9AZ2QX1.jpg"
@@ -19,8 +18,9 @@ const Comment = ({ comment }) => {
             <span className="name">userId: {comment.userId}</span>
             <small className="comment-text">{comment.comment}</small>
             <div className="d-flex flex-row align-items-center status">
-              <small>Like</small> <small>Reply</small>
-              <small>Translate</small> <small>18 mins</small>
+              <small>Like </small> <small>Reply </small>
+              <small>Translate </small>
+              <small>{moment(comment.updatedAt).fromNow()}</small>
             </div>
           </div>
         </div>

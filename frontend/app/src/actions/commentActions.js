@@ -22,23 +22,3 @@ export const addComment = (comment) => {
       });
   };
 };
-
-// export const getComments = () => {
-//   return (dispatch) => {
-//     axios
-//       .get(API_URL + "comments", {
-//         headers: {
-//           Authorization: "Bearer " + localStorage.getItem("auth"),
-//         },
-//       })
-//       .then((comments) => {
-//         dispatch({
-//           type: GET_COMMENTS,
-//           comments,
-//         });
-//       })
-//       .catch((error) => {
-//         console.log(error.response);
-//       });
-//   };
-// };

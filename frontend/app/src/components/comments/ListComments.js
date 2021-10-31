@@ -29,7 +29,6 @@ const ListComments = ({ articleId }) => {
         comms.map((comment) => {
           return <Comment comment={comment} />;
         })}
-      <div>blabla</div>
     </>
   );
 };

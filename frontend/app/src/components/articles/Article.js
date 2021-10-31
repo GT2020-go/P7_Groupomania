@@ -56,7 +56,7 @@ const Article = ({ article }) => {
                     <i className="fa fa-smile-o ml-2" />
                   </div>
                   <div className="d-flex flex-row muted-color">
-                    <span>2 comments</span> <span className="ml-2">Share</span>
+                    <span>{article.comments.length} comments</span>
                   </div>
                 </div>
                 <hr />
