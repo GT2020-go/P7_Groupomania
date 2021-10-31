@@ -2,42 +2,36 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Comment from "./Comment";
-import Article from "../articles/Article";
 
-import { getArticles } from "../../actions/commentActions";
+const ListComments = ({ articleId }) => {
+  console.log(articleId);
 
-const ListComments = () => {
-  const dispatch = useDispatch();
-  const articles = useSelector((state) => state.articles);
-  console.log("articles: " + JSON.stringify(articles));
+  // const commentsData = useSelector(
+  //   (state) => state.articles.articleId.comments
+  // );
 
-  const comments = articles.map((article) => {
-    console.log("comments " + JSON.stringify(article.comments));
-    return article.comments;
-  });
+  const articleData = useSelector((state) => state.articles[articleId - 1]);
 
-  const comment = comments.map((comment) => {
-    console.log("Comment: " + JSON.stringify(comment.comment));
-    return comment.comment;
-  });
-  console.log("hello: " + JSON.stringify(comment));
+  console.log(articleData);
 
+  const comms = articleData.comments;
+
+  console.log(comms);
+
+  const commentContent = comms.map((comment) => comms.comment);
+
+  console.log(commentContent);
+
+  // console.log(JSON.stringify(commentsData));
   return (
     <>
-      {comments &&
-        comments.map((comment) => {
+      {comms &&
+        comms.map((comment) => {
           return <Comment comment={comment} />;
         })}
+      <div>blabla</div>
     </>
   );
 };
 
 export default ListComments;
-
-// {articles &&
-//   articles.map((article) => {
-//     return (
-//       <Article
-//         article={article}
-//         key={article.id}
-//         comments={article.comments}

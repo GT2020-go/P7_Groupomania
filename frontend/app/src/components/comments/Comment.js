@@ -1,6 +1,10 @@
 import React from "react";
 
 const Comment = ({ comment }) => {
+  // console.log(commentData);
+  // let comm = commentData.map((data) => data);
+  // console.log(comm);
+  // console.log(comm.map((data) => data.comment));
   return (
     <>
       <div className="comments">

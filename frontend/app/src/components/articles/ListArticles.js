@@ -7,7 +7,6 @@ import { getArticles } from "../../actions/articleActions";
 const ListArticles = () => {
   const dispatch = useDispatch();
   const articles = useSelector((state) => state.articles);
-  console.log(articles);
 
   useEffect(() => {
     dispatch(getArticles());
@@ -23,7 +22,7 @@ const ListArticles = () => {
             <Article
               article={article}
               key={article.id}
-              comments={article.comments}
+              commentsData={article.comments}
             />
           );
         })}
