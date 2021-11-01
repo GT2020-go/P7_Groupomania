@@ -6,10 +6,6 @@ import Comment from "./Comment";
 const ListComments = ({ articleId }) => {
   console.log(articleId);
 
-  // const commentsData = useSelector(
-  //   (state) => state.articles.articleId.comments
-  // );
-
   const articleData = useSelector((state) => state.articles[articleId - 1]);
 
   console.log(articleData);
@@ -22,7 +18,6 @@ const ListComments = ({ articleId }) => {
 
   console.log(commentContent);
 
-  // console.log(JSON.stringify(commentsData));
   return (
     <>
       {comms &&

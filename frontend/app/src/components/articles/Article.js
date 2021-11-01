@@ -5,6 +5,8 @@ import moment from "moment";
 
 import Comments from "../comments/Comments";
 
+import CreateLike from "../likes/AddLike";
+
 const Article = ({ article }) => {
   return (
     <>
@@ -38,7 +40,6 @@ const Article = ({ article }) => {
                   <small className="mr-2">
                     {moment(article.updatedAt).fromNow()}
                   </small>
-                  <i className="fa fa-ellipsis-h" />
                 </div>
               </div>
               <img
@@ -51,10 +52,9 @@ const Article = ({ article }) => {
                 <p className="text-justify">{article.content}</p>
                 <hr />
                 <div className="d-flex justify-content-between align-items-center">
-                  <div className="d-flex flex-row icons d-flex align-items-center">
-                    <i className="fa fa-heart" />
-                    <i className="fa fa-smile-o ml-2" />
-                  </div>
+                  {/* add the like button here    --- */}
+                  <CreateLike articleId={article.id} />
+                  {/* ---    add the like button here */}
                   <div className="d-flex flex-row muted-color">
                     <span>{article.comments.length} comments</span>
                   </div>
