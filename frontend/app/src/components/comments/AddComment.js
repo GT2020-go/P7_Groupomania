@@ -17,7 +17,7 @@ const AddComment = ({ articleId }) => {
 
   //--------------------- to update below
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     console.log(commentData);
     dispatch(addComment(commentData));
   };

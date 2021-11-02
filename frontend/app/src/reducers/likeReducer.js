@@ -6,8 +6,7 @@ const likeReducer = (state = [], action) => {
       console.log(action.like);
       return [action.like.data, ...state];
     case UNLIKE:
-      console.log(action.like);
-      return [action.like.data, ...state];
+      return state.filter((like) => like.id !== action.likeId);
     default:
       return state;
   }

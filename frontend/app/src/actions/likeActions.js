@@ -23,9 +23,10 @@ export const createLike = (like) => {
 };
 
 export const deleteLike = (likeId) => {
-  return (dispatch, getState) => {
+  return (dispatch) => {
+    console.log("hello there " + likeId);
     axios
-      .delete(API_URL + "likes/" + likeId, {
+      .delete(API_URL + `likes/${likeId}`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("auth"),
         },
@@ -33,10 +34,11 @@ export const deleteLike = (likeId) => {
       .then(() => {
         dispatch({
           type: UNLIKE,
+          likeId,
         });
       })
       .catch((error) => {
-        console.log(error.response);
+        console.log(error);
       });
   };
 };

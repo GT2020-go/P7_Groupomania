@@ -5,7 +5,7 @@ import moment from "moment";
 
 import Comments from "../comments/Comments";
 
-import CreateLike from "../likes/AddLike";
+import CreateLike from "../likes/Like";
 
 const Article = ({ article }) => {
   return (

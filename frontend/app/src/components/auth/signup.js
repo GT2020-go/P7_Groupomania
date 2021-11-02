@@ -22,7 +22,7 @@ const SignUp = () => {
 
   const history = useHistory();
   const handleSubmit = (e) => {
-    e.preventDefault(); // prevent browser from refreshing
+    // e.preventDefault(); // prevent browser from refreshing
     dispatch(signup(user));
     setUser(userInitialState);
     history.push("/login");
