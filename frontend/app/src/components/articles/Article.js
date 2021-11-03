@@ -16,12 +16,6 @@ const Article = ({ article }) => {
             <div className="card">
               <div className="d-flex justify-content-between">
                 <div className="d-flex flex-row align-items-center">
-                  <img
-                    src="https://i.imgur.com/UXdKE3o.jpg"
-                    width={50}
-                    className="rounded-circle"
-                    alt="profile_picture"
-                  />
                   <div className="d-flex flex-column ml-2">
                     <span className="font-weight-bold">
                       {article.user.name}
@@ -52,10 +46,8 @@ const Article = ({ article }) => {
                 <p className="text-justify">{article.content}</p>
                 <hr />
                 <div className="d-flex justify-content-between align-items-center">
-                  {/* add the like button here    --- */}
-                  <CreateLike articleId={article.id} />
-                  {/* ---    add the like button here */}
                   <div className="d-flex flex-row muted-color">
+                    <CreateLike articleId={article.id} />
                     <span>{article.comments.length} comments</span>
                   </div>
                 </div>

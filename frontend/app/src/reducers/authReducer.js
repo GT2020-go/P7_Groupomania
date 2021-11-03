@@ -1,6 +1,11 @@
-import { SIGN_UP, LOG_IN, LOG_OUT } from "../constants/userActionType";
+import {
+  SIGN_UP,
+  LOG_IN,
+  LOG_OUT,
+  USER_CONNECTED,
+} from "../constants/userActionType";
 
-import jwtDecode from "jwt-decode";
+// import jwtDecode from "jwt-decode";
 
 const initialState = {
   token: localStorage.getItem("auth") ? localStorage.getItem("auth") : null,
@@ -17,19 +22,24 @@ const authReducer = (state = initialState, action) => {
         token: null,
       };
     case LOG_IN:
+    case USER_CONNECTED:
       console.log("User logged in");
       return {
         ...state,
         token: action.auth,
         id: action.userId,
+        name: action.name,
+        email: action.email,
       };
-    case "USER_CONNECTED":
-      const user = jwtDecode(action.token);
-      return {
-        ...state,
-        token: action.token,
-        id: user.userId,
-      };
+
+    // const user = jwtDecode(action.token);
+    // return {
+    //   ...state,
+    //   token: action.token,
+    //   id: user.userId,
+    //   name: action.name,
+    //   email: action.email,
+    // };
     case LOG_OUT:
       localStorage.clear();
       console.log("User logged out");

@@ -8,12 +8,6 @@ const Comment = ({ comment }) => {
     <>
       <div className="comments" id={comment.id}>
         <div className="d-flex flex-row mb-2">
-          <img
-            src="https://i.imgur.com/9AZ2QX1.jpg"
-            width={40}
-            className="rounded-image"
-            alt="default_img"
-          />
           <div className="d-flex flex-column ml-2">
             <span className="name">userId: {comment.userId}</span>
             <small className="comment-text">{comment.comment}</small>

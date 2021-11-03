@@ -7,6 +7,11 @@ const { users } = require("../models");
 const db = require("../models");
 const User = db.users;
 
+//dowload to S3
+const upload = require("../middleware/ImageUpload");
+const imageDelete = require("../middleware/imageDelete");
+const imageModify = require("../middleware/imageModify");
+
 //sign up a new user:
 exports.signup = (req, res) => {
   // Validate request
@@ -57,6 +62,8 @@ exports.login = (req, res, next) => {
           }
           res.status(200).json({
             userId: user.id,
+            name: user.name,
+            email: user.email,
             token: jwt.sign({ userId: user.id }, "RANDOM_TOKEN_SECRET", {
               expiresIn: "24h",
             }),
@@ -65,4 +72,18 @@ exports.login = (req, res, next) => {
         .catch((error) => res.status(500).json({ error }));
     })
     .catch((error) => res.status(500).json({ error }));
+};
+
+//get the user
+exports.me = (req, res, next) => {
+  const token = req.headers.authorization.split(" ")[1];
+  console.log(token);
+  const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
+  console.log(decodedToken);
+  const userId = decodedToken.userId;
+  User.findOne({
+    where: { id: userId }, //we want only the user corresponding to the id in parameter
+  })
+    .then((data) => res.status(200).json(data))
+    .catch((error) => res.status(400).json({ error }));
 };

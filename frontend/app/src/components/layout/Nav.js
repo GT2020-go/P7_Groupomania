@@ -4,10 +4,13 @@ import Logo from "../../Groupomania_Logos/icon-left-font_no bg.svg";
 
 import { Link, useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 import { logout } from "../../actions/authActions";
 
 const Nav = () => {
+  const username = useSelector((state) => state.auth.name); // get userName from store
+
   const history = useHistory();
   const handleSignOut = () => {
     //Signout the user:
@@ -64,7 +67,9 @@ const Nav = () => {
                 </Button>
               </li>
             </ul>
-            <div className="nav-item navbar-text text-secondary">Username</div>
+            <div className="nav-item navbar-text text-secondary">
+              {username}
+            </div>
           </div>
         </div>
       </nav>

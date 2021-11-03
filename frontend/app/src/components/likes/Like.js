@@ -6,6 +6,8 @@ import { useHistory } from "react-router-dom";
 
 import { createLike, deleteLike } from "../../actions/likeActions";
 
+import jwtDecode from "jwt-decode";
+
 const CreateLike = ({ articleId }) => {
   const [like, setLike] = useState("");
   const userId = useSelector((state) => state.auth.id); // get userId from store
@@ -29,6 +31,10 @@ const CreateLike = ({ articleId }) => {
   const id = articleId; //--------------------- to update below
 
   const handleLike = () => {
+    console.log("lapin: " + userId);
+
+    // pourquoi pas recup l'userId avant??
+
     const likeExist = likes.find((like) => like.userId === userId);
     if (likeExist) {
       const likeId = likeExist.id;

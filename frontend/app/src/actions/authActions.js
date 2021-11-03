@@ -1,8 +1,13 @@
 import axios from "axios";
 import API_URL from "../constants/APIConfig";
-import { SIGN_UP, LOG_IN, LOG_OUT } from "../constants/userActionType";
+import {
+  SIGN_UP,
+  LOG_IN,
+  LOG_OUT,
+  USER_CONNECTED,
+} from "../constants/userActionType";
 
-import jwtDecode from "jwt-decode";
+// import jwtDecode from "jwt-decode";
 
 export const signup = (user) => {
   return (dispatch) => {
@@ -31,6 +36,8 @@ export const login = (data) => {
         dispatch({
           type: LOG_IN,
           auth: response.data.token,
+          name: response.data.name,
+          email: response.data.email,
           userId: response.data.userId,
         });
       })
@@ -40,17 +47,30 @@ export const login = (data) => {
   };
 };
 
-export const connectedUser = () => {
-  return (dispatch, getState) => {
-    const token = getState().auth.token;
-    if (token) {
-      dispatch({
-        type: "USER_CONNECTED",
-        token,
-      });
-    } else return null;
-  };
-};
+// export const connectedUser = () => {
+//   return (dispatch, getState) => {
+//     const currentUser = {
+//       token: getState().auth.token,
+//       name: getState().auth.name,
+//       email: getState().auth.email,
+//       id: getState().auth.id,
+//     };
+
+//     console.log("heyyyy there:");
+//     console.log(currentUser);
+
+//     const isLoggedIn = getState().auth.token;
+//     if (isLoggedIn) {
+//       dispatch({
+//         type: USER_CONNECTED,
+//         auth: currentUser.token,
+//         name: currentUser.name,
+//         email: currentUser.email,
+//         id: currentUser.id,
+//       });
+//     } else return null;
+//   };
+// };
 
 export const logout = () => {
   localStorage.clear();
