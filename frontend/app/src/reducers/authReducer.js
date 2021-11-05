@@ -21,8 +21,8 @@ const authReducer = (state = initialState, action) => {
         ...state,
         token: null,
       };
-    case LOG_IN:
     case USER_CONNECTED:
+    case LOG_IN:
       console.log("User logged in");
       return {
         ...state,
@@ -32,14 +32,6 @@ const authReducer = (state = initialState, action) => {
         email: action.email,
       };
 
-    // const user = jwtDecode(action.token);
-    // return {
-    //   ...state,
-    //   token: action.token,
-    //   id: user.userId,
-    //   name: action.name,
-    //   email: action.email,
-    // };
     case LOG_OUT:
       localStorage.clear();
       console.log("User logged out");

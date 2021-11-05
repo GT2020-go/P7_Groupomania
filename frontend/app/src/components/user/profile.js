@@ -1,21 +1,5 @@
 const Profile = () => {
-  // const dispatch = useDispatch();
-  // const state = useSelector((state) => state);
-  // console.log(state);
-  // const [data, setData] = useState(dataInitialState);
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault(); // prevent browser from refreshing
-  //   dispatch(login(data));
-  //   setData(dataInitialState);
-  // };
-
   return (
-    //static profile
-    // avatar
-    // name
-    //more info
-    //email
     <div className="container mt-5">
       <div className="row d-flex justify-content-center">
         <div className="col-md-7">

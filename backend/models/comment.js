@@ -12,9 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Comment.init(
-    {
-      comment: DataTypes.TEXT,
-    },
+    { comment: DataTypes.TEXT, name: DataTypes.STRING },
     {
       sequelize,
       modelName: "comment",

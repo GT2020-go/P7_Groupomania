@@ -9,16 +9,20 @@ const Comment = ({ comment }) => {
       <div className="comments" id={comment.id}>
         <div className="d-flex flex-row mb-2">
           <div className="d-flex flex-column ml-2">
-            <span className="name">userId: {comment.userId}</span>
+            <span className="name">
+              {comment.name}{" "}
+              <small>commented {moment(comment.updatedAt).fromNow()}</small>{" "}
+            </span>
             <small className="comment-text">{comment.comment}</small>
-            <div className="d-flex flex-row align-items-center status">
+
+            {/* <div className="d-flex flex-row align-items-center status">
               <small>Like </small> <small>Reply </small>
               <small>Translate </small>
-              <small>{moment(comment.updatedAt).fromNow()}</small>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
+      <hr />
     </>
   );
 };

@@ -20,6 +20,9 @@ export const addArticle = (article) => {
           article,
         });
       })
+      .then(() => {
+        dispatch(getArticles());
+      })
       .catch((error) => {
         console.log(error.response);
       });
@@ -59,6 +62,9 @@ export const editArticle = (editedArticle, id) => {
           type: EDIT_ARTICLE,
           article,
         });
+      })
+      .then(() => {
+        dispatch(getArticles());
       })
       .catch((error) => {
         console.log(error.response);

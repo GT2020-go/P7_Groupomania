@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { logout } from "../../actions/authActions";
 
 const Nav = () => {
-  const username = useSelector((state) => state.auth.name); // get userName from store
+  const userName = useSelector((state) => state.auth.name); // get userName from store
 
   const history = useHistory();
   const handleSignOut = () => {
@@ -68,7 +68,7 @@ const Nav = () => {
               </li>
             </ul>
             <div className="nav-item navbar-text text-secondary">
-              {username}
+              {userName}
             </div>
           </div>
         </div>

@@ -2,66 +2,51 @@ import React, { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { useHistory } from "react-router-dom";
-
 import { createLike, deleteLike } from "../../actions/likeActions";
 
-import jwtDecode from "jwt-decode";
+const likeDataInitialState = {
+  userId: "",
+  articleId: "",
+  like: "",
+};
 
-const CreateLike = ({ articleId }) => {
-  const [like, setLike] = useState("");
-  const userId = useSelector((state) => state.auth.id); // get userId from store
+const Like = ({ articleId }) => {
+  const [likeData, setLikeData] = useState(likeDataInitialState);
+  const userId_ = useSelector((state) => state.auth.id);
 
-  const likeData = { like, articleId, userId };
-
-  const articleData = useSelector((state) => state.articles[articleId - 1]);
-
-  console.log(articleData);
-
-  const likes = articleData.likes;
-
-  console.log(likes);
-
-  const likeContent = likes.map((like) => likes.like);
-
-  console.log(likeContent);
+  const testIfLikeExist = (like) => like.userId === userId_;
+  const isLike = useSelector(
+    (state) => state.articles[articleId - 1]
+  ).likes.find(testIfLikeExist);
 
   const dispatch = useDispatch();
-  const history = useHistory();
-  const id = articleId; //--------------------- to update below
 
   const handleLike = () => {
-    console.log("lapin: " + userId);
-
-    // pourquoi pas recup l'userId avant??
-
-    const likeExist = likes.find((like) => like.userId === userId);
-    if (likeExist) {
-      const likeId = likeExist.id;
-      console.log("patate chaude");
-
-      dispatch(deleteLike(likeId));
-      history.push("/articles");
+    console.log(isLike);
+    if (isLike) {
+      console.log(true);
+      console.log(isLike.id);
+      dispatch(deleteLike(isLike.id));
     } else {
-      console.log("petard mouille");
-      setLike(true);
-
-      dispatch(createLike(likeData));
-      history.push("/articles");
+      console.log(false);
+      dispatch(
+        createLike({
+          ...setLikeData,
+          userId: userId_,
+          articleId: articleId,
+          like: true,
+        })
+      );
     }
   };
 
   return (
     <>
-      <div className="d-flex flex-row icons d-flex align-items-center">
-        <button type="button" onClick={handleLike} id={id}>
-          <span className="material-icons">favorite</span>
-        </button>
-
-        <p className="text-justify">{likes.length} likes</p>
-      </div>
+      <button type="button" value={likeData} onClick={handleLike}>
+        <span className="material-icons">favorite</span>
+      </button>
     </>
   );
 };
 
-export default CreateLike;
+export default Like;

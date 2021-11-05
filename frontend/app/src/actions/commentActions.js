@@ -1,6 +1,7 @@
 import axios from "axios";
 import API_URL from "../constants/APIConfig";
 import { ADD_COMMENT, GET_COMMENTS } from "../constants/commentActionType";
+import { getArticles } from "./articleActions";
 
 export const addComment = (comment) => {
   console.log("comment: " + JSON.stringify(comment));
@@ -16,6 +17,9 @@ export const addComment = (comment) => {
           type: ADD_COMMENT,
           comment,
         });
+      })
+      .then(() => {
+        dispatch(getArticles());
       })
       .catch((error) => {
         console.log(error.response);

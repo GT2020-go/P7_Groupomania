@@ -6,6 +6,7 @@ import {
   LOG_OUT,
   USER_CONNECTED,
 } from "../constants/userActionType";
+import { getArticles } from "./articleActions";
 
 // import jwtDecode from "jwt-decode";
 
@@ -32,7 +33,6 @@ export const login = (data) => {
       .then((response) => {
         localStorage.setItem("auth", response.data.token);
         console.log(localStorage.getItem("auth"));
-        //data from the login answer from the backend
         dispatch({
           type: LOG_IN,
           auth: response.data.token,
@@ -41,36 +41,37 @@ export const login = (data) => {
           userId: response.data.userId,
         });
       })
+      .then(() => {
+        dispatch(getArticles());
+      })
       .catch((error) => {
         console.log(error.response);
       });
   };
 };
 
-// export const connectedUser = () => {
-//   return (dispatch, getState) => {
-//     const currentUser = {
-//       token: getState().auth.token,
-//       name: getState().auth.name,
-//       email: getState().auth.email,
-//       id: getState().auth.id,
-//     };
-
-//     console.log("heyyyy there:");
-//     console.log(currentUser);
-
-//     const isLoggedIn = getState().auth.token;
-//     if (isLoggedIn) {
-//       dispatch({
-//         type: USER_CONNECTED,
-//         auth: currentUser.token,
-//         name: currentUser.name,
-//         email: currentUser.email,
-//         id: currentUser.id,
-//       });
-//     } else return null;
-//   };
-// };
+export const connectedUser = (auth) => {
+  return (dispatch) => {
+    axios
+      .post(API_URL + "auth/me", auth, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("auth"),
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        dispatch({
+          type: USER_CONNECTED,
+          name: response.data.name,
+          email: response.data.email,
+          userId: response.data.id,
+        });
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
+};
 
 export const logout = () => {
   localStorage.clear();

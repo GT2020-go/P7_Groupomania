@@ -6,8 +6,8 @@ import { addComment } from "../../actions/commentActions";
 const AddComment = ({ articleId }) => {
   const [comment, setComment] = useState("");
   const userId = useSelector((state) => state.auth.id); // get userId from store
-
-  const commentData = { comment, userId, articleId };
+  const name = useSelector((state) => state.auth.name);
+  const commentData = { comment, userId, articleId, name };
 
   console.log(comment);
 

@@ -10,13 +10,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      // User.hasMany(article, {
-      //   as: "articles",
-      //   foreignKey: "id",
-      //   constraints: false,
-      //   allowNull: true,
-      //   defaultValue: null,
-      // });
     }
   }
   User.init(

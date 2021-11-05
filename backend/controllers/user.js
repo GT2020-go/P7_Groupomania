@@ -77,9 +77,7 @@ exports.login = (req, res, next) => {
 //get the user
 exports.me = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
-  console.log(token);
   const decodedToken = jwt.verify(token, "RANDOM_TOKEN_SECRET");
-  console.log(decodedToken);
   const userId = decodedToken.userId;
   User.findOne({
     where: { id: userId }, //we want only the user corresponding to the id in parameter

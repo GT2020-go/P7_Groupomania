@@ -48,6 +48,7 @@ const Article = ({ article }) => {
                 <div className="d-flex justify-content-between align-items-center">
                   <div className="d-flex flex-row muted-color">
                     <CreateLike articleId={article.id} />
+                    <p className="text-justify">{article.likes.length} likes</p>
                     <span>{article.comments.length} comments</span>
                   </div>
                 </div>

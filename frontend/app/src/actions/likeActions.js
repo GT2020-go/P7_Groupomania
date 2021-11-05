@@ -1,9 +1,10 @@
 import axios from "axios";
 import API_URL from "../constants/APIConfig";
 import { LIKE, UNLIKE } from "../constants/likeActionType";
+import { getArticles } from "./articleActions";
 
 export const createLike = (like) => {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     axios
       .post(API_URL + "likes", like, {
         headers: {
@@ -15,6 +16,9 @@ export const createLike = (like) => {
           type: LIKE,
           like,
         });
+      })
+      .then(() => {
+        dispatch(getArticles());
       })
       .catch((error) => {
         console.log(error.response);
@@ -31,11 +35,15 @@ export const deleteLike = (likeId) => {
           Authorization: "Bearer " + localStorage.getItem("auth"),
         },
       })
-      .then(() => {
+      .then((likeId) => {
+        console.log("ike deleted");
         dispatch({
           type: UNLIKE,
           likeId,
         });
+      })
+      .then(() => {
+        dispatch(getArticles());
       })
       .catch((error) => {
         console.log(error);

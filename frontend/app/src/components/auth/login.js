@@ -16,12 +16,10 @@ const dataInitialState = {
 
 const LogIn = () => {
   const dispatch = useDispatch();
-  // const state = useSelector((state) => state);
+
   const [data, setData] = useState(dataInitialState);
   const history = useHistory();
   const handleSubmit = (e) => {
-    // e.preventDefault(); // prevent browser from refreshing
-    console.log(login(data));
     dispatch(login(data));
     setData(dataInitialState);
     history.push("/");

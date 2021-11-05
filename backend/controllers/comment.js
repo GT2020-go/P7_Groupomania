@@ -11,6 +11,7 @@ const Comment = db.comments;
 //create comment on article
 exports.createComment = (req, res, next) => {
   const comment = {
+    name: req.body.name,
     comment: req.body.comment,
     // articleId: req.params.id,
     userId: req.body.userId,
@@ -33,6 +34,7 @@ exports.createComment = (req, res, next) => {
   })
     .then((data) => {
       res.status(201).send(data);
+      console.log(data);
     })
     .catch((err) => {
       res.status(500).send({
