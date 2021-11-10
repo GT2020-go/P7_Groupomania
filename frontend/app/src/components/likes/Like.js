@@ -12,35 +12,53 @@ const likeDataInitialState = {
 
 const Like = ({ articleId }) => {
   const [likeData, setLikeData] = useState(likeDataInitialState);
-  // const userId_ = useSelector((state) => state.auth.id);
+  const userId = useSelector((state) => state.auth.id);
+  const likes = useSelector((state) => state.articles).filter(
+    (article) => article.id === articleId
+  )[0].likes;
+  // .filter((likes) => likes.userId === "1");
 
-  // const testIfLikeExist = (like) => like.userId === userId_;
-  // const isLike = useSelector(
-  //   (state) => state.articles[articleId - 1]
-  // ).likes.find(testIfLikeExist);
+  console.log("userId: ");
+  console.log(userId);
+
+  console.log("articleId: ");
+  console.log(articleId);
+
+  console.log("likes: ");
+  console.log(likes);
+  console.log(likes.some((like) => like.userId === userId));
+
+  // const isLike = () => {
+  //   if () {
+  //     likes.filter((like) => like.userId === userId);
+  //   } else {
+  //     return false;
+  //   }
+  // };
+
+  // like avec userId = userId state => delete sinon create
+
+  // console.log(isLike);
 
   const dispatch = useDispatch();
 
   const handleLike = () => {
-    // const isLike = useSelector(
-    //   (state) => state.articles[articleId - 1]
-    // ).likes.find(testIfLikeExist);
-    // console.log(isLike);
-    // if (isLike) {
-    //   console.log(true);
-    //   console.log(isLike.id);
-    //   dispatch(deleteLike(isLike.id));
-    // } else {
-    //   console.log(false);
-    //   dispatch(
-    //     createLike({
-    //       ...setLikeData,
-    //       userId: userId_,
-    //       articleId: articleId,
-    //       like: true,
-    //     })
-    //   );
-    // }
+    if (likes.some((like) => like.userId === userId)) {
+      console.log(true);
+      const likeId = likes.find((like) => like.userId === userId).id;
+      // console.log(like.id);
+      dispatch(deleteLike(likeId));
+    } else {
+      console.log(false);
+      dispatch(
+        createLike({
+          ...setLikeData,
+          userId: userId,
+          articleId: articleId,
+          like: true,
+        })
+      );
+    }
   };
 
   return (
