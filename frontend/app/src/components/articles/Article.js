@@ -4,7 +4,7 @@ import React from "react";
 import moment from "moment";
 
 import Comments from "../comments/Comments";
-
+import DeleteArticle from "./DeleteArticle";
 import CreateLike from "../likes/Like";
 
 const Article = ({ article }) => {
@@ -35,6 +35,13 @@ const Article = ({ article }) => {
                     {moment(article.updatedAt).fromNow()}
                   </small>
                 </div>
+                <DeleteArticle
+                  articleId={article.id}
+                  authorId={article.userId}
+                />
+              </div>
+              <div className="d-flex justify-content-center">
+                <h4>{article.title}</h4>
               </div>
               <img
                 src={article.image}
@@ -42,7 +49,6 @@ const Article = ({ article }) => {
                 alt={article.image}
               />
               <div className="p-2">
-                <h4>{article.title}</h4>
                 <p className="text-justify">{article.content}</p>
                 <hr />
                 <div className="d-flex justify-content-between align-items-center">

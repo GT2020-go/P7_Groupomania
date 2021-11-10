@@ -6,18 +6,16 @@ import Comment from "./Comment";
 const ListComments = ({ articleId }) => {
   console.log(articleId);
 
-  const articleData = useSelector((state) => state.articles[articleId - 1]);
+  // const findArticle = (id) => {
+  //   return articles.id === articleId;
+  // };
+
+  const articleData = useSelector((state) => state.articles);
 
   console.log(articleData);
 
   const comms = articleData.comments;
-
   console.log(comms);
-
-  const commentContent = comms.map((comment) => comms.comment);
-
-  console.log(commentContent);
-
   return (
     <>
       {comms &&

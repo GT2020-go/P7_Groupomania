@@ -12,32 +12,35 @@ const likeDataInitialState = {
 
 const Like = ({ articleId }) => {
   const [likeData, setLikeData] = useState(likeDataInitialState);
-  const userId_ = useSelector((state) => state.auth.id);
+  // const userId_ = useSelector((state) => state.auth.id);
 
-  const testIfLikeExist = (like) => like.userId === userId_;
-  const isLike = useSelector(
-    (state) => state.articles[articleId - 1]
-  ).likes.find(testIfLikeExist);
+  // const testIfLikeExist = (like) => like.userId === userId_;
+  // const isLike = useSelector(
+  //   (state) => state.articles[articleId - 1]
+  // ).likes.find(testIfLikeExist);
 
   const dispatch = useDispatch();
 
   const handleLike = () => {
-    console.log(isLike);
-    if (isLike) {
-      console.log(true);
-      console.log(isLike.id);
-      dispatch(deleteLike(isLike.id));
-    } else {
-      console.log(false);
-      dispatch(
-        createLike({
-          ...setLikeData,
-          userId: userId_,
-          articleId: articleId,
-          like: true,
-        })
-      );
-    }
+    // const isLike = useSelector(
+    //   (state) => state.articles[articleId - 1]
+    // ).likes.find(testIfLikeExist);
+    // console.log(isLike);
+    // if (isLike) {
+    //   console.log(true);
+    //   console.log(isLike.id);
+    //   dispatch(deleteLike(isLike.id));
+    // } else {
+    //   console.log(false);
+    //   dispatch(
+    //     createLike({
+    //       ...setLikeData,
+    //       userId: userId_,
+    //       articleId: articleId,
+    //       like: true,
+    //     })
+    //   );
+    // }
   };
 
   return (

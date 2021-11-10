@@ -4,6 +4,7 @@ import {
   ADD_ARTICLE,
   GET_ARTICLES,
   EDIT_ARTICLE,
+  DELETE_ARTICLE,
 } from "../constants/articleActionType";
 
 export const addArticle = (article) => {
@@ -68,6 +69,29 @@ export const editArticle = (editedArticle, id) => {
       })
       .catch((error) => {
         console.log(error.response);
+      });
+  };
+};
+
+export const deleteArticle = (articleId) => {
+  return (dispatch) => {
+    axios
+      .delete(API_URL + `articles/${articleId}`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("auth"),
+        },
+      })
+      .then((articleId) => {
+        dispatch({
+          type: DELETE_ARTICLE,
+          articleId,
+        });
+      })
+      .then(() => {
+        dispatch(getArticles());
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 };

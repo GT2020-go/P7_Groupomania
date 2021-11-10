@@ -2,6 +2,7 @@ import {
   ADD_ARTICLE,
   EDIT_ARTICLE,
   GET_ARTICLES,
+  DELETE_ARTICLE,
 } from "../constants/articleActionType";
 
 const articleReducer = (state = [], action) => {
@@ -15,6 +16,8 @@ const articleReducer = (state = [], action) => {
     //   return state.map((article) => {
     //     article.id === action.article.data.id ? action.article.data : article;
     //   });
+    case DELETE_ARTICLE:
+      return action.articles.data;
     default:
       return state;
   }

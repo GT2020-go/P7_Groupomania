@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { login } from "../../actions/authActions";
 
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 //import logos:
 import LogoSolo from "../../Groupomania_Logos/icon.svg";
@@ -39,7 +39,7 @@ const LogIn = () => {
         Please sign in
       </h3>
       <p className="text-center">
-        Not registered yet ? <a href="#">Signup</a> here
+        Not registered yet ? <Link to="/signup">Signup</Link> here
       </p>
 
       <label htmlFor="inputEmail" className="sr-only">

@@ -32,6 +32,7 @@ const AddComment = ({ articleId }) => {
         <div className="d-flex flex-row">
           <input
             type="text"
+            placeholder="Comment this article..."
             className="form-control"
             value={comment}
             onChange={(e) => setComment(e.target.value)}

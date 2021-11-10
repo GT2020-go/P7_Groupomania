@@ -28,7 +28,6 @@ export const createLike = (like) => {
 
 export const deleteLike = (likeId) => {
   return (dispatch) => {
-    console.log("hello there " + likeId);
     axios
       .delete(API_URL + `likes/${likeId}`, {
         headers: {
@@ -36,7 +35,6 @@ export const deleteLike = (likeId) => {
         },
       })
       .then((likeId) => {
-        console.log("ike deleted");
         dispatch({
           type: UNLIKE,
           likeId,

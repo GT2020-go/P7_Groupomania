@@ -1,6 +1,6 @@
 import axios from "axios";
 import API_URL from "../constants/APIConfig";
-import { ADD_COMMENT, GET_COMMENTS } from "../constants/commentActionType";
+import { ADD_COMMENT, DELETE_COMMENT } from "../constants/commentActionType";
 import { getArticles } from "./articleActions";
 
 export const addComment = (comment) => {
@@ -23,6 +23,29 @@ export const addComment = (comment) => {
       })
       .catch((error) => {
         console.log(error.response);
+      });
+  };
+};
+
+export const deleteComment = (commentId) => {
+  return (dispatch) => {
+    axios
+      .delete(API_URL + `comments/${commentId}`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("auth"),
+        },
+      })
+      .then((commentId) => {
+        dispatch({
+          type: DELETE_COMMENT,
+          commentId,
+        });
+      })
+      .then(() => {
+        dispatch(getArticles());
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 };
