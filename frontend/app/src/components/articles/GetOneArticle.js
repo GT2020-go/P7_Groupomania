@@ -1,29 +1,31 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
 
-import { addArticle } from "../../actions/articleActions";
+import { getOneArticle } from "../../actions/articleActions";
 
-const AddArticle = () => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [image, setImage] = useState(null);
+import { useDispatch, useSelector, useStore } from "react-redux";
+import { useHistory } from "react-router";
 
-  const userId = useSelector((state) => state.auth.id); // get userId from store
+import { useParams } from "react-router";
+import EditArticle from "./EditArticle";
 
-  const article = new FormData();
-  article.append("title", title);
-  article.append("content", content);
-  article.append("image", image);
-  article.append("userId", userId);
+const GetOneArticle = () => {
+  const { id } = useParams();
+  const articleId = id;
   const dispatch = useDispatch();
+  const history = useHistory();
 
-  const handleSubmit = (e) => {
-    // e.preventDefault();
-    dispatch(addArticle(article));
-  };
+  useEffect(() => {
+    console.log(articleId);
+    dispatch(getOneArticle(articleId));
+  }, [dispatch]);
+
+  const article = useSelector((state) => state.articles);
+  console.log(article);
 
   return (
     <>
+      <EditArticle article={article} />
+      {/* <h1>My new element {articleId}</h1>
       <div className="container mt-5 mb-5" id="articleId">
         <div className="row d-flex align-items-center justify-content-center">
           <div className="col-md-6">
@@ -32,27 +34,27 @@ const AddArticle = () => {
                 id="article"
                 name="article"
                 action="#"
-                className="addArticle"
-                onSubmit={handleSubmit}
+                className="editArticle"
+                // onSubmit={handleSubmit}
               >
-                <h4>Create a new post</h4>
+                <h4>You can edit your post</h4>
                 <input
                   type="text"
                   id="title"
                   name="title"
-                  placeholder="Give your post a title..."
+                  placeholder={article.title}
                   className="form-control articleTitle"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
+                  //   value={title}
+                  //   onChange={(e) => setTitle(e.target.value)}
                   autoFocus
                 />
                 <textarea
                   id="content"
                   name="content"
-                  placeholder="Share something with your colleagues..."
+                  placeholder={article.content}
                   className="form-control articleContent"
-                  value={content}
-                  onChange={(e) => setContent(e.target.value)}
+                  //   value={content}
+                  //   onChange={(e) => setContent(e.target.value)}
                 />
                 <div className="actions">
                   <div className="btn-group d-flex justify-content-between">
@@ -61,13 +63,14 @@ const AddArticle = () => {
                         type="button"
                         className="btn btn-sm btn-bd-light "
                         data-toggle="tooltip"
-                        data-original-title="AddImage"
+                        data-original-title="EditImage"
                       >
                         <input
                           id="image"
                           name="image"
                           type="file"
-                          onChange={(e) => setImage(e.target.files[0])}
+
+                          //   onChange={(e) => setImage(e.target.files[0])}
                         />
                         <span className="material-icons-outlined">image</span>
                       </button>
@@ -86,9 +89,9 @@ const AddArticle = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
 
-export default AddArticle;
+export default GetOneArticle;

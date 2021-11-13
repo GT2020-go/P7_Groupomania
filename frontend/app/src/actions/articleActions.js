@@ -3,6 +3,7 @@ import API_URL from "../constants/APIConfig";
 import {
   ADD_ARTICLE,
   GET_ARTICLES,
+  GET_ONE_ARTICLE,
   EDIT_ARTICLE,
   DELETE_ARTICLE,
 } from "../constants/articleActionType";
@@ -53,7 +54,7 @@ export const getArticles = () => {
 export const editArticle = (editedArticle, id) => {
   return (dispatch) => {
     axios
-      .put(API_URL + "articles/" + id, editedArticle, {
+      .post(API_URL + "articles/" + id, editedArticle, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("auth"),
         },
@@ -89,6 +90,26 @@ export const deleteArticle = (articleId) => {
       })
       .then(() => {
         dispatch(getArticles());
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+
+export const getOneArticle = (articleId) => {
+  return (dispatch) => {
+    axios
+      .get(API_URL + `articles/${articleId}`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("auth"),
+        },
+      })
+      .then((article) => {
+        dispatch({
+          type: GET_ONE_ARTICLE,
+          article,
+        });
       })
       .catch((error) => {
         console.log(error);

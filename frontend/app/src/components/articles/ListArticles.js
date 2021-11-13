@@ -7,15 +7,12 @@ import { getArticles } from "../../actions/articleActions";
 const ListArticles = () => {
   const dispatch = useDispatch();
   const articles = useSelector((state) => state.articles);
-
   useEffect(() => {
     dispatch(getArticles());
   }, [dispatch]);
 
   return (
     <>
-      <h3>ListArticles component</h3>
-      <h3>articles listed here below:</h3>
       {articles &&
         articles.map((article) => {
           return (

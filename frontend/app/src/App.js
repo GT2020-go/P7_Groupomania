@@ -11,19 +11,10 @@ import LogIn from "./components/auth/Login";
 import Profile from "./components/user/profile";
 import { connectedUser } from "./actions/authActions";
 import Articles from "./components/articles/Articles";
+import GetOneArticle from "./components/articles/GetOneArticle";
 
 const App = () => {
   const dispatch = useDispatch();
-  // const auth =
-  //   "Bearer " + localStorage.getItem("auth")
-  //     ? "Bearer " + localStorage.getItem("auth")
-  //     : null;
-  // console.log("auth is here: " + auth);
-  // console.log(typeof auth);
-  // useEffect(() => {
-  //   dispatch(connectedUser(auth));
-  // });
-
   const auth = localStorage.getItem("auth");
   useEffect(() => {
     dispatch(connectedUser(auth));
@@ -34,14 +25,12 @@ const App = () => {
       <BrowserRouter>
         <Nav />
         <Switch>
-          <Route path="/signup" component={SignUp} />
-          <Route path="/login" component={LogIn} />
-          <Route path="/profile" component={Profile} />
-        </Switch>
-        <Switch>
-          <Route path="/articles" component={Articles} />
-          <Route path="/" component={Articles} />
-          <Route path="" component={Articles} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/login" component={LogIn} />
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/articles" component={Articles} />
+          <Route exact path="/" component={Articles} />
+          <Route exact path="/articles/:id" component={GetOneArticle} />
         </Switch>
       </BrowserRouter>
     </>

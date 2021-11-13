@@ -8,7 +8,10 @@ import { useSelector } from "react-redux";
 
 import { logout } from "../../actions/authActions";
 
+import { Redirect } from "react-router-dom";
+
 const Nav = () => {
+  const auth = useSelector((state) => state.auth);
   const userName = useSelector((state) => state.auth.name); // get userName from store
 
   const history = useHistory();
@@ -51,25 +54,42 @@ const Nav = () => {
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/signup" className="nav-link">
-                  Sign up
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/login" className="nav-link ">
-                  Log In
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Button onClick={() => handleSignOut()} className="nav-link ">
-                  Sign out
-                </Button>
-              </li>
+
+              {auth.id ? (
+                <>
+                  <li className="nav-item">
+                    <Button
+                      onClick={() => handleSignOut()}
+                      className="nav-link "
+                    >
+                      Sign out
+                    </Button>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item">
+                    <Link to="/signup" className="nav-link">
+                      Sign up
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/login" className="nav-link ">
+                      Log In
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
-            <div className="nav-item navbar-text text-secondary">
-              {userName}
-            </div>
+            {auth.id ? (
+              <>
+                <div className="nav-item navbar-text text-secondary">
+                  {userName}
+                </div>
+              </>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       </nav>

@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addArticle } from "../../actions/articleActions";
+import { editArticle } from "../../actions/articleActions";
 
-const AddArticle = () => {
+const EditArticle = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
 
-  const userId = useSelector((state) => state.auth.id); // get userId from store
+  const dispatch = useDispatch();
+
+  //   const userId = useSelector((state) => state.auth.id); // get userId from store
 
   const article = new FormData();
   article.append("title", title);
   article.append("content", content);
   article.append("image", image);
-  article.append("userId", userId);
-  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
-    // e.preventDefault();
-    dispatch(addArticle(article));
+    e.preventDefault();
+    console.log(article);
+    dispatch(editArticle(article));
   };
 
   return (
@@ -32,15 +33,15 @@ const AddArticle = () => {
                 id="article"
                 name="article"
                 action="#"
-                className="addArticle"
+                className="editArticle"
                 onSubmit={handleSubmit}
               >
-                <h4>Create a new post</h4>
+                <h4>You can edit your post</h4>
                 <input
                   type="text"
                   id="title"
                   name="title"
-                  placeholder="Give your post a title..."
+                  placeholder={article.tile}
                   className="form-control articleTitle"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
@@ -49,7 +50,7 @@ const AddArticle = () => {
                 <textarea
                   id="content"
                   name="content"
-                  placeholder="Share something with your colleagues..."
+                  placeholder={article.content}
                   className="form-control articleContent"
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
@@ -61,7 +62,7 @@ const AddArticle = () => {
                         type="button"
                         className="btn btn-sm btn-bd-light "
                         data-toggle="tooltip"
-                        data-original-title="AddImage"
+                        data-original-title="EditImage"
                       >
                         <input
                           id="image"
@@ -91,4 +92,4 @@ const AddArticle = () => {
   );
 };
 
-export default AddArticle;
+export default EditArticle;

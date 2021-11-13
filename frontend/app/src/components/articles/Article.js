@@ -6,6 +6,9 @@ import moment from "moment";
 import Comments from "../comments/Comments";
 import DeleteArticle from "./DeleteArticle";
 import CreateLike from "../likes/Like";
+import GetOneArticle from "./GetOneArticle";
+
+import { Link } from "react-router-dom";
 
 const Article = ({ article }) => {
   return (
@@ -17,9 +20,10 @@ const Article = ({ article }) => {
               <div className="d-flex justify-content-between">
                 <div className="d-flex flex-row align-items-center">
                   <div className="d-flex flex-column ml-2">
-                    <span className="font-weight-bold">
-                      {article.user.name}
-                    </span>
+                    <div className="author">
+                      <span class="block"></span>
+                      <h4>{article.user.name}</h4>
+                    </div>
                     <a
                       href={`mailto:${article.user.email}`}
                       className="text-primary"
@@ -35,6 +39,8 @@ const Article = ({ article }) => {
                     {moment(article.updatedAt).fromNow()}
                   </small>
                 </div>
+                <Link to={`/articles/${article.id}`}>click here</Link>
+                {/* <GetOneArticle articleId={article.id} /> */}
                 <DeleteArticle
                   articleId={article.id}
                   authorId={article.userId}

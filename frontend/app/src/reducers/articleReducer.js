@@ -3,6 +3,7 @@ import {
   EDIT_ARTICLE,
   GET_ARTICLES,
   DELETE_ARTICLE,
+  GET_ONE_ARTICLE,
 } from "../constants/articleActionType";
 
 const articleReducer = (state = [], action) => {
@@ -12,7 +13,14 @@ const articleReducer = (state = [], action) => {
     case GET_ARTICLES:
       console.log(action.articles.data);
       return action.articles.data;
-    // case EDIT_ARTICLE:
+    case GET_ONE_ARTICLE:
+      console.log("here yopu go:");
+      console.log(action.article.data);
+      return action.article.data;
+    case EDIT_ARTICLE:
+      console.log("editting:");
+      console.log(action.article.data);
+      return action.article.data;
     //   return state.map((article) => {
     //     article.id === action.article.data.id ? action.article.data : article;
     //   });

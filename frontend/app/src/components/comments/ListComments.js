@@ -4,18 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import Comment from "./Comment";
 
 const ListComments = ({ articleId }) => {
-  console.log(articleId);
-
-  // const findArticle = (id) => {
-  //   return articles.id === articleId;
-  // };
-
-  const articleData = useSelector((state) => state.articles);
-
-  console.log(articleData);
+  const articleData = useSelector((state) =>
+    state.articles.find((article) => article.id === articleId)
+  );
 
   const comms = articleData.comments;
-  console.log(comms);
+
   return (
     <>
       {comms &&

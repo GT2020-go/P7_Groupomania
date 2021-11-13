@@ -5,7 +5,6 @@ import ListArticles from "./ListArticles";
 const Articles = () => {
   return (
     <>
-      <h1>Articles component</h1>
       <AddArticle />
       <ListArticles />
     </>
