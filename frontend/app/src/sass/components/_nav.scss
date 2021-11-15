@@ -1,0 +1,50 @@
+nav.navbar {
+    background-color: $clr-primary;
+
+    .btn-primary {
+        padding: 0.5em 1em 0.5em 1em;
+        color: #fff;
+        background-color: $clr-primary;
+        border-style: none;
+
+
+        &:hover {
+            background-color: $clr-primary-light;
+            clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
+            -webkit-clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
+            border-style: none;
+        }
+    }
+
+    .nav-item {
+        a {
+            span {
+                color: #fff
+            }
+
+            &:hover {
+                background-color: $clr-primary-light;
+                clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
+                -webkit-clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
+                border-style: none;
+            }
+        }
+    }
+
+    .navbar-toggler {
+        padding: 0.5em 1em 0.5em 1em;
+        color: #fff;
+        background-color: $clr-primary-light;
+        clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
+        -webkit-clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
+
+        &:hover {
+            background-color: $clr-secondary;
+        }
+
+        .navbar-toggler-icon {
+            color: #fff;
+            background-color: #fff
+        }
+    }
+}

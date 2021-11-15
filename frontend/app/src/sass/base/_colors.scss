@@ -1,0 +1,20 @@
+// I'll define here the colors based on the documents iven for he website
+
+// color primary used for text, titles, etc.
+$clr-primary: #102147; //h1,h2
+$clr-primary-light: #3e4873; //h3,h4
+$clr-primary-dark: #000020; //text
+
+
+// color secondary used for accent, CTO, etc.
+$clr-secondary: #9d2133;
+$clr-secondary-light: #d3545c;
+$clr-secondary-dark: #68000d;
+
+// very light color used for neutral background on text etc.
+$clr-neutral-lighter: #fafafa;
+$clr-primary-lighter: #6b73a2;
+$clr-secondary-lighter:#FF8589;
+
+//color gradients:
+$clr-gradient: linear-gradient(90deg, rgba(107, 115, 162, 1) 0%, rgba(255, 133, 137, 1) 100%);

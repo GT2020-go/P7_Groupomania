@@ -68,6 +68,7 @@ const EditArticle = () => {
                           id="image"
                           name="image"
                           type="file"
+                          className="btn btn-sm btn-bd-light"
                           onChange={(e) => setImage(e.target.files[0])}
                         />
                         <span className="material-icons-outlined">image</span>

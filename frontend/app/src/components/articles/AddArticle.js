@@ -24,9 +24,15 @@ const AddArticle = () => {
 
   return (
     <>
-      <div className="container mt-5 mb-5" id="articleId">
+      <div className="container mt-5 mb-5" id="addArticle">
         <div className="row d-flex align-items-center justify-content-center">
-          <div className="col-md-6">
+          <div className="col-md-6" id="createArticle">
+            <div className="d-flex justify-content-center mt-1 mb-1">
+              <h4>Create a new post</h4>
+            </div>
+            <div className="d-flex justify-content-center mt-1 mb-1">
+              <h3>{article.title}</h3>
+            </div>
             <div className="card">
               <form
                 id="article"
@@ -35,7 +41,6 @@ const AddArticle = () => {
                 className="addArticle"
                 onSubmit={handleSubmit}
               >
-                <h4>Create a new post</h4>
                 <input
                   type="text"
                   id="title"
@@ -56,22 +61,21 @@ const AddArticle = () => {
                 />
                 <div className="actions">
                   <div className="btn-group d-flex justify-content-between">
-                    <div className="btn-group d-flex justify-content-between">
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-bd-light "
-                        data-toggle="tooltip"
-                        data-original-title="AddImage"
-                      >
-                        <input
-                          id="image"
-                          name="image"
-                          type="file"
-                          onChange={(e) => setImage(e.target.files[0])}
-                        />
-                        <span className="material-icons-outlined">image</span>
-                      </button>
-                    </div>
+                    <label
+                      for="image"
+                      className="label-file btn btn-sm btn-bd-light"
+                    >
+                      <span className="material-icons-outlined">
+                        add_photo_alternate
+                      </span>
+                    </label>
+                    <input
+                      id="image"
+                      name="image"
+                      type="file"
+                      onChange={(e) => setImage(e.target.files[0])}
+                    />
+
                     <div className="btn-group d-flex justify-content-between">
                       <button
                         type="submit"

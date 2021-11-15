@@ -1,53 +1,75 @@
-#articleId {
-    color: green
-}
+@import '../base/colors';
 
-.author {
-    width: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    height: 50px;
-
-    .block {
-        width: 0%;
-        height: inherit;
-        background: #ffb510;
-        position: absolute;
-        animation: mainBlock 2s cubic-bezier(.74, .06, .4, .92) forwards;
-        display: flex;
+#addArticle {
+    #image {
+        display: none
     }
 
-    h1 {
-        font-family: 'Poppins';
+    h4 {
+        padding: 0.5em 1.5em 0.5em 1em;
         color: #fff;
-        font-size: 32px;
-        -webkit-animation: mainFadeIn 2s forwards;
-        -o-animation: mainFadeIn 2s forwards;
-        animation: mainFadeIn 2s forwards;
-        animation-delay: 1.6s;
-        opacity: 0;
-        display: flex;
-        align-items: baseline;
-        position: relative;
+        background-color: $clr-primary-light;
+        clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
+        -webkit-clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
     }
 }
 
-@keyframes mainBlock {
-    0% {
-        width: 0%;
-        left: 0;
+#createArticle {
+    -webkit-positon: sticky;
+    position: sticky;
+    z-index: 20;
+    top: 4em;
+}
 
+.article {
+    display: grid;
+
+
+    .position-front {
+        grid-area: 1 / 1 / 2 / 2;
     }
 
-    50% {
-        width: 100%;
-        left: 0;
+    .position-behind {
+        grid-area: 1 / 1 / 2 / 2;
+        top: 100px;
+        left: 50px;
 
+
+        .blob1 {
+            fill: $clr-primary-lighter;
+        }
     }
 
-    100% {
-        width: 0;
-        left: 100%;
+    h3 {
+        padding: 0.5em 1.5em 0.5em 1em;
+        color: #fff;
+        background-color: $clr-secondary;
+        clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
+        -webkit-clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
     }
+
+    h4 {
+        padding: 0.25em 0.75em 0.25em 0.5em;
+        color: #fff;
+        background-color: $clr-secondary-dark;
+        clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
+        -webkit-clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
+
+        a {
+            span {
+                color: #fff;
+
+                &:hover {
+                    color: $clr-primary-lighter;
+                    transform: rotate(-30deg)
+                }
+            }
+        }
+    }
+
+
+    .articleImage {
+        border-radius: 3px;
+    }
+
 }

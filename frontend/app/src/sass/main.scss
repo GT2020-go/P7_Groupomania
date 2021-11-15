@@ -1,5 +1,16 @@
-@use './base/reset';
-@use './components/article';
+@import './base/reset';
+@import './base/colors';
 
-@use './components/formSignup';
-@use './components/formLogin';
+@import './components/nav';
+@import './components/article';
+@import './components/formSignup';
+@import './components/formLogin';
+
+html {
+    background-color: $clr-neutral-lighter;
+}
+
+#root {
+    padding-top: 6em;
+    background-color: $clr-neutral-lighter;
+}
