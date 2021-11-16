@@ -127,22 +127,39 @@ nav.navbar .navbar-toggler .navbar-toggler-icon {
   background-color: #fff;
 }
 
+#addArticle {
+  background: #fafafa;
+  -webkit-positon: sticky;
+  position: sticky;
+  z-index: 20;
+  top: 4em;
+}
 #addArticle #image {
   display: none;
 }
-#addArticle h4 {
+#addArticle .titleBox {
+  filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
+}
+#addArticle .titleBox h4 {
   padding: 0.5em 1.5em 0.5em 1em;
   color: #fff;
   background-color: #3e4873;
   clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
   -webkit-clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
 }
-
-#createArticle {
+#addArticle #createArticle {
   -webkit-positon: sticky;
   position: sticky;
   z-index: 20;
   top: 4em;
+}
+#addArticle .create-post {
+  border-style: none;
+  background: transparent;
+}
+#addArticle .create-post .accordion-button {
+  border-style: none;
+  background: transparent;
 }
 
 .article {
@@ -159,29 +176,48 @@ nav.navbar .navbar-toggler .navbar-toggler-icon {
 .article .position-behind .blob1 {
   fill: #6b73a2;
 }
-.article h3 {
+.article .titleBox {
+  filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
+}
+.article .titleBox h3 {
   padding: 0.5em 1.5em 0.5em 1em;
   color: #fff;
   background-color: #9d2133;
   clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
   -webkit-clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
 }
-.article h4 {
+.article .titleBox h4 {
   padding: 0.25em 0.75em 0.25em 0.5em;
   color: #fff;
   background-color: #68000d;
   clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
   -webkit-clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
 }
-.article h4 a span {
+.article .titleBox h4 a span {
   color: #fff;
 }
-.article h4 a span:hover {
+.article .titleBox h4 a span:hover {
   color: #6b73a2;
   transform: rotate(-30deg);
 }
-.article .articleImage {
-  border-radius: 3px;
+.article .image-container {
+  filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
+  margin: 0;
+  width: 100%;
+}
+.article .image-container .articleImage {
+  width: 100%;
+  -webkit-clip-path: polygon(1% 1%, 99% 0, 100% 99%, 0% 100%);
+  clip-path: polygon(1% 1%, 99% 0, 100% 99%, 0% 100%);
+}
+.article .content-container {
+  margin: 0;
+  width: 100%;
+  padding: 0.25em 0.75em 0.25em 0.5em;
+  color: #102147;
+  background-color: #fff;
+  -webkit-clip-path: polygon(1% 1%, 99% 0, 100% 99%, 0% 100%);
+  clip-path: polygon(1% 1%, 99% 0, 100% 99%, 0% 100%);
 }
 
 .form-signup {

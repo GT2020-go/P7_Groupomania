@@ -9,18 +9,15 @@ const Comment = ({ comment }) => {
   return (
     <>
       <div className="comments" id={comment.id}>
-        <div className="d-flex flex-row mb-2">
-          <div className="d-flex flex-column ml-2">
-            <span className="name">
-              {comment.name}{" "}
-              <small>commented {moment(comment.updatedAt).fromNow()}</small>{" "}
-            </span>
-            <small className="comment-text">{comment.comment}</small>
+        <div className="d-flex flex-column mb-2">
+          <div className="d-flex flex-row justify-content-between ml-2">
+            <p className="name">
+              {comment.name} commented {moment(comment.updatedAt).fromNow()}{" "}
+            </p>
             <DeleteComment commentId={comment.id} authorId={comment.userId} />
-            {/* <div className="d-flex flex-row align-items-center status">
-              <small>Like </small> <small>Reply </small>
-              <small>Translate </small>
-            </div> */}
+          </div>
+          <div className="d-flex flex-row ml-2">
+            <p className="comment-text">{comment.comment}</p>
           </div>
         </div>
       </div>

@@ -9,6 +9,8 @@ import CreateLike from "../likes/Like";
 
 import { Link } from "react-router-dom";
 
+import Accordion from "react-bootstrap/Accordion";
+
 const Article = ({ article }) => {
   return (
     <>
@@ -25,11 +27,11 @@ const Article = ({ article }) => {
 
         <div className="row d-flex align-items-center justify-content-center position-front">
           <div className="col-md-6">
-            <div className="d-flex justify-content-center mt-1 mb-1">
+            <div className="titleBox d-flex justify-content-center mt-1 mb-1">
               <h3>{article.title}</h3>
             </div>
 
-            <div className="author d-flex justify-content-end">
+            <div className="titleBox author d-flex justify-content-end">
               <h4>
                 by {article.user.name}{" "}
                 <a
@@ -43,38 +45,62 @@ const Article = ({ article }) => {
               </h4>
             </div>
 
-            <div className="card">
+            <div className="content-container">
               <div className="d-flex justify-content-between">
-                <div className="d-flex flex-row align-items-center">
-                  <div className="d-flex flex-row mt-1 ellipsis">
-                    <p>posted {moment(article.updatedAt).fromNow()}</p>
-                  </div>
-                </div>
-
-                <Link to={`/articles/${article.id}`}>click here</Link>
+                <Link to={`/articles/${article.id}`}>
+                  <span class="material-icons-outlined">edit</span>
+                </Link>
                 <DeleteArticle
                   articleId={article.id}
                   authorId={article.userId}
                 />
               </div>
 
-              <img
-                src={article.image}
-                className="img-fluid articleImage"
-                alt={article.image}
-              />
-              <div className="p-2">
-                <p className="text-justify">{article.content}</p>
-                <hr />
-                <div className="d-flex justify-content-between align-items-center">
-                  <div className="d-flex flex-row muted-color">
-                    <CreateLike articleId={article.id} />
-                    <p className="text-justify">{article.likes.length} likes</p>
-                    <span>{article.comments.length} comments</span>
-                  </div>
+              <div className="image-container">
+                <img
+                  src={article.image}
+                  className="img-fluid articleImage"
+                  alt={article.image}
+                />
+              </div>
+              <div className="col ">
+                <div className="d-flex mt-1">
+                  <p className="moment">
+                    posted {moment(article.updatedAt).fromNow()}
+                  </p>
                 </div>
-                <hr />
-                <Comments articleId={article.id} />
+
+                <div className="p-2 content">
+                  <p className="text-justify">{article.content}</p>
+                </div>
+              </div>
+
+              <div className="comments-container">
+                <div className="p-2 comments">
+                  <hr />
+                  <div className="d-flex justify-content-between align-items-center">
+                    <CreateLike articleId={article.id} />
+                    <p className="text-justify">
+                      likes: {article.likes.length}{" "}
+                    </p>
+                  </div>
+                  <hr />
+
+                  <Accordion className="create-post">
+                    <Accordion.Item className="create-post" eventKey="0">
+                      <Accordion.Header className="create-post">
+                        <div className="titleBox d-flex justify-content-center mt-1 mb-1">
+                          <p className="text-justify">
+                            comments: {article.comments.length}{" "}
+                          </p>
+                        </div>
+                      </Accordion.Header>
+                      <Accordion.Body>
+                        <Comments articleId={article.id} />
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  </Accordion>
+                </div>
               </div>
             </div>
           </div>
