@@ -165,9 +165,6 @@ nav.navbar .navbar-toggler .navbar-toggler-icon {
 .article {
   display: grid;
 }
-.article .position-front {
-  grid-area: 1/1/2/2;
-}
 .article .position-behind {
   grid-area: 1/1/2/2;
   top: 100px;
@@ -176,41 +173,46 @@ nav.navbar .navbar-toggler .navbar-toggler-icon {
 .article .position-behind .blob1 {
   fill: #6b73a2;
 }
-.article .titleBox {
+.article .position-front {
+  grid-area: 1/1/2/2;
+}
+.article .article-container {
   filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
 }
-.article .titleBox h3 {
+.article .article-container .titleBox {
+  filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
+}
+.article .article-container .titleBox h3 {
   padding: 0.5em 1.5em 0.5em 1em;
   color: #fff;
   background-color: #9d2133;
   clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
   -webkit-clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
 }
-.article .titleBox h4 {
+.article .article-container .titleBox h4 {
   padding: 0.25em 0.75em 0.25em 0.5em;
   color: #fff;
   background-color: #68000d;
   clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
   -webkit-clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
 }
-.article .titleBox h4 a span {
+.article .article-container .titleBox h4 a span {
   color: #fff;
 }
-.article .titleBox h4 a span:hover {
+.article .article-container .titleBox h4 a span:hover {
   color: #6b73a2;
   transform: rotate(-30deg);
 }
-.article .image-container {
-  filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
+.article .article-container .image-container {
   margin: 0;
   width: 100%;
 }
-.article .image-container .articleImage {
+.article .article-container .image-container .articleImage {
   width: 100%;
   -webkit-clip-path: polygon(1% 1%, 99% 0, 100% 99%, 0% 100%);
   clip-path: polygon(1% 1%, 99% 0, 100% 99%, 0% 100%);
 }
-.article .content-container {
+.article .article-container .content-container {
   margin: 0;
   width: 100%;
   padding: 0.25em 0.75em 0.25em 0.5em;
@@ -218,6 +220,23 @@ nav.navbar .navbar-toggler .navbar-toggler-icon {
   background-color: #fff;
   -webkit-clip-path: polygon(1% 1%, 99% 0, 100% 99%, 0% 100%);
   clip-path: polygon(1% 1%, 99% 0, 100% 99%, 0% 100%);
+}
+.article .article-container .article-text-container p.author {
+  font-weight: bold;
+}
+.article .article-container .article-text-container p.moment {
+  font-style: italic;
+}
+.article .article-container .article-text-container .article-content-container {
+  padding: 0.5em 0.75em 0.25em 0.5em;
+}
+.article .article-container .article-text-container .article-content-container p.article-content {
+  display: block;
+  width: 100%;
+}
+
+.comments p.name {
+  font-weight: bold;
 }
 
 .form-signup {

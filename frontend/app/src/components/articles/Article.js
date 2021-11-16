@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 //moment is a package that provides date formats
 import moment from "moment";
@@ -9,12 +9,10 @@ import CreateLike from "../likes/Like";
 
 import { Link } from "react-router-dom";
 
-import Accordion from "react-bootstrap/Accordion";
-
 const Article = ({ article }) => {
   return (
     <>
-      <div className="container mt-5 mb-5 article" id={article.id}>
+      <div className="article container mt-5 mb-5 " id={article.id}>
         <div className="background position-behind">
           <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -25,7 +23,7 @@ const Article = ({ article }) => {
           </svg>
         </div>
 
-        <div className="row d-flex align-items-center justify-content-center position-front">
+        <div className="article-container d-flex align-items-center justify-content-center position-front">
           <div className="col-md-6">
             <div className="titleBox d-flex justify-content-center mt-1 mb-1">
               <h3>{article.title}</h3>
@@ -46,16 +44,6 @@ const Article = ({ article }) => {
             </div>
 
             <div className="content-container">
-              <div className="d-flex justify-content-between">
-                <Link to={`/articles/${article.id}`}>
-                  <span class="material-icons-outlined">edit</span>
-                </Link>
-                <DeleteArticle
-                  articleId={article.id}
-                  authorId={article.userId}
-                />
-              </div>
-
               <div className="image-container">
                 <img
                   src={article.image}
@@ -63,43 +51,46 @@ const Article = ({ article }) => {
                   alt={article.image}
                 />
               </div>
-              <div className="col ">
-                <div className="d-flex mt-1">
-                  <p className="moment">
-                    posted {moment(article.updatedAt).fromNow()}
-                  </p>
-                </div>
 
-                <div className="p-2 content">
-                  <p className="text-justify">{article.content}</p>
-                </div>
-              </div>
-
-              <div className="comments-container">
-                <div className="p-2 comments">
-                  <hr />
-                  <div className="d-flex justify-content-between align-items-center">
-                    <CreateLike articleId={article.id} />
-                    <p className="text-justify">
-                      likes: {article.likes.length}{" "}
+              <div className="article-text-container d-flex flex-column">
+                <div className="article-info-container d-flex">
+                  <div className="author-container">
+                    <p className="author">{article.user.name}</p>
+                  </div>
+                  <div className="moment-container">
+                    <p className="moment">
+                      • {moment(article.updatedAt).fromNow()}
                     </p>
                   </div>
-                  <hr />
-
-                  <Accordion className="create-post">
-                    <Accordion.Item className="create-post" eventKey="0">
-                      <Accordion.Header className="create-post">
-                        <div className="titleBox d-flex justify-content-center mt-1 mb-1">
-                          <p className="text-justify">
-                            comments: {article.comments.length}{" "}
-                          </p>
-                        </div>
-                      </Accordion.Header>
-                      <Accordion.Body>
-                        <Comments articleId={article.id} />
-                      </Accordion.Body>
-                    </Accordion.Item>
-                  </Accordion>
+                  <div className="author-only-cta d-flex">
+                    <Link to={`/articles/${article.id}`}>
+                      <span class="material-icons-outlined">edit</span>
+                    </Link>
+                    <DeleteArticle
+                      articleId={article.id}
+                      authorId={article.userId}
+                    />
+                  </div>
+                </div>
+                <div className="article-content-container d-flex">
+                  <p className="article-content">{article.content}</p>
+                </div>
+                <div className="article-cta-container d-flex justify-content-between">
+                  <div className="like-container d-flex">
+                    <CreateLike articleId={article.id} />
+                    {article.likes.length}
+                  </div>
+                  <div className="comments-container">
+                    <div className="comment-container ">
+                      <p className="text-justify">
+                        <span class="material-icons-outlined">chat_bubble</span>{" "}
+                        {article.comments.length}{" "}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="comments-list">
+                  <Comments articleId={article.id} />
                 </div>
               </div>
             </div>

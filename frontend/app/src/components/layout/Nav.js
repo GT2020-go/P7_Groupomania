@@ -44,20 +44,20 @@ const Nav = () => {
           <div className="collapse navbar-collapse" id="navbarCollapse">
             <ul className="navbar-nav me-auto mb-2 mb-md-0">
               <li className="nav-item">
-                <Link
-                  to="/articles"
-                  className="nav-link active"
-                  aria-current="page"
-                  alt="home"
+                <Button
+                  type="button"
+                  onClick={() => history.push("/articles")}
+                  className="nav-link "
                 >
                   <span class="material-icons">home</span>
-                </Link>
+                </Button>
               </li>
 
               {auth.id ? (
                 <>
                   <li className="nav-item">
                     <Button
+                      type="button"
                       onClick={() => handleSignOut()}
                       className="nav-link "
                     >
