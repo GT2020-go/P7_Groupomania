@@ -18,9 +18,15 @@ const DeleteComment = ({ commentId, authorId }) => {
 
   return (
     <>
-      <button type="button" onClick={handleDeleteComment}>
-        <span className="material-icons">delete</span>
-      </button>
+      {authorId === userId ? (
+        <>
+          <button type="button" onClick={handleDeleteComment}>
+            <span className="material-icons">delete</span>
+          </button>
+        </>
+      ) : (
+        <></>
+      )}
     </>
   );
 };
