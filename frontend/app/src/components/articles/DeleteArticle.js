@@ -21,11 +21,17 @@ const DeleteArticle = ({ articleId, authorId }) => {
 
   return (
     <>
-      <div>
-        <button type="button" onClick={handleDeleteArticle}>
-          <span className="material-icons">delete</span>
-        </button>
-      </div>
+      {authorId === userId ? (
+        <>
+          <div>
+            <button type="button" onClick={handleDeleteArticle}>
+              <span className="material-icons">delete</span>
+            </button>
+          </div>
+        </>
+      ) : (
+        <> </>
+      )}
     </>
   );
 };
