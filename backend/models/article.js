@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       content: DataTypes.TEXT,
       image: {
         type: DataTypes.TEXT,
+        defaultValue: null,
         allowNull: true,
       },
     },

@@ -52,6 +52,10 @@ export const getArticles = () => {
 };
 
 export const editArticle = (editedArticle, id) => {
+  console.log("id: ");
+  console.log(id);
+  console.log("editedArticle: ");
+  console.log(...editedArticle);
   return (dispatch) => {
     axios
       .post(API_URL + "articles/" + id, editedArticle, {
@@ -59,10 +63,10 @@ export const editArticle = (editedArticle, id) => {
           Authorization: "Bearer " + localStorage.getItem("auth"),
         },
       })
-      .then((article) => {
+      .then((editedArticle) => {
         dispatch({
           type: EDIT_ARTICLE,
-          article,
+          editedArticle,
         });
       })
       .then(() => {
@@ -82,10 +86,9 @@ export const deleteArticle = (articleId) => {
           Authorization: "Bearer " + localStorage.getItem("auth"),
         },
       })
-      .then((articleId) => {
+      .then(() => {
         dispatch({
           type: DELETE_ARTICLE,
-          articleId,
         });
       })
       .then(() => {

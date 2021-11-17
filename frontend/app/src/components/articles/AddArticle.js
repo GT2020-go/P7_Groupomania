@@ -8,7 +8,7 @@ import Accordion from "react-bootstrap/Accordion";
 const AddArticle = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState("");
 
   const userId = useSelector((state) => state.auth.id); // get userId from store
 

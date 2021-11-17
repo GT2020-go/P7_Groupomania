@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { editArticle } from "../../actions/articleActions";
 
-const EditArticle = () => {
+// const articleInitialState = useSelector((state) => state.articles);
+
+const EditArticle = ({ article }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
@@ -11,16 +13,21 @@ const EditArticle = () => {
   const dispatch = useDispatch();
 
   //   const userId = useSelector((state) => state.auth.id); // get userId from store
-
-  const article = new FormData();
-  article.append("title", title);
-  article.append("content", content);
-  article.append("image", image);
+  // console.log(articleInitialState);
 
   const handleSubmit = (e) => {
+    const toto = new FormData();
+    toto.append("title", title);
+
+    toto.append("content", content);
+    toto.append("image", image);
+
+    console.log(content);
+    console.log(title);
+    console.log(image);
+    console.log(toto);
     e.preventDefault();
-    console.log(article);
-    dispatch(editArticle(article));
+    dispatch(editArticle(toto, article.id));
   };
 
   return (

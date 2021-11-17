@@ -16,25 +16,30 @@ const s3 = new aws.S3({
 });
 
 const imageDelete = (req, res, next) => {
-  Article.findOne({
-    where: { id: req.params.id },
-  })
-    .then((article) => {
-      const params = {
-        Bucket: "groupomania-files-storage",
-        Key: article.image.split("/").slice(-1)[0],
-      };
-      s3.deleteObject(params, (err, data) => {
-        if (err) {
-          res
-            .status(500)
-            .send({ message: err.message || "some error occured" });
-        } else {
-          next();
-        }
-      });
+  console.log(article.image);
+  if (article.image) {
+    Article.findOne({
+      where: { id: req.params.id },
     })
-    .catch((error) => res.status(400).json({ error }));
+      .then((article) => {
+        const params = {
+          Bucket: "groupomania-files-storage",
+          Key: article.image.split("/").slice(-1)[0],
+        };
+        s3.deleteObject(params, (err, data) => {
+          if (err) {
+            res
+              .status(500)
+              .send({ message: err.message || "some error occured" });
+          } else {
+            next();
+          }
+        });
+      })
+      .catch((error) => res.status(400).json({ error }));
+  } else {
+    next();
+  }
 };
 
 module.exports = imageDelete;

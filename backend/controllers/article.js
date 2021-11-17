@@ -117,7 +117,7 @@ exports.modifyOneArticle = (req, res, next) => {
 
 //delete one article
 exports.deleteOneArticle = (req, res, next) => {
-  Article.destroy({ where: { id: req.params.id } })
+  Article.destroy({ where: { id: req.params.id }, omitNull: false })
     .then(() =>
       res.status(200).json({ message: "Article supprime avec succes" })
     )
