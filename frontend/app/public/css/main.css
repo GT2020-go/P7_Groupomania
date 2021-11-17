@@ -239,6 +239,13 @@ nav.navbar .navbar-toggler .navbar-toggler-icon {
   font-weight: bold;
 }
 
+.like-button span.liked {
+  color: red;
+}
+.like-button span.unliked {
+  color: white;
+}
+
 .form-signup {
   width: 100%;
   max-width: 330px;

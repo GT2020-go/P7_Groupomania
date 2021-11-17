@@ -22,6 +22,8 @@ const Like = ({ articleId }) => {
   const handleLike = () => {
     if (likes.some((like) => like.userId === userId)) {
       const likeId = likes.find((like) => like.userId === userId).id;
+      console.log(likeId);
+
       dispatch(deleteLike(likeId));
     } else {
       dispatch(
@@ -37,9 +39,29 @@ const Like = ({ articleId }) => {
 
   return (
     <>
-      <button type="button" value={likeData} onClick={handleLike}>
-        <span className="material-icons">favorite</span>
-      </button>
+      {likes.some((like) => like.userId === userId) ? (
+        <>
+          <button
+            className="like-button"
+            type="button"
+            value={likeData}
+            onClick={handleLike}
+          >
+            <span className="material-icons liked">favorite</span>
+          </button>
+        </>
+      ) : (
+        <>
+          <button
+            className="like-button"
+            type="button"
+            value={likeData}
+            onClick={handleLike}
+          >
+            <span className="material-icons-outlined unliked">favorite</span>
+          </button>
+        </>
+      )}
     </>
   );
 };
