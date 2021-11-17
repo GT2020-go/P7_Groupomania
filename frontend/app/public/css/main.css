@@ -239,11 +239,14 @@ nav.navbar .navbar-toggler .navbar-toggler-icon {
   font-weight: bold;
 }
 
+.like-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: content-box;
+}
 .like-button span.liked {
   color: red;
-}
-.like-button span.unliked {
-  color: white;
 }
 
 .form-signup {

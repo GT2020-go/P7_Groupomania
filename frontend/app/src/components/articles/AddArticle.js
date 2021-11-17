@@ -53,7 +53,7 @@ const AddArticle = () => {
                         className="form-control articleTitle"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        autoFocus
+                        required
                       />
                       <textarea
                         id="content"
@@ -62,6 +62,7 @@ const AddArticle = () => {
                         className="form-control articleContent"
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
+                        required
                       />
                       <div className="actions">
                         <div className="btn-group d-flex justify-content-between">

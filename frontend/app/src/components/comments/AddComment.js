@@ -36,6 +36,7 @@ const AddComment = ({ articleId }) => {
             className="form-control"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
+            required
           />
           <button type="submit" className="btn btn-sm btn-bd-light ">
             <span className="material-icons">send</span>

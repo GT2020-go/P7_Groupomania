@@ -58,7 +58,9 @@ const Like = ({ articleId }) => {
             value={likeData}
             onClick={handleLike}
           >
-            <span className="material-icons-outlined unliked">favorite</span>
+            <span className="material-icons-outlined unliked">
+              favorite_border
+            </span>
           </button>
         </>
       )}

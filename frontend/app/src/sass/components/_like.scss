@@ -1,9 +1,13 @@
 .like-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: content-box;
+
     span.liked {
         color: red;
     }
 
-    span.unliked {
-        color: white
-    }
+
+    // span.unliked {}
 }
