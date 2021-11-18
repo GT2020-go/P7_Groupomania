@@ -11,7 +11,8 @@ const imageModify = require("../middleware/imageModify");
 router.get("/articles", auth, imageUpload, articleCtrl.getArticles);
 router.post("/articles", auth, imageUpload, articleCtrl.createArticle);
 router.get("/articles/:id", auth, articleCtrl.getOneArticle);
-router.post("/articles/:id", auth, articleCtrl.modifyOneArticle);
+
+router.put("/articles/:id", auth, articleCtrl.modifyOneArticle);
 
 router.get("/articles/:id/image", auth, articleCtrl.getImage);
 router.delete(
@@ -21,6 +22,8 @@ router.delete(
   articleCtrl.deleteImage
 );
 router.post("/articles/:id/image", auth, imageUpload, articleCtrl.addImage);
+
+router.put("/articles/:id/image", auth, imageModify, articleCtrl.addImage);
 
 router.delete("/articles/:id", auth, imageDelete, articleCtrl.deleteOneArticle);
 

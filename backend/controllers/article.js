@@ -29,6 +29,7 @@ exports.getArticles = (req, res, next) => {
         as: "likes", //alias needed
       },
     ],
+    order: [["updatedAt", "DESC"]], //show newest articles firt
   })
     .then((data) => {
       res.status(200).send(data);
@@ -102,12 +103,13 @@ exports.getOneArticle = (req, res, next) => {
 
 //modify one article
 exports.modifyOneArticle = (req, res, next) => {
-  const article = req.file
+  const article = req.body.article
     ? {
         ...JSON.parse(req.body.article),
         image: req.file.location,
       }
     : { ...req.body };
+  console.log(article);
   Article.update({ ...article }, { where: { id: req.params.id } })
     .then(() =>
       res.status(200).json({ message: "Article modifie avec succes !" })
