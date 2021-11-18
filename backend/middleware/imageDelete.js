@@ -23,24 +23,25 @@ const imageDelete = (req, res, next) => {
     where: { id: req.params.id },
   })
     .then((article) => {
-      const params = {
-        Bucket: "groupomania-files-storage",
-        Key: article.image.split("/").slice(-1)[0],
-      };
-      s3.deleteObject(params, (err, data) => {
-        if (err) {
-          res
-            .status(500)
-            .send({ message: err.message || "some error occured" });
-        } else {
-          next();
-        }
-      });
+      if (article.image) {
+        const params = {
+          Bucket: "groupomania-files-storage",
+          Key: article.image.split("/").slice(-1)[0],
+        };
+        s3.deleteObject(params, (err, data) => {
+          if (err) {
+            res
+              .status(500)
+              .send({ message: err.message || "some error occured" });
+          } else {
+            next();
+          }
+        });
+      } else {
+        next();
+      }
     })
     .catch((error) => res.status(400).json({ error }));
-  // } else {
-  //   next();
-  // }
 };
 
 module.exports = imageDelete;
