@@ -132,6 +132,7 @@ exports.getImage = (req, res, next) => {
   })
     .then((article) => {
       const image = article.image;
+
       res.status(200).json(image);
     })
     .catch((error) => res.status(400).json({ error }));
@@ -139,7 +140,7 @@ exports.getImage = (req, res, next) => {
 
 exports.deleteImage = (req, res, next) => {
   Article.update(
-    { image: "" },
+    { image: null },
     {
       where: { id: req.params.id },
     }
@@ -151,12 +152,19 @@ exports.deleteImage = (req, res, next) => {
 };
 
 exports.addImage = (req, res, next) => {
-  Article.update(
-    { image: req.file.location },
-    {
-      where: { id: req.params.id },
-    }
-  )
-    .then(() => res.status(200).json({ message: "Image ajoutee avec succes" }))
-    .catch((error) => res.status(400).json({ error }));
+  const newImage = req.file ? req.file.location : null;
+  Article.findOne({
+    where: { id: req.params.id },
+  }).then(
+    Article.update(
+      { image: newImage },
+      {
+        where: { id: req.params.id },
+      }
+    )
+      .then(() => {
+        res.status(200).json({ message: "Image ajoutee avec succes" });
+      })
+      .catch((error) => res.status(400).json({ error }))
+  );
 };
