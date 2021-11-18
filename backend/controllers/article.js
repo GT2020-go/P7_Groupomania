@@ -110,10 +110,20 @@ exports.modifyOneArticle = (req, res, next) => {
       }
     : { ...req.body };
   console.log(article);
-  Article.update({ ...article }, { where: { id: req.params.id } })
-    .then(() =>
-      res.status(200).json({ message: "Article modifie avec succes !" })
-    )
+  const newImage = req.file ? req.file.location : null;
+  Article.findOne({
+    where: { id: req.params.id },
+  })
+    .then(() => {
+      Article.update(
+        { ...article, image: newImage },
+        { where: { id: req.params.id } }
+      )
+        .then(() =>
+          res.status(200).json({ message: "Article modifie avec succes !" })
+        )
+        .catch((error) => res.status(400).json({ error }));
+    })
     .catch((error) => res.status(400).json({ error }));
 };
 
@@ -168,3 +178,37 @@ exports.addImage = (req, res, next) => {
       .catch((error) => res.status(400).json({ error }))
   );
 };
+
+// exports.addImage = (req, res, next) => {
+//   const newImage = req.file ? req.file.location : null;
+//   Article.findOne({
+//     where: { id: req.params.id },
+//   }).then(
+//     Article.update(
+//       { image: newImage },
+//       {
+//         where: { id: req.params.id },
+//       }
+//     )
+//       .then(() => {
+//         res.status(200).json({ message: "Image ajoutee avec succes" });
+//       })
+//       .catch((error) => res.status(400).json({ error }))
+//   );
+// };
+
+// //modify one article
+// exports.modifyOneArticle = (req, res, next) => {
+//   const article = req.body.article
+//     ? {
+//         ...JSON.parse(req.body.article),
+//         image: req.file.location,
+//       }
+//     : { ...req.body };
+//   console.log(article);
+//   Article.update({ ...article }, { where: { id: req.params.id } })
+//     .then(() =>
+//       res.status(200).json({ message: "Article modifie avec succes !" })
+//     )
+//     .catch((error) => res.status(400).json({ error }));
+// };
