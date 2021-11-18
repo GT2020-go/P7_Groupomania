@@ -16,18 +16,14 @@ const EditArticle = ({ article }) => {
   // console.log(articleInitialState);
 
   const handleSubmit = (e) => {
-    const toto = new FormData();
-    toto.append("title", title);
+    const updatedArticle = new FormData();
+    updatedArticle.append("title", title);
 
-    toto.append("content", content);
-    toto.append("image", image);
+    updatedArticle.append("content", content);
+    updatedArticle.append("image", image);
 
-    console.log(content);
-    console.log(title);
-    console.log(image);
-    console.log(toto);
     e.preventDefault();
-    dispatch(editArticle(toto, article.id));
+    dispatch(editArticle(updatedArticle, article.id));
   };
 
   return (

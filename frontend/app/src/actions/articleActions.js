@@ -52,13 +52,9 @@ export const getArticles = () => {
 };
 
 export const editArticle = (editedArticle, id) => {
-  console.log("id: ");
-  console.log(id);
-  console.log("editedArticle: ");
-  console.log(...editedArticle);
   return (dispatch) => {
     axios
-      .post(API_URL + "articles/" + id, editedArticle, {
+      .post(API_URL + "articles/" + id + "/image", editedArticle, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("auth"),
         },
