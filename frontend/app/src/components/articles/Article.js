@@ -12,13 +12,16 @@ import { Link } from "react-router-dom";
 const Article = ({ article }) => {
   return (
     <>
-      <div className="article container mt-5 mb-5 " id={article.id}>
+      <div className="article container mt-2 mb-4" id={article.id}>
         <div className="background position-behind">
           <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
             <path
               className="blob1"
               d="M51.1,-63.6C62.2,-51.5,64.4,-31.6,68.7,-11.5C72.9,8.6,79.2,29,73,44.4C66.8,59.8,48.1,70.3,29.5,73.9C11,77.6,-7.5,74.4,-22.6,66.9C-37.8,59.3,-49.6,47.4,-59.2,33.1C-68.8,18.7,-76.1,2,-75.3,-15.2C-74.5,-32.4,-65.7,-50,-51.8,-61.6C-37.8,-73.2,-18.9,-78.6,0.5,-79.3C20,-79.9,40,-75.7,51.1,-63.6Z"
-              transform="translate(100 100)"
+              preserveAspectRatio="xMidYMid meet"
+              x="0"
+              y="0"
+              transform="translate(100 100) scale(1.25)"
             />
           </svg>
         </div>
@@ -55,11 +58,9 @@ const Article = ({ article }) => {
               <div className="article-text-container d-flex flex-column">
                 <div className="article-info-container d-flex">
                   <div className="author-container">
-                    <small className="author">{article.user.name}</small>
-                  </div>
-                  <div className="moment-container">
-                    <small className="moment">
-                      • {moment(article.updatedAt).fromNow()}
+                    <small className="author">
+                      {article.user.name} •{" "}
+                      {moment(article.updatedAt).fromNow()}
                     </small>
                   </div>
                   <div className="author-only-cta d-flex">

@@ -1,6 +1,12 @@
 @import '../base/colors';
 
 #addArticle {
+    filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
+
+    .add-article-container {
+        border-bottom: solid 5px $clr-primary;
+    }
+
     .titleBox {
         filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
 
@@ -13,6 +19,7 @@
 
         }
     }
+
 
     #createArticle {
         -webkit-positon: sticky;
@@ -31,15 +38,12 @@
         border-style: none;
         background: transparent;
 
-        .accordion-button {
-            border-style: none;
-            background: transparent;
 
-            // &::after {
-            //     display: none;
-            //     width: 0
-            // }
-        }
+    }
+
+    input[name="title"]::placeholder {
+        font-weight: bold;
+        text-transform: uppercase;
     }
 }
 
@@ -53,9 +57,9 @@
         top: 100px;
         left: 50px;
 
+        svg .blob1 {
+            fill: $clr-primary-lightest;
 
-        .blob1 {
-            fill: $clr-primary-lighter;
         }
     }
 

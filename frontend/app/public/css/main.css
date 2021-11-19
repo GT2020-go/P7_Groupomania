@@ -86,6 +86,21 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  background-color: transparent;
+}
+
+input[type=file]::file-selector-button {
+  border: 2px solid #6c5ce7;
+  padding: 0.2em 0.4em;
+  border-radius: 0.2em;
+  background-color: #a29bfe;
+  transition: 1s;
+  display: none;
+}
+
+input[type=file]::file-selector-button:hover {
+  background-color: #81ecec;
+  border: 2px solid #00cec9;
 }
 
 nav.navbar {
@@ -128,14 +143,15 @@ nav.navbar .navbar-toggler .navbar-toggler-icon {
 }
 
 #addArticle {
+  filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
   background: #fafafa;
   -webkit-positon: sticky;
   position: sticky;
   z-index: 20;
   top: 4em;
 }
-#addArticle #image {
-  display: none;
+#addArticle .add-article-container {
+  border-bottom: solid 5px #102147;
 }
 #addArticle .titleBox {
   filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
@@ -157,9 +173,9 @@ nav.navbar .navbar-toggler .navbar-toggler-icon {
   border-style: none;
   background: transparent;
 }
-#addArticle .create-post .accordion-button {
-  border-style: none;
-  background: transparent;
+#addArticle input[name=title]::placeholder {
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .article {
@@ -170,8 +186,8 @@ nav.navbar .navbar-toggler .navbar-toggler-icon {
   top: 100px;
   left: 50px;
 }
-.article .position-behind .blob1 {
-  fill: #6b73a2;
+.article .position-behind svg .blob1 {
+  fill: #9aa1d3;
 }
 .article .position-front {
   grid-area: 1/1/2/2;
@@ -245,8 +261,14 @@ nav.navbar .navbar-toggler .navbar-toggler-icon {
   align-items: center;
   box-sizing: content-box;
 }
+.like-button span:hover {
+  color: #FF8589;
+}
 .like-button span.liked {
-  color: red;
+  color: #d3545c;
+}
+.like-button span.liked:hover {
+  color: #6b73a2;
 }
 
 .form-signup {
