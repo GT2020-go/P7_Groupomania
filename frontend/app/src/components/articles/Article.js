@@ -43,7 +43,7 @@ const Article = ({ article }) => {
               </h4>
             </div>
 
-            <div className="content-container">
+            <div className="content-container px-4 pt-4 pb-4">
               <div className="image-container">
                 <img
                   src={article.image}
@@ -55,12 +55,12 @@ const Article = ({ article }) => {
               <div className="article-text-container d-flex flex-column">
                 <div className="article-info-container d-flex">
                   <div className="author-container">
-                    <p className="author">{article.user.name}</p>
+                    <small className="author">{article.user.name}</small>
                   </div>
                   <div className="moment-container">
-                    <p className="moment">
+                    <small className="moment">
                       • {moment(article.updatedAt).fromNow()}
-                    </p>
+                    </small>
                   </div>
                   <div className="author-only-cta d-flex">
                     <Link to={`/articles/${article.id}`}>
@@ -75,18 +75,14 @@ const Article = ({ article }) => {
                 <div className="article-content-container d-flex">
                   <p className="article-content">{article.content}</p>
                 </div>
-                <div className="article-cta-container d-flex justify-content-between">
-                  <div className="like-container d-flex">
+                <div className="article-cta-container d-flex justify-content-right  ml-0">
+                  <div className="like-container d-flex px-1">
                     <CreateLike articleId={article.id} />
                     {article.likes.length}
                   </div>
-                  <div className="comments-container">
-                    <div className="comment-container ">
-                      <p className="text-justify">
-                        <span class="material-icons-outlined">chat_bubble</span>{" "}
-                        {article.comments.length}{" "}
-                      </p>
-                    </div>
+                  <div className="comments-container d-flex px-1">
+                    <span class="material-icons-outlined">chat_bubble</span>{" "}
+                    <div>{article.comments.length} </div>
                   </div>
                 </div>
                 <div className="comments-list">

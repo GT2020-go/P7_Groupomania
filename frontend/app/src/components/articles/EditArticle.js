@@ -15,14 +15,13 @@ const EditArticle = ({ article }) => {
   //   const userId = useSelector((state) => state.auth.id); // get userId from store
   // console.log(articleInitialState);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e, f) => {
     const updatedArticle = new FormData();
     updatedArticle.append("title", title);
 
     updatedArticle.append("content", content);
     updatedArticle.append("image", image);
 
-    e.preventDefault();
     dispatch(editArticle(updatedArticle, article.id));
   };
 
@@ -44,38 +43,40 @@ const EditArticle = ({ article }) => {
                   type="text"
                   id="title"
                   name="title"
-                  placeholder={article.tile}
+                  placeholder={article.title}
                   className="form-control articleTitle"
+                  defaultValue={article.title}
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  autoFocus
                 />
                 <textarea
                   id="content"
                   name="content"
-                  placeholder={article.content}
+                  // placeholder={article.content}
                   className="form-control articleContent"
+                  defaultValue={article.content}
                   value={content}
-                  onChange={(e) => setContent(e.target.value)}
+                  onChange={(f) => setContent(f.target.value)}
                 />
                 <div className="actions">
                   <div className="btn-group d-flex justify-content-between">
-                    <div className="btn-group d-flex justify-content-between">
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-bd-light "
-                        data-toggle="tooltip"
-                        data-original-title="EditImage"
-                      >
-                        <input
-                          id="image"
-                          name="image"
-                          type="file"
-                          className="btn btn-sm btn-bd-light"
-                          onChange={(e) => setImage(e.target.files[0])}
-                        />
-                        <span className="material-icons-outlined">image</span>
-                      </button>
+                    <div className="btn-group d-flex justify-content-between align-items-center">
+                      <label for="image">
+                        <button className=" d-flex align-items-center">
+                          <span class="material-icons-outlined">
+                            add_photo_alternate
+                          </span>
+                        </button>
+                      </label>
+
+                      <input
+                        id="image"
+                        name="image"
+                        type="file"
+                        defaultValue={article.image}
+                        className="btn btn-sm btn-bd-light"
+                        onChange={(e) => setImage(e.target.files[0])}
+                      />
                     </div>
                     <div className="btn-group d-flex justify-content-between">
                       <button

@@ -4,8 +4,16 @@
     align-items: center;
     box-sizing: content-box;
 
+    & span:hover {
+        color: $clr-secondary-lighter
+    }
+
     span.liked {
-        color: red;
+        color: $clr-secondary-light;
+
+        &:hover {
+            color: $clr-primary-lighter
+        }
     }
 
 

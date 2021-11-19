@@ -66,23 +66,28 @@ const AddArticle = () => {
                       />
                       <div className="actions">
                         <div className="btn-group d-flex justify-content-between">
-                          <label
-                            for="image"
-                            className="label-file btn btn-sm btn-bd-light"
-                          >
-                            <span className="material-icons-outlined">
-                              add_photo_alternate
-                            </span>
-                          </label>
-                          <input
-                            id="image"
-                            name="image"
-                            type="file"
-                            onChange={(e) => setImage(e.target.files[0])}
-                          />
-
+                          <div className="btn-group d-flex justify-content-between align-items-center">
+                            <label for="image">
+                              <button
+                                className=" d-flex align-items-center"
+                                title="Upload an image"
+                              >
+                                <span class="material-icons-outlined">
+                                  add_photo_alternate
+                                </span>
+                              </button>
+                            </label>
+                            <input
+                              title="/!\ only supports .jpeg and .png"
+                              id="image"
+                              name="image"
+                              type="file"
+                              onChange={(e) => setImage(e.target.files[0])}
+                            />
+                          </div>
                           <div className="btn-group d-flex justify-content-between">
                             <button
+                              title="submit"
                               type="submit"
                               className="btn btn-sm btn-bd-light "
                             >
