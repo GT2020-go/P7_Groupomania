@@ -28,7 +28,10 @@ const AddArticle = () => {
     <>
       <div className="pt-2" id="addArticle">
         <div className="add-article-container d-flex align-items-center justify-content-center pt-2">
-          <div className="d-flex flex-column" id="createArticle">
+          <div
+            className="d-flex flex-column col-md-6 col-xl-10"
+            id="createArticle"
+          >
             <button
               title="Write a new article"
               class="create-post"

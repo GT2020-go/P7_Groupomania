@@ -284,11 +284,32 @@ nav.navbar .navbar-toggler .navbar-toggler-icon {
   border-top-right-radius: 0;
 }
 
+.background-first-page {
+  background-color: #9aa1d3;
+  background-image: url("../../img/output-onlinejpgtools grayscale.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  color: #fff;
+}
+
 .form-login {
   width: 100%;
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
+  background: transparent;
+  background-color: transparent;
+}
+.form-login .titleBox {
+  filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
+}
+.form-login .titleBox h3 {
+  padding: 0.5em 1.5em 0.5em 1em;
+  color: #fff;
+  background-color: #3e4873;
+  clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
+  -webkit-clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
 }
 
 .form-login input {
@@ -302,6 +323,5 @@ html {
 }
 
 #root {
-  padding-top: 6em;
-  background-color: #fafafa;
+  padding-top: 65px;
 }/*# sourceMappingURL=main.css.map */

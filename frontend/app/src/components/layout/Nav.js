@@ -21,7 +21,7 @@ const Nav = () => {
   };
   return (
     <>
-      <nav className="navbar navbar-expand-md fixed-top">
+      <nav className="navbar navbar-expand-md fixed-top ">
         <div className="container-fluid">
           <Link to="/articles" className="navbar-brand">
             <img

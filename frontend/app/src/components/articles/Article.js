@@ -27,7 +27,7 @@ const Article = ({ article }) => {
         </div>
 
         <div className="article-container d-flex align-items-center justify-content-center position-front">
-          <div className="col-md-6">
+          <div className="col-md-6 col-xl-10">
             <div className="titleBox d-flex justify-content-center mt-1 mb-1">
               <h3>{article.title}</h3>
             </div>
