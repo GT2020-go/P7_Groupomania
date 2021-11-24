@@ -43,18 +43,17 @@ const Nav = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarCollapse">
             <ul className="navbar-nav me-auto mb-2 mb-md-0">
-              <li className="nav-item">
-                <Button
-                  type="button"
-                  onClick={() => history.push("/articles")}
-                  className="nav-link "
-                >
-                  <span class="material-icons">home</span>
-                </Button>
-              </li>
-
               {auth.id ? (
                 <>
+                  <li className="nav-item">
+                    <Button
+                      type="button"
+                      onClick={() => history.push("/articles")}
+                      className="nav-link "
+                    >
+                      <span class="material-icons">home</span>
+                    </Button>
+                  </li>
                   <li className="nav-item">
                     <Button
                       type="button"
@@ -68,25 +67,38 @@ const Nav = () => {
               ) : (
                 <>
                   <li className="nav-item">
-                    <Link to="/signup" className="nav-link" alt="Sign up">
-                      Sign up
-                    </Link>
+                    <Button
+                      type="button"
+                      onClick={() => history.push("/signup")}
+                      className="nav-link "
+                      alt="Sign up"
+                      title="Sign up"
+                    >
+                      <span class="material-icons-outlined">
+                        app_registration
+                      </span>
+                    </Button>
                   </li>
                   <li className="nav-item">
-                    <Link to="/login" className="nav-link" alt="Log in">
-                      Log In
-                    </Link>
+                    <Button
+                      type="button"
+                      onClick={() => history.push("/login")}
+                      className="nav-link "
+                      alt="Log in"
+                      title="Log in"
+                    >
+                      <span class="material-icons-outlined">login</span>
+                    </Button>
                   </li>
                 </>
               )}
             </ul>
             {auth.id ? (
               <>
-                <div className="nav-item navbar-text text-secondary">
-                  <p>
-                    <span class="material-icons">account_circle</span>
-                    {userName}
-                  </p>
+                <div className="p-2 nav-item navbar-text text-secondary d-flex align-items-center">
+                  <span class="p-1 material-icons">account_circle</span>
+
+                  <span>{userName}</span>
                 </div>
               </>
             ) : (

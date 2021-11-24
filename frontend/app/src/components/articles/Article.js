@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { useSelector } from "react-redux";
 //moment is a package that provides date formats
 import moment from "moment";
 
@@ -10,6 +10,8 @@ import CreateLike from "../likes/Like";
 import { Link } from "react-router-dom";
 
 const Article = ({ article }) => {
+  const userId = useSelector((state) => state.auth.id); // get userId from store
+
   return (
     <>
       <div className="article container mt-2 mb-4" id={article.id}>
@@ -64,9 +66,16 @@ const Article = ({ article }) => {
                     </small>
                   </div>
                   <div className="author-only-cta d-flex">
-                    <Link to={`/articles/${article.id}`}>
-                      <span class="material-icons-outlined">edit</span>
-                    </Link>
+                    {article.userId === userId ? (
+                      <>
+                        <Link to={`/articles/${article.id}`}>
+                          <span class="material-icons-outlined">edit</span>
+                        </Link>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+
                     <DeleteArticle
                       articleId={article.id}
                       authorId={article.userId}
@@ -76,18 +85,17 @@ const Article = ({ article }) => {
                 <div className="article-content-container d-flex">
                   <p className="article-content">{article.content}</p>
                 </div>
-                <div className="article-cta-container d-flex justify-content-right  ml-0">
+                <div className="article-cta-container d-flex justify-content-right mb-2">
                   <div className="like-container d-flex px-1">
                     <CreateLike articleId={article.id} />
                     {article.likes.length}
                   </div>
-                  <div className="comments-container d-flex px-1">
-                    <span class="material-icons-outlined">chat_bubble</span>{" "}
-                    <div>{article.comments.length} </div>
-                  </div>
                 </div>
                 <div className="comments-list">
-                  <Comments articleId={article.id} />
+                  <Comments
+                    articleId={article.id}
+                    numberOfComments={article.comments.length}
+                  />
                 </div>
               </div>
             </div>

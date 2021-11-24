@@ -4,7 +4,7 @@ import ListComments from "./ListComments";
 
 import Accordion from "react-bootstrap/Accordion";
 
-const Comments = ({ articleId }) => {
+const Comments = ({ articleId, numberOfComments }) => {
   return (
     <>
       <AddComment articleId={articleId} />
@@ -12,6 +12,10 @@ const Comments = ({ articleId }) => {
         <Accordion.Item className="comments-list" eventKey="0">
           <Accordion.Header className="comments-list">
             show all comments
+            <div className="comments-container d-flex px-1">
+              <span class="material-icons-outlined">chat_bubble</span>{" "}
+              <div>{numberOfComments} </div>
+            </div>
           </Accordion.Header>
           <Accordion.Body>
             <ListComments articleId={articleId} />

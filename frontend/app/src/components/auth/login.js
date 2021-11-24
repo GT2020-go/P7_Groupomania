@@ -27,7 +27,7 @@ const LogIn = () => {
 
   return (
     <>
-      <div className="background-first-page position-behind">
+      <div className="background-first-page container-fluid position-behind">
         <form
           className="col-sm-6 form-login"
           noValidate

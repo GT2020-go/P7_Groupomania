@@ -12,9 +12,6 @@ const EditArticle = ({ article }) => {
 
   const dispatch = useDispatch();
 
-  //   const userId = useSelector((state) => state.auth.id); // get userId from store
-  // console.log(articleInitialState);
-
   const handleSubmit = (e, f) => {
     const updatedArticle = new FormData();
     updatedArticle.append("title", title);
@@ -43,9 +40,9 @@ const EditArticle = ({ article }) => {
                   type="text"
                   id="title"
                   name="title"
-                  placeholder={article.title}
+                  // placeholder={title}
                   className="form-control articleTitle"
-                  defaultValue={article.title}
+                  // defaultValue={title}
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                 />
@@ -54,7 +51,7 @@ const EditArticle = ({ article }) => {
                   name="content"
                   // placeholder={article.content}
                   className="form-control articleContent"
-                  defaultValue={article.content}
+                  // defaultValue={article.content}
                   value={content}
                   onChange={(f) => setContent(f.target.value)}
                 />
@@ -73,7 +70,7 @@ const EditArticle = ({ article }) => {
                         id="image"
                         name="image"
                         type="file"
-                        defaultValue={article.image}
+                        // defaultValue={article.image}
                         className="btn btn-sm btn-bd-light"
                         onChange={(e) => setImage(e.target.files[0])}
                       />
@@ -83,7 +80,7 @@ const EditArticle = ({ article }) => {
                         type="submit"
                         className="btn btn-sm btn-bd-light "
                       >
-                        <span className="material-icons">send</span>
+                        <span className="send material-icons">send</span>
                       </button>
                     </div>
                   </div>

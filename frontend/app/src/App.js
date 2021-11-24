@@ -8,7 +8,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Nav from "./components/layout/Nav";
 import SignUp from "./components/auth/Signup";
 import LogIn from "./components/auth/Login";
-import Profile from "./components/user/profile";
+import Profile from "./components/user/Profile";
 import { connectedUser } from "./actions/authActions";
 import Articles from "./components/articles/Articles";
 import GetOneArticle from "./components/articles/GetOneArticle";
@@ -31,6 +31,8 @@ const App = () => {
           <Route exact path="/articles" component={Articles} />
           <Route exact path="/" component={Articles} />
           <Route exact path="/articles/:id" component={GetOneArticle} />
+          <Route exact path="/me" component={Profile} />
+          {/* <Route exact path="/admin-board" component={Admin} //simple list of all posts, with comments below with button delete/> */}
         </Switch>
       </BrowserRouter>
     </>

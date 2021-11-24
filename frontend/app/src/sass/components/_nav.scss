@@ -37,6 +37,7 @@ nav.navbar {
         background-color: $clr-primary-light;
         clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
         -webkit-clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
+        border-radius: 0;
 
         &:hover {
             background-color: $clr-secondary;
@@ -47,4 +48,9 @@ nav.navbar {
             background-color: #fff
         }
     }
+
+    // .navbar-text {
+    //     display: flex;
+
+    // }
 }

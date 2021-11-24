@@ -103,6 +103,13 @@ input[type=file]::file-selector-button:hover {
   border: 2px solid #00cec9;
 }
 
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+}
+
 nav.navbar {
   background-color: #102147;
 }
@@ -133,6 +140,7 @@ nav.navbar .navbar-toggler {
   background-color: #3e4873;
   clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
   -webkit-clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
+  border-radius: 0;
 }
 nav.navbar .navbar-toggler:hover {
   background-color: #9d2133;
@@ -178,6 +186,13 @@ nav.navbar .navbar-toggler .navbar-toggler-icon {
   text-transform: uppercase;
 }
 
+button span.send {
+  color: #102147;
+}
+button span.send:hover {
+  color: #6b73a2;
+}
+
 .article {
   display: grid;
 }
@@ -194,6 +209,24 @@ nav.navbar .navbar-toggler .navbar-toggler-icon {
 }
 .article .article-container {
   filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
+}
+.article .article-container .author-only-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: content-box;
+}
+.article .article-container .author-only-cta a {
+  color: #102147;
+}
+.article .article-container .author-only-cta a span:hover {
+  color: #3e4873;
+}
+.article .article-container .author-only-cta button {
+  color: #102147;
+}
+.article .article-container .author-only-cta button span.trash:hover {
+  color: #9d2133;
 }
 .article .article-container .titleBox {
   filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
@@ -277,6 +310,16 @@ nav.navbar .navbar-toggler .navbar-toggler-icon {
   padding: 15px;
   margin: 0 auto;
 }
+.form-signup .titleBox {
+  filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
+}
+.form-signup .titleBox h3 {
+  padding: 0.5em 1.5em 0.5em 1em;
+  color: #fff;
+  background-color: #3e4873;
+  clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
+  -webkit-clip-path: polygon(2% 0%, 100% 5%, 90% 87%, 6% 99%);
+}
 
 .form-signup input {
   margin-bottom: 10px;
@@ -291,6 +334,8 @@ nav.navbar .navbar-toggler .navbar-toggler-icon {
   background-repeat: no-repeat;
   background-blend-mode: overlay;
   color: #fff;
+  margin: 0;
+  min-height: 100%;
 }
 
 .form-login {
@@ -323,5 +368,5 @@ html {
 }
 
 #root {
-  padding-top: 65px;
+  padding-top: 60px;
 }/*# sourceMappingURL=main.css.map */

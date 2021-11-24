@@ -5,6 +5,7 @@ import {
   LOG_IN,
   LOG_OUT,
   USER_CONNECTED,
+  DELETE_USER,
 } from "../constants/userActionType";
 import { getArticles } from "./articleActions";
 
@@ -79,5 +80,28 @@ export const logout = () => {
     dispatch({
       type: LOG_OUT,
     });
+  };
+};
+
+export const deleteUser = ({ userId }) => {
+  localStorage.clear();
+  return (dispatch) => {
+    axios
+      .delete(API_URL + `me/${userId}`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("auth"),
+        },
+      })
+      .then(() => {
+        dispatch({
+          type: DELETE_USER,
+        });
+      })
+      .then(() => {
+        dispatch(getArticles());
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 };

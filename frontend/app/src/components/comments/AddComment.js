@@ -9,16 +9,12 @@ const AddComment = ({ articleId }) => {
   const name = useSelector((state) => state.auth.name);
   const commentData = { comment, userId, articleId, name };
 
-  console.log(comment);
-
   const dispatch = useDispatch();
 
   const id = articleId;
 
   //--------------------- to update below
   const handleSubmit = (e) => {
-    // e.preventDefault();
-    console.log(commentData);
     dispatch(addComment(commentData));
   };
 
@@ -33,13 +29,13 @@ const AddComment = ({ articleId }) => {
           <input
             type="text"
             placeholder="Comment this article..."
-            className="form-control"
+            className="form-control mb-2"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             required
           />
           <button type="submit" className="btn btn-sm btn-bd-light ">
-            <span className="material-icons">send</span>
+            <span className="send material-icons">send</span>
           </button>
         </div>
       </form>

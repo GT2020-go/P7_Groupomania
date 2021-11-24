@@ -29,30 +29,32 @@ const SignUp = () => {
   };
 
   return (
-    <div className="background-first-page position-behind">
+    <div className="background-first-page position-behind d-flex ">
       <form className="form-signup" noValidate onSubmit={handleSubmit}>
         <img
-          className="mb-4 mx-auto d-block"
+          className="logo mb-4 mx-auto d-block"
           src={LogoSolo}
           alt="Logo of Groupomania"
           width={72}
           height={72}
         />
-        <h3 className="mb-3 font-weight-normal text-center">
-          New user? <br />
-          Create an account
-        </h3>
+        <div className="titleBox d-flex justify-content-center mt-1 mb-1">
+          <h3 className="mb-3 font-weight-normal text-center">
+            New user? <br />
+            Create an account
+          </h3>
+        </div>
         <p className="text-center">
           Already have an account? <Link to="/login">Login</Link> here
         </p>
         <label htmlFor="inputName" className="sr-only">
-          First Name
+          Full Name
         </label>
         <input
           type="name"
           id="inputName"
           className="form-control"
-          placeholder="John"
+          placeholder="John Doe"
           required
           autoFocus
           value={user.name}

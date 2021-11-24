@@ -60,6 +60,8 @@ export const editArticle = (editedArticle, id) => {
         },
       })
       .then((editedArticle) => {
+        console.log("editedArticle");
+        console.log(editedArticle);
         dispatch({
           type: EDIT_ARTICLE,
           editedArticle,
@@ -109,6 +111,9 @@ export const getOneArticle = (articleId) => {
           type: GET_ONE_ARTICLE,
           article,
         });
+      })
+      .then(() => {
+        dispatch(getArticles());
       })
       .catch((error) => {
         console.log(error);

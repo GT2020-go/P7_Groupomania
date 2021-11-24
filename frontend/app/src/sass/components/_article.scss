@@ -47,7 +47,13 @@
     }
 }
 
+button span.send {
+    color: $clr-primary;
 
+    &:hover {
+        color: $clr-primary-lighter;
+    }
+}
 
 .article {
     display: grid;
@@ -70,7 +76,28 @@
     .article-container {
         filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
 
+        .author-only-cta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: content-box;
 
+            a {
+                color: $clr-primary;
+
+                & span:hover {
+                    color: $clr-primary-light
+                }
+            }
+
+            button {
+                color: $clr-primary;
+
+                & span.trash:hover {
+                    color: $clr-secondary
+                }
+            }
+        }
 
 
 

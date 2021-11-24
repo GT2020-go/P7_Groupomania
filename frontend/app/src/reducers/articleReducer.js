@@ -16,16 +16,16 @@ const articleReducer = (state = [], action) => {
     case GET_ONE_ARTICLE:
       console.log("here yopu go:");
       console.log(action.article.data);
-      return action.article.data;
+      return [action.article.data]; //must be an array !
     case EDIT_ARTICLE:
       console.log("editting:");
       console.log(action.article.data);
-      return action.article.data;
-    //   return state.map((article) => {
-    //     article.id === action.article.data.id ? action.article.data : article;
-    //   });
+      return [action.article.data, ...state];
+    // return state.map((article) => {
+    //   article.id === action.article.data.id ? action.article.data : article;
+    // });
     case DELETE_ARTICLE:
-      return action.articles.data;
+      return [action.article.data, ...state];
     default:
       return state;
   }

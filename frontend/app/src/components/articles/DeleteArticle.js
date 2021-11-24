@@ -8,9 +8,6 @@ const DeleteArticle = ({ articleId, authorId }) => {
 
   const userId = useSelector((state) => state.auth.id); // get userId from store
 
-  console.log(authorId);
-  console.log(articleId);
-
   const handleDeleteArticle = () => {
     if (userId === authorId) {
       dispatch(deleteArticle(articleId));
@@ -25,7 +22,7 @@ const DeleteArticle = ({ articleId, authorId }) => {
         <>
           <div>
             <button type="button" onClick={handleDeleteArticle}>
-              <span className="material-icons">delete</span>
+              <span className="trash material-icons">delete</span>
             </button>
           </div>
         </>

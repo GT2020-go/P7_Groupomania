@@ -3,9 +3,12 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const sequelize = require("sequelize");
-const { users } = require("../models");
+const { users, likes } = require("../models");
 const db = require("../models");
 const User = db.users;
+const Like = db.likes;
+const Comment = db.comments;
+const Article = db.articles;
 
 //dowload to S3
 const upload = require("../middleware/ImageUpload");
@@ -83,5 +86,28 @@ exports.me = (req, res, next) => {
     where: { id: userId }, //we want only the user corresponding to the id in parameter
   })
     .then((data) => res.status(200).json(data))
+    .catch((error) => res.status(400).json({ error }));
+};
+
+//delete the user
+exports.deleteUser = (req, res, next) => {
+  Like.destroy({ where: { userId: req.params.id } })
+    .then(
+      Comment.destroy({ where: { userId: req.params.id } })
+        .then(
+          Article.destroy({ where: { userId: req.params.id } })
+            .then(
+              User.destroy({ where: { id: req.params.id }, omitNull: false })
+                .then(() =>
+                  res.status(200).json({ message: "User supprime avec succes" })
+                )
+                .catch((error) => res.status(400).json({ error }))
+            )
+            .catch((error) => res.status(400).json({ error }))
+        )
+        .catch((error) => res.status(400).json({ error }))
+    )
+    .catch((error) => res.status(400).json({ error }))
+
     .catch((error) => res.status(400).json({ error }));
 };

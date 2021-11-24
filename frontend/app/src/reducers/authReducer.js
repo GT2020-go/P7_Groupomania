@@ -3,6 +3,7 @@ import {
   LOG_IN,
   LOG_OUT,
   USER_CONNECTED,
+  DELETE_USER,
 } from "../constants/userActionType";
 
 // import jwtDecode from "jwt-decode";
@@ -41,6 +42,8 @@ const authReducer = (state = initialState, action) => {
         email: null,
         id: null,
       };
+    case DELETE_USER:
+      return [action.article.data, ...state];
     default:
       return state;
   }
