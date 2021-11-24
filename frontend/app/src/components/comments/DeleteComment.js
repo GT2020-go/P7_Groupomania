@@ -11,7 +11,7 @@ const DeleteComment = ({ commentId, authorId }) => {
   const handleDeleteComment = () => {
     if (userId === authorId) {
       dispatch(deleteComment(commentId));
-      // setData(dataInitialState);
+
       history.push("/");
     } else {
       console.log("you cannot delete this comment as you are not the author");

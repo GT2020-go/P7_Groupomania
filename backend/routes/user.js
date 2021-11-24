@@ -3,9 +3,11 @@ const router = express.Router();
 
 const userCtrl = require("../controllers/user");
 
+const auth = require("../middleware/auth");
+
 router.post("/signup", userCtrl.signup);
 router.post("/login", userCtrl.login);
 router.post("/me", userCtrl.me);
-router.delete("/me/:id", userCtrl.deleteUser);
+router.delete("/me/:id", auth, userCtrl.deleteUser);
 
 module.exports = router;

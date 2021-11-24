@@ -32,7 +32,6 @@ const App = () => {
           <Route exact path="/" component={Articles} />
           <Route exact path="/articles/:id" component={GetOneArticle} />
           <Route exact path="/me" component={Profile} />
-          {/* <Route exact path="/admin-board" component={Admin} //simple list of all posts, with comments below with button delete/> */}
         </Switch>
       </BrowserRouter>
     </>

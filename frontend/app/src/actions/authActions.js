@@ -83,21 +83,24 @@ export const logout = () => {
   };
 };
 
-export const deleteUser = ({ userId }) => {
-  localStorage.clear();
+export const deleteUser = (userId) => {
   return (dispatch) => {
+    console.log(userId);
     axios
-      .delete(API_URL + `me/${userId}`, {
+      .delete(API_URL + `auth/me/${userId}`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("auth"),
         },
       })
-      .then(() => {
+      .then((id) => {
+        localStorage.clear();
         dispatch({
           type: DELETE_USER,
+          id,
         });
       })
       .then(() => {
+        localStorage.clear();
         dispatch(getArticles());
       })
       .catch((error) => {
