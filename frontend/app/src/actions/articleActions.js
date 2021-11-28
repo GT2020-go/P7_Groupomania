@@ -60,8 +60,6 @@ export const editArticle = (editedArticle, id) => {
         },
       })
       .then((editedArticle) => {
-        console.log("editedArticle");
-        console.log(editedArticle);
         dispatch({
           type: EDIT_ARTICLE,
           editedArticle,

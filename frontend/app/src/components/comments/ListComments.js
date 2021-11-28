@@ -14,7 +14,7 @@ const ListComments = ({ articleId }) => {
     <>
       {comms &&
         comms.map((comment) => {
-          return <Comment comment={comment} />;
+          return <Comment comment={comment} key={comment.id} />;
         })}
     </>
   );

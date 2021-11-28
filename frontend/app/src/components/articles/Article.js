@@ -43,7 +43,7 @@ const Article = ({ article }) => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <span class="material-icons">email</span>
+                  <span className="material-icons">email</span>
                 </a>
               </h4>
             </div>
@@ -69,7 +69,7 @@ const Article = ({ article }) => {
                     {article.userId === userId ? (
                       <>
                         <Link to={`/articles/${article.id}`}>
-                          <span class="material-icons-outlined">edit</span>
+                          <span className="material-icons-outlined">edit</span>
                         </Link>
                       </>
                     ) : (

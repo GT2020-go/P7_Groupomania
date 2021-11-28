@@ -5,7 +5,10 @@ const commentReducer = (state = [], action) => {
     case ADD_COMMENT:
       return [action.comment.data, ...state];
     case DELETE_COMMENT:
-      return [action.comment.data, ...state];
+      return [
+        state.filter((comment) => comment !== action.comment.data),
+        ...state,
+      ];
     default:
       return state;
   }

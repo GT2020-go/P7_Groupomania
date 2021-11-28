@@ -60,7 +60,7 @@ const EditArticle = ({ article }) => {
                     <div className="btn-group d-flex justify-content-between align-items-center">
                       <label for="image">
                         <button className=" d-flex align-items-center">
-                          <span class="material-icons-outlined">
+                          <span className="material-icons-outlined">
                             add_photo_alternate
                           </span>
                         </button>

@@ -69,7 +69,7 @@ const Profile = () => {
                     // variant="primary"
                     onClick={handleShow}
                   >
-                    <span class="material-icons px-1">warning_amber</span>{" "}
+                    <span className="material-icons px-1">warning_amber</span>{" "}
                     Delete account
                   </button>
                 </div>

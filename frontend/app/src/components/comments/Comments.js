@@ -13,7 +13,7 @@ const Comments = ({ articleId, numberOfComments }) => {
           <Accordion.Header className="comments-list">
             show all comments
             <div className="comments-container d-flex px-1">
-              <span class="material-icons-outlined">chat_bubble</span>{" "}
+              <span className="material-icons-outlined">chat_bubble</span>{" "}
               <div>{numberOfComments} </div>
             </div>
           </Accordion.Header>

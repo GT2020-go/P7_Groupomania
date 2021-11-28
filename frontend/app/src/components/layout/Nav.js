@@ -39,7 +39,7 @@ const Nav = () => {
             aria-controls="navbarCollapse"
             aria-label="Toggle navigation"
           >
-            <span class="material-icons">menu</span>
+            <span className="material-icons">menu</span>
           </button>
           <div className="collapse navbar-collapse" id="navbarCollapse">
             <ul className="navbar-nav me-auto mb-2 mb-md-0">
@@ -51,7 +51,7 @@ const Nav = () => {
                       onClick={() => history.push("/articles")}
                       className="nav-link "
                     >
-                      <span class="material-icons">home</span>
+                      <span className="material-icons">home</span>
                     </Button>
                   </li>
                   <li className="nav-item">
@@ -60,7 +60,7 @@ const Nav = () => {
                       onClick={() => handleSignOut()}
                       className="nav-link "
                     >
-                      <span class="material-icons">logout</span>
+                      <span className="material-icons">logout</span>
                     </Button>
                   </li>
                 </>
@@ -74,7 +74,7 @@ const Nav = () => {
                       alt="Sign up"
                       title="Sign up"
                     >
-                      <span class="material-icons-outlined">
+                      <span className="material-icons-outlined">
                         app_registration
                       </span>
                     </Button>
@@ -87,7 +87,7 @@ const Nav = () => {
                       alt="Log in"
                       title="Log in"
                     >
-                      <span class="material-icons-outlined">login</span>
+                      <span className="material-icons-outlined">login</span>
                     </Button>
                   </li>
                 </>
@@ -96,7 +96,7 @@ const Nav = () => {
             {auth.id ? (
               <>
                 <div className="p-2 nav-item navbar-text text-secondary d-flex align-items-center">
-                  <span class="p-1 material-icons">account_circle</span>
+                  <span className="p-1 material-icons">account_circle</span>
 
                   <span>{userName}</span>
                 </div>

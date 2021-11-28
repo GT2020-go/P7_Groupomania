@@ -37,7 +37,7 @@ const AddArticle = () => {
               >
                 <button
                   title="Write a new article"
-                  class="create-post"
+                  className="create-post"
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#multiCollapseExample2"
@@ -47,13 +47,13 @@ const AddArticle = () => {
                   <div className="titleBox d-flex justify-content-center mt-1 mb-1">
                     <h4>
                       Write a new article{" "}
-                      <span class="material-icons-outlined">post_add</span>
+                      <span className="material-icons-outlined">post_add</span>
                     </h4>
                   </div>
                 </button>
 
                 <div
-                  class="collapse multi-collapse px-2 pb-2"
+                  className="collapse multi-collapse px-2 pb-2"
                   id="multiCollapseExample2"
                 >
                   <form
@@ -85,13 +85,13 @@ const AddArticle = () => {
                     <div className="actions d-flex">
                       <label
                         className="d-flex align-items-center justify-content-center"
-                        for="image"
+                        htmlFor="image"
                       >
                         <button
                           className="d-flex align-items-center justify-content-center"
                           title="Upload an image"
                         >
-                          <span class="material-icons-outlined px-2">
+                          <span className="material-icons-outlined px-2">
                             add_photo_alternate
                           </span>
                         </button>
