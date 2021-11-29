@@ -15,15 +15,7 @@ const commentReducer = (state = commentInitialState, action) => {
       console.log([action.comment.data, ...state]);
       return [action.comment.data, ...state];
     case DELETE_COMMENT:
-      // console.log("commentReducer:");
-      console.log(
-        action.commentId
-        // state.filter((comment) => comment !== action.comment.data),
-      );
-      return [
-        ...state,
-        state.filter((comment) => comment !== action.comment.data),
-      ];
+      return state.filter((comment) => comment.id !== action.comment.data.id);
     default:
       return state;
   }
