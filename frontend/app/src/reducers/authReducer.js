@@ -6,8 +6,6 @@ import {
   DELETE_USER,
 } from "../constants/userActionType";
 
-// import jwtDecode from "jwt-decode";
-
 const initialState = {
   token: localStorage.getItem("auth") ? localStorage.getItem("auth") : null,
   name: null,
@@ -43,7 +41,7 @@ const authReducer = (state = initialState, action) => {
         id: null,
       };
     case DELETE_USER:
-      return [action.article.data, ...state];
+      return [action.article.data, ...state]; // /\ something wrong in this line: why article??
     default:
       return state;
   }

@@ -17,10 +17,9 @@ const articleReducer = (state = [], action) => {
     case EDIT_ARTICLE:
       return [action.article.data, ...state];
     case DELETE_ARTICLE:
-      return [
-        state.filter((article) => article !== action.article.data),
-        ...state,
-      ];
+      console.log(action.article.data.id);
+      console.log(state);
+      return state.filter((article) => article.id !== action.article.data.id);
     default:
       return state;
   }

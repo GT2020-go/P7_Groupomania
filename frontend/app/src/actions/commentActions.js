@@ -1,6 +1,10 @@
 import axios from "axios";
 import API_URL from "../constants/APIConfig";
-import { ADD_COMMENT, DELETE_COMMENT } from "../constants/commentActionType";
+import {
+  ADD_COMMENT,
+  DELETE_COMMENT,
+  LIST_COMMENTS,
+} from "../constants/commentActionType";
 import { getArticles } from "./articleActions";
 
 export const addComment = (comment) => {
@@ -28,6 +32,8 @@ export const addComment = (comment) => {
 };
 
 export const deleteComment = (commentId) => {
+  console.log("toto:");
+  console.log(commentId);
   return (dispatch) => {
     axios
       .delete(API_URL + `comments/${commentId}`, {
@@ -35,7 +41,7 @@ export const deleteComment = (commentId) => {
           Authorization: "Bearer " + localStorage.getItem("auth"),
         },
       })
-      .then((commentId) => {
+      .then(() => {
         dispatch({
           type: DELETE_COMMENT,
           commentId,
@@ -46,6 +52,26 @@ export const deleteComment = (commentId) => {
       })
       .catch((error) => {
         console.log(error);
+      });
+  };
+};
+
+export const listComments = () => {
+  return (dispatch) => {
+    axios
+      .get(API_URL + "articles", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("auth"),
+        },
+      })
+      .then((comments) => {
+        dispatch({
+          type: LIST_COMMENTS,
+          comments,
+        });
+      })
+      .catch((error) => {
+        console.log(error.response);
       });
   };
 };

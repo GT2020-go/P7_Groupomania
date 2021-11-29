@@ -82,9 +82,10 @@ export const deleteArticle = (articleId) => {
           Authorization: "Bearer " + localStorage.getItem("auth"),
         },
       })
-      .then(() => {
+      .then((article) => {
         dispatch({
           type: DELETE_ARTICLE,
+          article,
         });
       })
       .then(() => {

@@ -50,7 +50,7 @@ exports.deleteOneComment = (req, res, next) => {
     where: { id: req.params.id },
   })
     .then(() =>
-      res.status(200).json({ message: "Article supprime avec succes" })
+      res.status(200).json({ message: "Comment supprime avec succes" })
     )
     .catch((error) => res.status(400).json({ error }));
 };
