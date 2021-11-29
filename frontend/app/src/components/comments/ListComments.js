@@ -1,10 +1,7 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import Comment from "./Comment";
-
-import { getArticles } from "../../actions/articleActions";
-import { listComments } from "../../actions/commentActions";
 
 const ListComments = ({ articleId }) => {
   const articleData = useSelector((state) =>
@@ -12,11 +9,6 @@ const ListComments = ({ articleId }) => {
   );
 
   const comms = articleData.comments;
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(listComments());
-  }, [dispatch]);
 
   return (
     <>

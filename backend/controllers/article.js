@@ -20,9 +20,12 @@ exports.getArticles = (req, res, next) => {
         model: db.users,
         // as: "userName", //no need for alias
       },
+
       {
         model: db.comments,
         as: "comments", //alias needed
+        separate: true,
+        order: [["createdAt", "DESC"]],
       },
       {
         model: db.likes, //we want to see all the likes associated to the article

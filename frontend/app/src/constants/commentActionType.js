@@ -1,3 +1,2 @@
 export const ADD_COMMENT = "ADD_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
-export const LIST_COMMENTS = "LIST_COMMENTS";
