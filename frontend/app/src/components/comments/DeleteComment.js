@@ -6,9 +6,10 @@ import { deleteComment } from "../../actions/commentActions";
 const DeleteComment = ({ commentId, authorId }) => {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.auth.id); // get userId from store
+  const isAdmin = useSelector((state) => state.auth.admin);
 
   const handleDeleteComment = () => {
-    if (userId === authorId) {
+    if (userId === authorId || isAdmin === true) {
       dispatch(deleteComment(commentId));
     } else {
       console.log("you cannot delete this comment as you are not the author");
@@ -17,7 +18,7 @@ const DeleteComment = ({ commentId, authorId }) => {
 
   return (
     <>
-      {authorId === userId ? (
+      {authorId === userId || isAdmin === true ? (
         <>
           <button type="button" onClick={handleDeleteComment}>
             <span className="trash material-icons">delete</span>

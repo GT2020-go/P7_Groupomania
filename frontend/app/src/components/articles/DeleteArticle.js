@@ -7,9 +7,10 @@ const DeleteArticle = ({ articleId, authorId }) => {
   const dispatch = useDispatch();
 
   const userId = useSelector((state) => state.auth.id); // get userId from store
+  const isAdmin = useSelector((state) => state.auth.admin);
 
   const handleDeleteArticle = () => {
-    if (userId === authorId) {
+    if (userId === authorId || isAdmin === true) {
       dispatch(deleteArticle(articleId));
     } else {
       console.log("you cannot delete this article as you are not the author");
@@ -18,7 +19,7 @@ const DeleteArticle = ({ articleId, authorId }) => {
 
   return (
     <>
-      {authorId === userId ? (
+      {authorId === userId || isAdmin === true ? (
         <>
           <div>
             <button type="button" onClick={handleDeleteArticle}>

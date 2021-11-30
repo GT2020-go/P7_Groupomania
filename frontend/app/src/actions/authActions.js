@@ -40,6 +40,7 @@ export const login = (data) => {
           name: response.data.name,
           email: response.data.email,
           userId: response.data.userId,
+          admin: response.data.admin,
         });
       })
       .then(() => {
@@ -66,6 +67,7 @@ export const connectedUser = (auth) => {
           name: response.data.name,
           email: response.data.email,
           userId: response.data.id,
+          admin: response.data.admin,
         });
       })
       .catch((error) => {

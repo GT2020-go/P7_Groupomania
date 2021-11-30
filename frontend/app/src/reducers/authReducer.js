@@ -11,6 +11,7 @@ const initialState = {
   name: null,
   email: null,
   id: null,
+  admin: null,
 };
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -29,6 +30,7 @@ const authReducer = (state = initialState, action) => {
         id: action.userId,
         name: action.name,
         email: action.email,
+        admin: action.admin,
       };
 
     case LOG_OUT:
