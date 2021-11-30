@@ -1,1 +1,0 @@
-web: node backend/app/app.js start
