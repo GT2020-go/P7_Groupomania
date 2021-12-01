@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { addArticle } from "../../actions/articleActions";
 
-import Accordion from "react-bootstrap/Accordion";
-
 const AddArticle = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -21,6 +19,7 @@ const AddArticle = () => {
 
   const handleSubmit = (e) => {
     dispatch(addArticle(article));
+    e.preventDefault();
   };
 
   const auth = useSelector((state) => state.auth);

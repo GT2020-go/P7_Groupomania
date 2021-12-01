@@ -16,9 +16,6 @@ const s3 = new aws.S3({
 });
 
 const imageDelete = (req, res, next) => {
-  // console.log("toto");
-  // console.log(article.image);
-  // if (article.image) {
   Article.findOne({
     where: { id: req.params.id },
   })

@@ -2,20 +2,16 @@ import React, { useEffect } from "react";
 
 import { getOneArticle } from "../../actions/articleActions";
 
-import { useDispatch, useSelector, useStore } from "react-redux";
-import { useHistory } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
 
 import { useParams } from "react-router";
 import EditArticle from "./EditArticle";
 
 const GetOneArticle = () => {
-  const { id } = useParams();
-  const articleId = id;
   const dispatch = useDispatch();
-  const history = useHistory();
-
+  const { id } = useParams();
   useEffect(() => {
-    console.log(articleId);
+    const articleId = id;
     dispatch(getOneArticle(articleId));
   }, [dispatch]);
 

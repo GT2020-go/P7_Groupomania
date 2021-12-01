@@ -15,8 +15,9 @@ import GetOneArticle from "./components/articles/GetOneArticle";
 
 const App = () => {
   const dispatch = useDispatch();
-  const auth = localStorage.getItem("auth");
+
   useEffect(() => {
+    const auth = localStorage.getItem("auth");
     dispatch(connectedUser(auth));
   }, [dispatch]);
 
