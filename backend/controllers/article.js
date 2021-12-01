@@ -8,7 +8,7 @@ const db = require("../models");
 const Article = db.articles;
 
 //dowload to S3
-const upload = require("../middleware/ImageUpload");
+const upload = require("../middleware/ImageUpload.js");
 const imageDelete = require("../middleware/imageDelete");
 const imageModify = require("../middleware/imageModify");
 
