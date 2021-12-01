@@ -9,8 +9,8 @@ const article = require("../models/article");
 const s3 = new aws.S3();
 
 aws.config.update({
-  secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
-  accessKeyId: process.env.S3_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   region: "us-east-1",
 });
 

@@ -17,14 +17,15 @@ export const addArticle = (article) => {
         },
       })
       .then((article) => {
+        console.log(article);
         dispatch({
           type: ADD_ARTICLE,
           article,
         });
       })
-      .then(() => {
-        dispatch(getArticles());
-      })
+      // .then(() => {
+      //   dispatch(getArticles());
+      // })
       .catch((error) => {
         console.log(error.response);
       });
