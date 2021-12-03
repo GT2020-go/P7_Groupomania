@@ -27,7 +27,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <Nav />
-        {auth ? (
+        {auth && auth.id ? (
           <Switch>
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/login" component={LogIn} />

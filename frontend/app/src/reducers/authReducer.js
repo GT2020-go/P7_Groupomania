@@ -37,6 +37,7 @@ const authReducer = (state = initialState, action) => {
       localStorage.clear();
       console.log("User logged out");
       return {
+        ...state,
         token: null,
         name: null,
         email: null,

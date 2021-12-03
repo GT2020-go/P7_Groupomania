@@ -4,7 +4,7 @@ import Logo from "../../Groupomania_Logos/icon-left-font-monochrome-white.svg";
 
 import { Link, useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { logout } from "../../actions/authActions";
 
@@ -12,10 +12,12 @@ const Nav = () => {
   const auth = useSelector((state) => state.auth);
   const userName = useSelector((state) => state.auth.name); // get userName from store
 
+  const dispatch = useDispatch();
+
   const history = useHistory();
   const handleSignOut = () => {
     //Signout the user:
-    logout();
+    dispatch(logout());
     // then send him back to login page:
     history.push("/login");
   };

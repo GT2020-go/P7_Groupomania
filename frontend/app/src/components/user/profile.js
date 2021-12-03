@@ -19,7 +19,7 @@ const Profile = () => {
 
   const history = useHistory();
   const handleSignOut = () => {
-    logout();
+    dispatch(logout());
     history.push("/login");
   };
 

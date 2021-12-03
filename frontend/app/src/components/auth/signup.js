@@ -17,12 +17,11 @@ const userInitialState = {
 
 const SignUp = () => {
   const dispatch = useDispatch();
-  // const state = useSelector((state) => state);
+
   const [user, setUser] = useState(userInitialState);
 
   const history = useHistory();
   const handleSubmit = (e) => {
-    // e.preventDefault(); // prevent browser from refreshing
     dispatch(signup(user));
     setUser(userInitialState);
     history.push("/login");
