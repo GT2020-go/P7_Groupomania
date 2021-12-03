@@ -50,6 +50,8 @@ const Nav = () => {
                       type="button"
                       onClick={() => history.push("/articles")}
                       className="nav-link "
+                      alt="Home"
+                      title="Home"
                     >
                       <span className="material-icons">home</span>
                     </Button>
@@ -59,6 +61,8 @@ const Nav = () => {
                       type="button"
                       onClick={() => handleSignOut()}
                       className="nav-link "
+                      alt="Sign out"
+                      title="Sign out"
                     >
                       <span className="material-icons">logout</span>
                     </Button>
@@ -96,9 +100,18 @@ const Nav = () => {
             {auth.id ? (
               <>
                 <div className="p-2 nav-item navbar-text text-secondary d-flex align-items-center">
-                  <span className="p-1 material-icons">account_circle</span>
-
-                  <span>{userName}</span>
+                  <Button
+                    type="button"
+                    onClick={() => history.push("/me")}
+                    className="nav-link d-flex align-items-center"
+                    alt="My account"
+                    title="My account"
+                  >
+                    <span className="p-1 material-icons">account_circle</span>
+                    <div>
+                      <span>{userName}</span>
+                    </div>
+                  </Button>
                 </div>
               </>
             ) : (
