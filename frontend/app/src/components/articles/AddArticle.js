@@ -86,14 +86,9 @@ const AddArticle = () => {
                         className="d-flex align-items-center justify-content-center"
                         htmlFor="image"
                       >
-                        <button
-                          className="d-flex align-items-center justify-content-center"
-                          title="Upload an image"
-                        >
-                          <span className="material-icons-outlined px-2">
-                            add_photo_alternate
-                          </span>
-                        </button>
+                        <span className="material-icons-outlined px-2">
+                          add_photo_alternate
+                        </span>
                       </label>
                       <input
                         title="/!\ only supports .jpeg and .png"

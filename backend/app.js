@@ -53,8 +53,6 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// app.use("/images", express.static(path.join(__dirname, "images")));
-
 app.use("/api", commentRoutes);
 app.use("/api", articleRoutes);
 app.use("/api/auth", userRoutes);
