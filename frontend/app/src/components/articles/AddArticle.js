@@ -114,9 +114,9 @@ const AddArticle = () => {
         </>
       ) : (
         <>
-          <div className="d-flex justify-content-center mx-5 px-2">
+          {/* <div className="d-flex justify-content-center mx-5 px-2">
             <div className="back-to-login danger mx-5 px-2">loading...</div>
-          </div>
+          </div> */}
         </>
       )}
     </>

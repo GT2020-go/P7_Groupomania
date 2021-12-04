@@ -25,14 +25,26 @@ const Nav = () => {
     <>
       <nav className="navbar navbar-expand-md fixed-top ">
         <div className="container-fluid">
-          <Link to="/articles" className="navbar-brand">
-            <img
-              src={Logo}
-              width={180}
-              className="d-inline-block"
-              alt="Groupomania"
-            />
-          </Link>
+          {auth.id ? (
+            <Link to="/articles" className="navbar-brand">
+              <img
+                src={Logo}
+                width={180}
+                className="d-inline-block"
+                alt="Groupomania"
+              />
+            </Link>
+          ) : (
+            <Link to="/login" className="navbar-brand">
+              <img
+                src={Logo}
+                width={180}
+                className="d-inline-block"
+                alt="Groupomania"
+              />
+            </Link>
+          )}
+
           <button
             className="navbar-toggler"
             type="button"

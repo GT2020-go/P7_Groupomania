@@ -44,7 +44,15 @@ const authReducer = (state = initialState, action) => {
         id: null,
       };
     case DELETE_USER:
-      return [action.article.data, ...state]; // /\ something wrong in this line: why article??
+      localStorage.clear();
+      console.log("User DELETED");
+      return {
+        ...state,
+        token: null,
+        name: null,
+        email: null,
+        id: null,
+      };
     default:
       return state;
   }

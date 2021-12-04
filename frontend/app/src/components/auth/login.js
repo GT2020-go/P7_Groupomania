@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { login } from "../../actions/authActions";
 
@@ -18,10 +18,12 @@ const LogIn = () => {
   const dispatch = useDispatch();
 
   const [data, setData] = useState(dataInitialState);
+
   const history = useHistory();
   const handleSubmit = (e) => {
     dispatch(login(data));
     setData(dataInitialState);
+
     history.push("/");
   };
 

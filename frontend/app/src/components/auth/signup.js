@@ -55,7 +55,6 @@ const SignUp = () => {
           className="form-control"
           placeholder="John Doe"
           required
-          autoFocus
           value={user.name}
           onChange={(e) => setUser({ ...user, name: e.target.value })}
         />
@@ -68,7 +67,6 @@ const SignUp = () => {
           className="form-control"
           placeholder="@"
           required
-          autoFocus
           value={user.email}
           onChange={(e) => setUser({ ...user, email: e.target.value })}
         />
@@ -86,6 +84,7 @@ const SignUp = () => {
         />
         <button
           className="btn btn-lg btn-primary btn-block mx-auto d-block"
+          title="submit"
           type="submit"
         >
           Sign up

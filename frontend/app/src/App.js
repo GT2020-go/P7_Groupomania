@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import Nav from "./components/layout/Nav";
+import NotFound from "./components/layout/NotFound";
 import SignUp from "./components/auth/Signup";
 import LogIn from "./components/auth/Login";
 import Profile from "./components/user/Profile";
@@ -23,11 +24,13 @@ const App = () => {
 
   const auth = useSelector((state) => state.auth);
 
+  const testAuth = localStorage.getItem("auth");
+
   return (
     <>
       <BrowserRouter>
         <Nav />
-        {auth && auth.id ? (
+        {auth || testAuth ? (
           <Switch>
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/login" component={LogIn} />
@@ -35,13 +38,15 @@ const App = () => {
             <Route exact path="/articles" component={Articles} />
             <Route exact path="/articles/:id" component={GetOneArticle} />
             <Route exact path="/me" component={Profile} />
-            <Redirect from="*" to="/articles" />
+            <Route exact path="/" component={Articles} />
+            <Route component={NotFound} />
           </Switch>
         ) : (
           <Switch>
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/login" component={LogIn} />
             <Redirect from="*" to="/login" />
+            <Route component={NotFound} />
           </Switch>
         )}
       </BrowserRouter>

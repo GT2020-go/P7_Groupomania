@@ -101,10 +101,6 @@ export const deleteUser = (userId) => {
           id,
         });
       })
-      .then(() => {
-        localStorage.clear();
-        dispatch(getArticles());
-      })
       .catch((error) => {
         console.log(error);
       });
