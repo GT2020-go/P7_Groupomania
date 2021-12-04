@@ -95,6 +95,7 @@ const AddArticle = () => {
                         id="image"
                         name="image"
                         type="file"
+                        accept="image/*"
                         className="form-control sm ml-2 mr-2"
                         onChange={(e) => setImage(e.target.files[0])}
                       />

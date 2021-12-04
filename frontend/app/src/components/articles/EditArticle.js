@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { editArticle } from "../../actions/articleActions";
 
-// const articleInitialState = useSelector((state) => state.articles);
+import { useHistory } from "react-router";
 
 const EditArticle = ({ article }) => {
   const [title, setTitle] = useState("");
@@ -11,6 +11,7 @@ const EditArticle = ({ article }) => {
   const [image, setImage] = useState(null);
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = (e, f) => {
     const updatedArticle = new FormData();
@@ -20,6 +21,7 @@ const EditArticle = ({ article }) => {
     updatedArticle.append("image", image);
 
     dispatch(editArticle(updatedArticle, article.id));
+    history.push("/articles");
   };
 
   return (
@@ -40,18 +42,30 @@ const EditArticle = ({ article }) => {
                   type="text"
                   id="title"
                   name="title"
-                  // placeholder={title}
+                  placeholder={
+                    typeof article.title === "undefined" ? "" : article.title
+                  }
                   className="form-control articleTitle"
-                  // defaultValue={title}
+                  defaultValue={
+                    typeof article.title === "undefined" ? "" : article.title
+                  }
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                 />
                 <textarea
                   id="content"
                   name="content"
-                  // placeholder={article.content}
+                  placeholder={
+                    typeof article.content === "undefined"
+                      ? ""
+                      : article.content
+                  }
                   className="form-control articleContent"
-                  // defaultValue={article.content}
+                  defaultValue={
+                    typeof article.content === "undefined"
+                      ? ""
+                      : article.content
+                  }
                   value={content}
                   onChange={(f) => setContent(f.target.value)}
                 />
@@ -68,6 +82,7 @@ const EditArticle = ({ article }) => {
                         id="image"
                         name="image"
                         type="file"
+                        accept="image/*"
                         // defaultValue={article.image}
                         className="btn btn-sm btn-bd-light"
                         onChange={(e) => setImage(e.target.files[0])}
