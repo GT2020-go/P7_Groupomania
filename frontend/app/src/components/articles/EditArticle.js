@@ -6,14 +6,14 @@ import { editArticle } from "../../actions/articleActions";
 import { useHistory } from "react-router";
 
 const EditArticle = ({ article }) => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [title, setTitle] = useState(article.title);
+  const [content, setContent] = useState(article.content);
   const [image, setImage] = useState(null);
 
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleSubmit = (e, f) => {
+  const handleSubmit = (e) => {
     const updatedArticle = new FormData();
     updatedArticle.append("title", title);
 
@@ -67,7 +67,7 @@ const EditArticle = ({ article }) => {
                       : article.content
                   }
                   value={content}
-                  onChange={(f) => setContent(f.target.value)}
+                  onChange={(e) => setContent(e.target.value)}
                 />
                 <div className="actions">
                   <div className="btn-group d-flex justify-content-between">
