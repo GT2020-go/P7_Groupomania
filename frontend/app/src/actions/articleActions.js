@@ -23,9 +23,7 @@ export const addArticle = (article) => {
           article,
         });
       })
-      // .then(() => {
-      //   dispatch(getArticles());
-      // })
+
       .catch((error) => {
         console.log(error.response);
       });
@@ -53,9 +51,10 @@ export const getArticles = () => {
 };
 
 export const editArticle = (editedArticle, id) => {
+  console.log(editedArticle);
   return (dispatch) => {
     axios
-      .post(API_URL + "articles/" + id + "/image", editedArticle, {
+      .put(API_URL + "articles/" + id, editedArticle, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("auth"),
         },
@@ -66,14 +65,33 @@ export const editArticle = (editedArticle, id) => {
           editedArticle,
         });
       })
-      .then(() => {
-        dispatch(getArticles());
-      })
       .catch((error) => {
         console.log(error.response);
       });
   };
 };
+// export const editArticle = (editedArticle, id) => {
+//   return (dispatch) => {
+//     axios
+//       .post(API_URL + "articles/" + id + "/image", editedArticle, {
+//         headers: {
+//           Authorization: "Bearer " + localStorage.getItem("auth"),
+//         },
+//       })
+//       .then((editedArticle) => {
+//         dispatch({
+//           type: EDIT_ARTICLE,
+//           editedArticle,
+//         });
+//       })
+//       .then(() => {
+//         dispatch(getArticles());
+//       })
+//       .catch((error) => {
+//         console.log(error.response);
+//       });
+//   };
+// };
 
 export const deleteArticle = (articleId) => {
   return (dispatch) => {
@@ -111,9 +129,6 @@ export const getOneArticle = (articleId) => {
           type: GET_ONE_ARTICLE,
           article,
         });
-      })
-      .then(() => {
-        dispatch(getArticles());
       })
       .catch((error) => {
         console.log(error);

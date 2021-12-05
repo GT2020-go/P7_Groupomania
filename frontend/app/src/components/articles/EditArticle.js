@@ -8,18 +8,20 @@ import { useHistory } from "react-router";
 const EditArticle = ({ article }) => {
   const [title, setTitle] = useState(article.title);
   const [content, setContent] = useState(article.content);
-  const [image, setImage] = useState(null);
+  // const [image, setImage] = useState(null);
 
   const dispatch = useDispatch();
   const history = useHistory();
 
   const handleSubmit = (e) => {
-    const updatedArticle = new FormData();
-    updatedArticle.append("title", title);
-
-    updatedArticle.append("content", content);
-    updatedArticle.append("image", image);
-
+    // const updatedArticle = new FormData();
+    // updatedArticle.append("title", title);
+    // updatedArticle.append("content", content);
+    // // updatedArticle.append("image", image);
+    const updatedArticle = {
+      title: title,
+      content: content,
+    };
     dispatch(editArticle(updatedArticle, article.id));
     history.push("/articles");
   };
@@ -71,8 +73,8 @@ const EditArticle = ({ article }) => {
                 />
                 <div className="actions">
                   <div className="btn-group d-flex justify-content-between">
-                    <div className="btn-group d-flex justify-content-between align-items-center">
-                      <label for="image">
+                    {/* <div className="btn-group d-flex justify-content-between align-items-center">
+                      <label htmlFor="image">
                         <span className="material-icons-outlined">
                           add_photo_alternate
                         </span>
@@ -87,9 +89,10 @@ const EditArticle = ({ article }) => {
                         className="btn btn-sm btn-bd-light"
                         onChange={(e) => setImage(e.target.files[0])}
                       />
-                    </div>
+                    </div> */}
                     <div className="btn-group d-flex justify-content-between">
                       <button
+                        id="submitButton"
                         type="submit"
                         className="btn btn-sm btn-bd-light "
                       >
