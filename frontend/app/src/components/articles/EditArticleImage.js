@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router";
 
 import { useHistory } from "react-router-dom";
 import { editImage } from "../../actions/articleActions";
@@ -20,7 +21,7 @@ const EditImage = ({ article }) => {
   const [image, setImage] = useState(null);
 
   const articleImage = new FormData();
-  const id = article;
+  const id = article.id;
   const handleEditImage = () => {
     articleImage.append("image", image);
     dispatch(editImage(articleImage, id));
@@ -29,20 +30,20 @@ const EditImage = ({ article }) => {
 
   return (
     <>
-      <div className="container mt-5">
+      <div className="container mt-5" id={article}>
         <div className="row d-flex justify-content-center">
           <div className="col-md-7">
-            <div className="card p-3 py-4">
-              <div className="mt-3 d-flex justify-content-between buttons">
-                <button
-                  className="btn btn-danger px-4 d-flex "
-                  // variant="primary"
-                  onClick={handleShow}
-                >
-                  <span className="material-icons px-1">warning_amber</span>{" "}
-                  Modify Image
-                </button>
-              </div>
+            <div className="mt-3 d-flex justify-content-between buttons">
+              <button
+                className="btn btn-primary px-2 mb-4 d-flex "
+                name="Modify Image"
+                onClick={handleShow}
+              >
+                <span className="material-icons-outlined px-1">
+                  add_photo_alternate
+                </span>
+                Modify Image
+              </button>
             </div>
           </div>
         </div>
@@ -74,7 +75,7 @@ const EditImage = ({ article }) => {
               />
             </div>
           </div>
-          <Button variant="warning" onClick={handleEditImage}>
+          <Button variant="success" onClick={handleEditImage}>
             Yes upload new Image
           </Button>
         </Modal.Footer>

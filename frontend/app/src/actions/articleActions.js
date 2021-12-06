@@ -19,7 +19,6 @@ export const addArticle = (article) => {
         },
       })
       .then((article) => {
-        console.log(article);
         dispatch({
           type: ADD_ARTICLE,
           article,
@@ -72,28 +71,6 @@ export const editArticle = (editedArticle, id) => {
       });
   };
 };
-// export const editArticle = (editedArticle, id) => {
-//   return (dispatch) => {
-//     axios
-//       .post(API_URL + "articles/" + id + "/image", editedArticle, {
-//         headers: {
-//           Authorization: "Bearer " + localStorage.getItem("auth"),
-//         },
-//       })
-//       .then((editedArticle) => {
-//         dispatch({
-//           type: EDIT_ARTICLE,
-//           editedArticle,
-//         });
-//       })
-//       .then(() => {
-//         dispatch(getArticles());
-//       })
-//       .catch((error) => {
-//         console.log(error.response);
-//       });
-//   };
-// };
 
 export const deleteArticle = (articleId) => {
   return (dispatch) => {
@@ -152,6 +129,9 @@ export const deleteImage = (articleId) => {
           article,
         });
       })
+      .then((articleId) => {
+        dispatch(getOneArticle(articleId));
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -172,6 +152,9 @@ export const editImage = (editedArticle, id) => {
           type: EDIT_ARTICLE_IMAGE,
           editedArticle,
         });
+      })
+      .then((id) => {
+        dispatch(getOneArticle(id));
       })
       .catch((error) => {
         console.log(error.response);

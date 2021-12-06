@@ -26,17 +26,15 @@ const DeleteImage = ({ article }) => {
       <div className="container mt-5">
         <div className="row d-flex justify-content-center">
           <div className="col-md-7">
-            <div className="card p-3 py-4">
-              <div className="mt-3 d-flex justify-content-between buttons">
-                <button
-                  className="btn btn-danger px-4 d-flex "
-                  // variant="primary"
-                  onClick={handleShow}
-                >
-                  <span className="material-icons px-1">warning_amber</span>{" "}
-                  Delete Image
-                </button>
-              </div>
+            <div className="mt-3 d-flex justify-content-between buttons">
+              <button
+                className="btn btn-danger px-2 mb-4 d-flex "
+                name="Delete Image"
+                onClick={handleShow}
+              >
+                <span class="material-icons-outlined px-1">delete_forever</span>
+                Delete Image
+              </button>
             </div>
           </div>
         </div>

@@ -10,13 +10,12 @@ import EditArticle from "./EditArticle";
 const GetOneArticle = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const articleId = id;
   useEffect(() => {
-    dispatch(getOneArticle(articleId));
+    dispatch(getOneArticle(id));
   }, [dispatch]);
 
   const articleData = useSelector((state) =>
-    state.articles.find((article) => article.id == articleId)
+    state.articles.find((article) => article.id == id)
   );
 
   console.log(articleData);
