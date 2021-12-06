@@ -70,23 +70,6 @@ const EditArticle = ({ article }) => {
                 />
                 <div className="actions">
                   <div className="btn-group d-flex justify-content-between">
-                    {/* <div className="btn-group d-flex justify-content-between align-items-center">
-                      <label htmlFor="image">
-                        <span className="material-icons-outlined">
-                          add_photo_alternate
-                        </span>
-                      </label>
-
-                      <input
-                        id="image"
-                        name="image"
-                        type="file"
-                        accept="image/*"
-                        // defaultValue={article.image}
-                        className="btn btn-sm btn-bd-light"
-                        onChange={(e) => setImage(e.target.files[0])}
-                      />
-                    </div> */}
                     <div className="btn-group d-flex justify-content-between">
                       <button
                         id="submitButton"
@@ -99,7 +82,15 @@ const EditArticle = ({ article }) => {
                   </div>
                 </div>
               </form>
+
               <EditImage article={article.id} />
+              <div className="image-container">
+                <img
+                  src={article.image}
+                  className="img-fluid articleImage"
+                  alt={article.image}
+                />
+              </div>
               <DeleteImage article={article.id} />
             </div>
           </div>

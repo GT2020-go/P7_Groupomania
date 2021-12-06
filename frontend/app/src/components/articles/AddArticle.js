@@ -18,7 +18,6 @@ const AddArticle = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
-    // e.preventDefault();
     dispatch(addArticle(article));
   };
 

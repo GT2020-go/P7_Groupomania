@@ -157,3 +157,24 @@ export const deleteImage = (articleId) => {
       });
   };
 };
+
+export const editImage = (editedArticle, id) => {
+  console.log(editedArticle);
+  return (dispatch) => {
+    axios
+      .post(API_URL + "articles/" + id + "/image", editedArticle, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("auth"),
+        },
+      })
+      .then((editedArticle) => {
+        dispatch({
+          type: EDIT_ARTICLE_IMAGE,
+          editedArticle,
+        });
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
+};

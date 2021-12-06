@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useHistory } from "react-router-dom";
-import { deleteImage } from "../../actions/articleActions";
+import { editImage } from "../../actions/articleActions";
 
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
 const EditImage = ({ article }) => {
+  console.log(article);
   const dispatch = useDispatch();
 
   const history = useHistory();
@@ -16,8 +17,13 @@ const EditImage = ({ article }) => {
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
-  const handleDeleteImage = () => {
-    dispatch(deleteImage(article));
+  const [image, setImage] = useState(null);
+
+  const articleImage = new FormData();
+  const id = article;
+  const handleEditImage = () => {
+    articleImage.append("image", image);
+    dispatch(editImage(articleImage, id));
     handleClose();
   };
 
@@ -50,11 +56,26 @@ const EditImage = ({ article }) => {
           <Button variant="primary" onClick={handleClose}>
             I changed my mind
           </Button>
-          {/* <Button variant="primary" onClick={handleUploadNewImage}>
-            Upload new image
-          </Button> */}
-          <Button variant="danger" onClick={handleDeleteImage}>
-            Delete image
+          <div className="container">
+            <div className="btn-group d-flex justify-content-between align-items-center">
+              <label htmlFor="image">
+                <span className="material-icons-outlined">
+                  add_photo_alternate
+                </span>
+              </label>
+
+              <input
+                id="image"
+                name="image"
+                type="file"
+                accept="image/*"
+                className="btn btn-sm btn-bd-light"
+                onChange={(e) => setImage(e.target.files[0])}
+              />
+            </div>
+          </div>
+          <Button variant="warning" onClick={handleEditImage}>
+            Yes upload new Image
           </Button>
         </Modal.Footer>
       </Modal>

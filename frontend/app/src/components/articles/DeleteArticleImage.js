@@ -52,9 +52,6 @@ const DeleteImage = ({ article }) => {
           <Button variant="primary" onClick={handleClose}>
             I changed my mind
           </Button>
-          {/* <Button variant="primary" onClick={handleUploadNewImage}>
-            Upload new image
-          </Button> */}
           <Button variant="danger" onClick={handleDeleteImage}>
             Yes. Delete image
           </Button>
