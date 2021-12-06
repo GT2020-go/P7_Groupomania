@@ -67,7 +67,9 @@ export const editArticle = (editedArticle, id) => {
           type: EDIT_ARTICLE,
           editedArticle,
         });
+        dispatch(getArticles());
       })
+      // .then(() => dispatch(getArticles()))
       .catch((error) => {
         console.log(error.response);
       });

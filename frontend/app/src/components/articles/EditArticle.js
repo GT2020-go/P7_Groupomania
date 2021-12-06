@@ -19,12 +19,13 @@ const EditArticle = ({ articleId }) => {
   const history = useHistory();
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     const updatedArticle = {
       title: title,
       content: content,
     };
     dispatch(editArticle(updatedArticle, articleId));
-    history.push("/articles");
+    // history.push("/articles");
   };
 
   return (
