@@ -2,22 +2,19 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { editArticle } from "../../actions/articleActions";
+import DeleteImage from "./DeleteArticleImage";
+import EditImage from "./EditArticleImage";
 
 import { useHistory } from "react-router";
 
 const EditArticle = ({ article }) => {
   const [title, setTitle] = useState(article.title);
   const [content, setContent] = useState(article.content);
-  // const [image, setImage] = useState(null);
 
   const dispatch = useDispatch();
   const history = useHistory();
 
   const handleSubmit = (e) => {
-    // const updatedArticle = new FormData();
-    // updatedArticle.append("title", title);
-    // updatedArticle.append("content", content);
-    // // updatedArticle.append("image", image);
     const updatedArticle = {
       title: title,
       content: content,
@@ -102,6 +99,8 @@ const EditArticle = ({ article }) => {
                   </div>
                 </div>
               </form>
+              <EditImage article={article.id} />
+              <DeleteImage article={article.id} />
             </div>
           </div>
         </div>

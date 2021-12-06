@@ -6,6 +6,8 @@ import {
   GET_ONE_ARTICLE,
   EDIT_ARTICLE,
   DELETE_ARTICLE,
+  DELETE_ARTICLE_IMAGE,
+  EDIT_ARTICLE_IMAGE,
 } from "../constants/articleActionType";
 
 export const addArticle = (article) => {
@@ -127,6 +129,26 @@ export const getOneArticle = (articleId) => {
       .then((article) => {
         dispatch({
           type: GET_ONE_ARTICLE,
+          article,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+
+export const deleteImage = (articleId) => {
+  return (dispatch) => {
+    axios
+      .delete(API_URL + `articles/${articleId}/image`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("auth"),
+        },
+      })
+      .then((article) => {
+        dispatch({
+          type: DELETE_ARTICLE_IMAGE,
           article,
         });
       })

@@ -7,7 +7,7 @@ import { deleteImage } from "../../actions/articleActions";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
-const EditImage = ({ article }) => {
+const DeleteImage = ({ article }) => {
   const dispatch = useDispatch();
 
   const history = useHistory();
@@ -34,7 +34,7 @@ const EditImage = ({ article }) => {
                   onClick={handleShow}
                 >
                   <span className="material-icons px-1">warning_amber</span>{" "}
-                  Modify Image
+                  Delete Image
                 </button>
               </div>
             </div>
@@ -43,9 +43,11 @@ const EditImage = ({ article }) => {
       </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modify Image</Modal.Title>
+          <Modal.Title>Delete this Image</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Do you wish to change the image?</Modal.Body>
+        <Modal.Body>
+          This will delete the current image. Are you sure?
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={handleClose}>
             I changed my mind
@@ -54,7 +56,7 @@ const EditImage = ({ article }) => {
             Upload new image
           </Button> */}
           <Button variant="danger" onClick={handleDeleteImage}>
-            Delete image
+            Yes. Delete image
           </Button>
         </Modal.Footer>
       </Modal>
@@ -62,4 +64,4 @@ const EditImage = ({ article }) => {
   );
 };
 
-export default EditImage;
+export default DeleteImage;
