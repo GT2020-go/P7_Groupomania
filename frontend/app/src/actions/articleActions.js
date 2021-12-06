@@ -24,7 +24,9 @@ export const addArticle = (article) => {
           article,
         });
       })
-
+      .then(() => {
+        dispatch(getArticles());
+      })
       .catch((error) => {
         console.log(error.response);
       });
@@ -109,6 +111,7 @@ export const getOneArticle = (articleId) => {
           article,
         });
       })
+
       .catch((error) => {
         console.log(error);
       });
@@ -152,6 +155,9 @@ export const editImage = (editedArticle, id) => {
           type: EDIT_ARTICLE_IMAGE,
           editedArticle,
         });
+      })
+      .then(() => {
+        dispatch(getArticles());
       })
       .catch((error) => {
         console.log(error.response);

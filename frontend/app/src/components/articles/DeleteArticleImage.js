@@ -7,7 +7,7 @@ import { deleteImage } from "../../actions/articleActions";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
-const DeleteImage = ({ article }) => {
+const DeleteImage = ({ articleId }) => {
   const dispatch = useDispatch();
 
   const history = useHistory();
@@ -17,7 +17,7 @@ const DeleteImage = ({ article }) => {
   const handleClose = () => setShow(false);
 
   const handleDeleteImage = () => {
-    dispatch(deleteImage(article));
+    dispatch(deleteImage(articleId));
     handleClose();
   };
 

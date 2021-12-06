@@ -4,6 +4,7 @@ import "./sass/main.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { useParams } from "react-router";
 
 import Nav from "./components/layout/Nav";
 import NotFound from "./components/layout/NotFound";

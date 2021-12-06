@@ -10,6 +10,7 @@ import EditArticle from "./EditArticle";
 const GetOneArticle = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
+
   useEffect(() => {
     dispatch(getOneArticle(id));
   }, [dispatch]);
@@ -18,11 +19,13 @@ const GetOneArticle = () => {
     state.articles.find((article) => article.id == id)
   );
 
+  console.log(id);
+  console.log({ id });
   console.log(articleData);
 
   return (
     <>
-      <EditArticle article={articleData} />
+      <EditArticle articleId={id} />
     </>
   );
 };

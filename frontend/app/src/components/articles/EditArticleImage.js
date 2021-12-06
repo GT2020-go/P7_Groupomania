@@ -4,11 +4,12 @@ import { useParams } from "react-router";
 
 import { useHistory } from "react-router-dom";
 import { editImage } from "../../actions/articleActions";
+import { getOneArticle } from "../../actions/articleActions";
 
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
-const EditImage = ({ article }) => {
+const EditImage = ({ articleId }) => {
   const dispatch = useDispatch();
 
   const history = useHistory();
@@ -20,16 +21,18 @@ const EditImage = ({ article }) => {
   const [image, setImage] = useState(null);
 
   const articleImage = new FormData();
-  const id = article.id;
+
+  console.log(articleId);
+
   const handleEditImage = () => {
     articleImage.append("image", image);
-    dispatch(editImage(articleImage, id));
+    dispatch(editImage(articleImage, articleId));
     handleClose();
   };
 
   return (
     <>
-      <div className="container mt-5" id={article}>
+      <div className="container mt-5" id={articleId}>
         <div className="row d-flex justify-content-center">
           <div className="col-md-7">
             <div className="mt-3 d-flex justify-content-between buttons">

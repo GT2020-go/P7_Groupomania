@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { editArticle } from "../../actions/articleActions";
 import DeleteImage from "./DeleteArticleImage";
@@ -7,7 +7,11 @@ import EditImage from "./EditArticleImage";
 
 import { useHistory } from "react-router";
 
-const EditArticle = ({ article }) => {
+const EditArticle = ({ articleId }) => {
+  const article = useSelector((state) =>
+    state.articles.find((article) => article.id == articleId)
+  );
+
   const [title, setTitle] = useState(article.title);
   const [content, setContent] = useState(article.content);
 
@@ -19,13 +23,13 @@ const EditArticle = ({ article }) => {
       title: title,
       content: content,
     };
-    dispatch(editArticle(updatedArticle, article.id));
+    dispatch(editArticle(updatedArticle, articleId));
     history.push("/articles");
   };
 
   return (
     <>
-      <div className="container mt-5 mb-5" id="articleId">
+      <div className="container mt-5 mb-5" id={articleId}>
         <div className="row d-flex align-items-center justify-content-center">
           <div className="col-md-6">
             <div className="card">
@@ -83,7 +87,7 @@ const EditArticle = ({ article }) => {
                 </div>
               </form>
 
-              <EditImage article={article.id} />
+              <EditImage articleId={articleId} />
               <div className="image-container">
                 <img
                   src={article.image}
@@ -91,7 +95,7 @@ const EditArticle = ({ article }) => {
                   alt={article.image}
                 />
               </div>
-              <DeleteImage article={article.id} />
+              <DeleteImage articleId={articleId} />
             </div>
           </div>
         </div>
