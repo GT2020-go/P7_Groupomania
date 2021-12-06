@@ -12,15 +12,16 @@ router.get("/articles", auth, imageUpload, articleCtrl.getArticles);
 router.post("/articles", auth, imageUpload, articleCtrl.createArticle);
 router.get("/articles/:id", auth, articleCtrl.getOneArticle);
 
-//here
+//editArticleImage (only image):
 router.post(
   "/articles/:id/image",
   auth,
   imageDelete,
   imageUpload,
-  articleCtrl.modifyOneArticle
+  articleCtrl.modifyOneImage
 );
 
+// editArticle title+content:
 router.put("/articles/:id", auth, articleCtrl.modifyOneArticle);
 
 router.get("/articles/:id/image", auth, articleCtrl.getImage);

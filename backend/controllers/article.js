@@ -109,6 +109,27 @@ exports.modifyOneArticle = (req, res, next) => {
   const article = req.body.article
     ? {
         ...JSON.parse(req.body.article),
+      }
+    : { ...req.body };
+
+  Article.findOne({
+    where: { id: req.params.id },
+  })
+    .then(() => {
+      Article.update({ ...article }, { where: { id: req.params.id } })
+        .then(() =>
+          res.status(200).json({ message: "Article modifie avec succes !" })
+        )
+        .catch((error) => res.status(400).json({ error }));
+    })
+    .catch((error) => res.status(400).json({ error }));
+};
+
+//modify one image
+exports.modifyOneImage = (req, res, next) => {
+  const article = req.body.article
+    ? {
+        ...JSON.parse(req.body.article),
         image: req.file.location,
       }
     : { ...req.body };
