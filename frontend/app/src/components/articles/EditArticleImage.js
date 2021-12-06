@@ -9,7 +9,6 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
 const EditImage = ({ article }) => {
-  console.log(article);
   const dispatch = useDispatch();
 
   const history = useHistory();

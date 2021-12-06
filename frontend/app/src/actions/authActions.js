@@ -94,11 +94,10 @@ export const deleteUser = (userId) => {
           Authorization: "Bearer " + localStorage.getItem("auth"),
         },
       })
-      .then((id) => {
+      .then(() => {
         localStorage.clear();
         dispatch({
           type: DELETE_USER,
-          id,
         });
       })
       .catch((error) => {

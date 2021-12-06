@@ -24,9 +24,9 @@ const db = require("./models");
 
 //running the code below will execute DROP TABLE IF EXISTS everytime we restart the server:
 
-// db.sequelize.sync({
-//   force: true,
-// });
+db.sequelize.sync({
+  force: true,
+});
 
 const app = express();
 

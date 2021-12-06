@@ -129,8 +129,8 @@ export const deleteImage = (articleId) => {
           article,
         });
       })
-      .then((articleId) => {
-        dispatch(getOneArticle(articleId));
+      .then(() => {
+        dispatch(getArticles());
       })
       .catch((error) => {
         console.log(error);
@@ -152,9 +152,6 @@ export const editImage = (editedArticle, id) => {
           type: EDIT_ARTICLE_IMAGE,
           editedArticle,
         });
-      })
-      .then((id) => {
-        dispatch(getOneArticle(id));
       })
       .catch((error) => {
         console.log(error.response);
