@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { useHistory } from "react-router-dom";
 import { logout, deleteUser } from "../../actions/authActions";
+
 import ProfilePic from "../../img/baseline_account_circle_black_48dp.png";
 
 // import DeleteUserTest from "./DeleteUser";
