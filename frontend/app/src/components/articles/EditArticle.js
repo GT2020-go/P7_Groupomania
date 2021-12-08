@@ -5,8 +5,6 @@ import { editArticle } from "../../actions/articleActions";
 import DeleteImage from "./DeleteArticleImage";
 import EditImage from "./EditArticleImage";
 
-import { useHistory } from "react-router";
-
 const EditArticle = ({ articleId }) => {
   const article = useSelector((state) =>
     state.articles.find((article) => article.id == articleId)
@@ -16,7 +14,6 @@ const EditArticle = ({ articleId }) => {
   const [content, setContent] = useState(article.content);
 
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +22,6 @@ const EditArticle = ({ articleId }) => {
       content: content,
     };
     dispatch(editArticle(updatedArticle, articleId));
-    // history.push("/articles");
   };
 
   return (

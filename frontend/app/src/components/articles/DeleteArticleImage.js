@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import { useHistory } from "react-router-dom";
 import { deleteImage } from "../../actions/articleActions";
 
 import Modal from "react-bootstrap/Modal";
@@ -9,8 +8,6 @@ import Button from "react-bootstrap/Button";
 
 const DeleteImage = ({ articleId }) => {
   const dispatch = useDispatch();
-
-  const history = useHistory();
 
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);

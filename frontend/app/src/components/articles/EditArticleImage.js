@@ -1,18 +1,13 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router";
+import { useDispatch } from "react-redux";
 
-import { useHistory } from "react-router-dom";
 import { editImage } from "../../actions/articleActions";
-import { getOneArticle } from "../../actions/articleActions";
 
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
 const EditImage = ({ articleId }) => {
   const dispatch = useDispatch();
-
-  const history = useHistory();
 
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);

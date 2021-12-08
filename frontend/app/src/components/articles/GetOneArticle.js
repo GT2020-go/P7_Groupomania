@@ -15,14 +15,6 @@ const GetOneArticle = () => {
     dispatch(getOneArticle(id));
   }, [dispatch]);
 
-  const articleData = useSelector((state) =>
-    state.articles.find((article) => article.id == id)
-  );
-
-  console.log(id);
-  console.log({ id });
-  console.log(articleData);
-
   return (
     <>
       <EditArticle articleId={id} />
