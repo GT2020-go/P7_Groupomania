@@ -14,7 +14,7 @@ const Article = ({ article }) => {
 
   return (
     <>
-      <div className="article container mt-2 mb-4" id={article.id}>
+      <div className="article container mt-2 mb-4 py-4" id={article.id}>
         <div className="background position-behind">
           <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
             <path
